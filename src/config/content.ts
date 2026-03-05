@@ -27,6 +27,7 @@ export interface IntroContent {
 export interface StackItem {
   name: string;
   icon: string; // key into stackIcons record in utils/icons.ts
+  brandColor: string; // official brand hex color for hover state
 }
 
 export interface StackGroup {
@@ -49,6 +50,7 @@ export interface SocialLink {
   handle: string;
   url: string;
   icon: string; // key into socialIcons record in utils/icons.ts
+  brandColor: string; // official brand hex for icon circle fill on hover
 }
 
 export interface ContactInfo {
@@ -121,40 +123,46 @@ export const content: SiteContent = {
       {
         category: "Frontend",
         items: [
-          { name: "JavaScript", icon: "javascript" },
-          { name: "TypeScript", icon: "typescript" },
-          { name: "React.js", icon: "react" },
-          { name: "Vite.js", icon: "vite" },
-          { name: "Tailwind CSS", icon: "tailwind" },
+          { name: "JavaScript", icon: "javascript", brandColor: "#F7DF1E" },
+          { name: "TypeScript", icon: "typescript", brandColor: "#3178C6" },
+          { name: "React.js",   icon: "react",      brandColor: "#61DAFB" },
+          { name: "Vite.js",    icon: "vite",       brandColor: "#646CFF" },
+          { name: "Tailwind CSS", icon: "tailwind", brandColor: "#06B6D4" },
         ],
       },
       {
         category: "Backend",
         items: [
-          { name: "Node.js", icon: "nodejs" },
-          { name: "Express.js", icon: "express" },
+          { name: "Node.js",    icon: "nodejs",  brandColor: "#5FA04E" },
+          { name: "Express.js", icon: "express", brandColor: "#c8c8c8" },
         ],
       },
       {
         category: "API",
-        items: [{ name: "Prisma ORM", icon: "prisma" }],
+        items: [{ name: "Prisma ORM", icon: "prisma", brandColor: "#5C6AC4" }],
+      },
+      {
+        category: "AI",
+        items: [
+          { name: "Claude Code", icon: "claude", brandColor: "#D4A27F" },
+          { name: "Cursor",      icon: "cursor", brandColor: "#d6d5d2" },
+        ],
       },
       {
         category: "Database",
         items: [
-          { name: "PostgreSQL", icon: "postgresql" },
-          { name: "MongoDB", icon: "mongodb" },
+          { name: "PostgreSQL", icon: "postgresql", brandColor: "#4169E1" },
+          { name: "MongoDB",    icon: "mongodb",    brandColor: "#47A248" },
         ],
       },
       {
         category: "Dev Tools",
         items: [
-          { name: "VS Code", icon: "vscode" },
-          { name: "Cursor", icon: "cursor" },
-          { name: "Postman", icon: "postman" },
-          { name: "Git", icon: "git" },
-          { name: "GitHub", icon: "github" },
-          { name: "Vercel", icon: "vercel" },
+          { name: "VS Code", icon: "vscode",  brandColor: "#007ACC" },
+          { name: "Postman", icon: "postman", brandColor: "#FF6C37" },
+          { name: "Git",     icon: "git",     brandColor: "#F05032" },
+          { name: "GitHub",  icon: "github",  brandColor: "#ffffff" },
+          { name: "Vercel",  icon: "vercel",  brandColor: "#ffffff" },
         ],
       },
     ],
@@ -215,36 +223,42 @@ export const content: SiteContent = {
         handle: "gustavosanchezgalarza",
         url: "https://www.linkedin.com/in/gustavosanchezgalarza/",
         icon: "linkedin",
+        brandColor: "#0A66C2",
       },
       {
         platform: "GitHub",
         handle: "gusanchefullstack",
         url: "https://github.com/gusanchefullstack",
         icon: "github",
+        brandColor: "#24292f",
       },
       {
         platform: "Hashnode",
         handle: "@gusanchedev",
         url: "https://hashnode.com/@gusanchedev",
         icon: "hashnode",
+        brandColor: "#2962FF",
       },
       {
         platform: "X / Twitter",
         handle: "@gusanchedev",
         url: "https://x.com/gusanchedev",
         icon: "x",
+        brandColor: "#000000",
       },
       {
         platform: "Bluesky",
         handle: "gusanchedev.bsky.social",
         url: "https://bsky.app/profile/gusanchedev.bsky.social",
         icon: "bluesky",
+        brandColor: "#0085FF",
       },
       {
         platform: "freeCodeCamp",
         handle: "gusanchedev",
         url: "https://www.freecodecamp.org/gusanchedev",
         icon: "freecodecamp",
+        brandColor: "#0A0A23",
       },
     ],
   },

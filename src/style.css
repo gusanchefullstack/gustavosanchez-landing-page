@@ -471,7 +471,7 @@ a:hover {
   height: 2rem;
 }
 .stack-card:hover .stack-card__icon {
-  color: var(--color-text-accent);
+  color: var(--brand-color, var(--color-text-accent));
 }
 
 .stack-card__name {
@@ -613,7 +613,7 @@ a:hover {
   transition: background var(--transition-speed) ease;
 }
 .social-card:hover .social-card__icon-wrap {
-  background: rgba(108, 99, 255, 0.3);
+  background: var(--brand-color, rgba(108, 99, 255, 0.3));
 }
 .social-card__icon-wrap svg {
   width: 1.4rem;

@@ -12,48 +12,48 @@ npm run preview   # Preview the production build locally
 
 ## Architecture
 
-Vanilla TypeScript + Vite SPA. React is used **only** in `src/utils/icons.ts` to convert `react-icons` components to SVG strings via `renderToStaticMarkup`. There is no React rendering in the app.
+React 19 + TypeScript + Vite SPA. All UI is declarative JSX; no imperative DOM manipulation.
 
 ### Data flow
 
 ```
-src/config/content.ts   ← single source of truth for all text/data
-src/utils/icons.ts      ← converts react-icons → SVG strings
+src/config/content.ts       ← single source of truth for all text/data
+src/utils/icons.tsx         ← react-icons component map (stackIconMap, socialIconMap)
+src/hooks/useScrollReveal.ts  ← IntersectionObserver hook for .reveal fade-in
+src/hooks/useActiveSection.ts ← IntersectionObserver hook for active nav link
        ↓
-src/components/*.ts     ← render*() returns HTML string, init*() binds events
+src/components/*.tsx        ← React components
        ↓
-src/main.ts             ← composes all sections, writes to #app, calls init*()
+src/App.tsx                 ← root component composing all sections
+src/main.tsx                ← createRoot().render(<App />)
 ```
 
 ### Component pattern
 
-Every component exports one or two functions:
-- `render*(): string` — returns an HTML template literal, reads from `content`
-- `init*(): void` — optional, binds DOM event listeners after HTML is inserted
+Every component is a named React function export. Interactive state is managed with hooks — no `init*()` functions.
 
-**Sidebar** additionally uses `IntersectionObserver` to highlight the active nav link as sections scroll into view.
+- Scroll-reveal: attach `useScrollReveal` ref to the element that also has `className="... reveal"`
+- Active nav: `useActiveSection(sectionIds)` returns the current section id as a string
 
-### Icon system (`src/utils/icons.ts`)
+### Icon system (`src/utils/icons.tsx`)
 
-Icons are pre-rendered to SVG strings at module load time:
-```ts
-function icon(Icon: ComponentType<IconProps>): string {
-  return renderToStaticMarkup(createElement(Icon, { size: 36, color: "currentColor" }));
-}
-export const stackIcons: Record<string, string> = { ... };
-export const socialIcons: Record<string, string> = { ... };
+Icons are exported as component maps for direct JSX use:
+```tsx
+export const stackIconMap: Record<string, ComponentType<IconProps>> = { ... };
+export const socialIconMap: Record<string, ComponentType<IconProps>> = { ... };
 ```
 
-Components look up icons by string key with a fallback:
-```ts
-${stackIcons[item.icon] ?? item.icon}
+Usage in components:
+```tsx
+const Icon = stackIconMap[item.icon];
+{Icon ? <Icon size={36} color="currentColor" /> : <span>{item.icon}</span>}
 ```
 
 Icon sources used:
 - `react-icons/si` — SimpleIcons (most tech logos)
 - `react-icons/vsc` — VS Code icon set (`VscVscode`)
 - `react-icons/fa6` — Font Awesome 6 (`FaLinkedin`)
-- Cursor AI — custom inline SVG (not yet in SimpleIcons)
+- Cursor AI — `CursorIcon` custom component with official multi-color SVG
 
 ## Key files
 
@@ -62,9 +62,12 @@ Icon sources used:
 | `src/config/content.ts` | All site copy, projects, social links, stack groups — edit here to personalise |
 | `src/config/theme.ts` | Theme tokens as TS constants mirroring CSS variables |
 | `src/style.css` | All styles: `@theme` variables, BEM component classes, responsive breakpoints |
-| `src/utils/icons.ts` | Icon conversion utility; exports `stackIcons` and `socialIcons` maps |
+| `src/utils/icons.tsx` | Icon component map; exports `stackIconMap` and `socialIconMap` |
+| `src/App.tsx` | Root component — composes Sidebar, all sections, footer |
+| `src/hooks/useScrollReveal.ts` | IntersectionObserver ref hook for scroll-reveal |
+| `src/hooks/useActiveSection.ts` | IntersectionObserver hook returning active section id |
 | `index.html` | Google Fonts (`Outfit`) import, meta tags |
-| `vite.config.ts` | Vite config — only plugin is `@tailwindcss/vite` |
+| `vite.config.ts` | Vite config — plugins: `@vitejs/plugin-react`, `@tailwindcss/vite` |
 
 ## Styling conventions
 
@@ -74,13 +77,22 @@ Icon sources used:
 - **Hover elevations**: `translateY(-4px)` on cards, `translateY(-2px)` on buttons.
 - **Sidebar nav active state**: animated `scaleX` underline via `::after` pseudo-element transitioning from 0 → 1.
 - **Scroll reveal**: elements with class `reveal` fade in via `IntersectionObserver` adding `reveal--visible`.
+- **CSS custom properties in style prop**: use `style={{ "--brand-color": value } as CSSProperties}` — the type assertion is required.
 
 ## Adding/changing content
 
 - **Text, projects, social links, stack items** → `src/config/content.ts` only, no component changes needed.
-- **New stack icon** → add key to `stackIcons` in `src/utils/icons.ts`, reference key in `content.ts`.
-- **New section** → create `src/components/NewSection.ts` following the `render*`/`init*` pattern, import and compose in `src/main.ts`.
+- **New stack icon** → add entry to `stackIconMap` in `src/utils/icons.tsx`, reference key in `content.ts`.
+- **New section** → create `src/components/NewSection.tsx` as a React component, import and compose in `src/App.tsx`.
 
 ## TypeScript notes
 
-`tsconfig.json` enforces `strict`, `noUnusedLocals`, `noUnusedParameters`, and `verbatimModuleSyntax`. Type-only imports must use `import type`.
+`tsconfig.json` enforces `strict`, `noUnusedLocals`, `noUnusedParameters`, `verbatimModuleSyntax`, and `jsx: react-jsx`. Type-only imports must use `import type`. The `react-jsx` transform means JSX works without importing React at the top of every file.
+
+## dangerouslySetInnerHTML
+
+Used in two places for `content.footer` (which contains `<a>` tags):
+- `src/components/Sidebar.tsx` — sidebar footer
+- `src/App.tsx` — main page footer
+
+Content is developer-controlled so there is no XSS risk.

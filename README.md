@@ -1,13 +1,13 @@
 # Gustavo Sanchez — Personal Landing Page
 
-A personal developer portfolio and landing page built with vanilla TypeScript, Vite, and Tailwind CSS. Designed with a Hyperspace-inspired dark theme featuring a fixed sidebar navigation, smooth scroll-reveal animations, and a fully content-driven architecture.
+A personal developer portfolio and landing page built with React 19, TypeScript, Vite, and Tailwind CSS. Designed with a Hyperspace-inspired dark theme featuring a fixed sidebar navigation, smooth scroll-reveal animations, and a fully content-driven architecture.
 
 ## Live sections
 
 | Section | Description |
 |---|---|
 | **Intro** | Hero with profile photo, name, title, tagline, and CTA |
-| **Stack** | Tech skills grouped by category (Frontend, Backend, API, Database, Dev Tools) with react-icons SVG icons |
+| **Stack** | Tech skills grouped by category (Frontend, Backend, API, Database, Dev Tools) with react-icons |
 | **Projects** | Card grid showcasing featured work with tags and links |
 | **Social** | Profile cards for LinkedIn, GitHub, Hashnode, X, Bluesky, freeCodeCamp |
 | **Contact** | Contact form with info sidebar |
@@ -16,14 +16,13 @@ A personal developer portfolio and landing page built with vanilla TypeScript, V
 
 | Layer | Technology |
 |---|---|
+| Framework | React 19 |
 | Language | TypeScript 5.9 (strict mode) |
 | Build tool | Vite 7 |
 | Styling | Tailwind CSS 4 + CSS custom properties |
-| Icons | react-icons 5 (si / vsc / fa6 sets) + React 19 for SVG rendering |
+| Icons | react-icons 5 (si / vsc / fa6 sets) |
 | Font | Outfit (Google Fonts) |
 | Deployment | — |
-
-> React is used **only** as a server-side utility to convert `react-icons` components to inline SVG strings via `renderToStaticMarkup`. There is no React rendering in the browser.
 
 ## Getting started
 
@@ -45,23 +44,27 @@ npm run preview
 
 ```
 ├── public/
-│   └── Me.jpg               # Profile photo
+│   └── Me.jpg                    # Profile photo
 ├── src/
 │   ├── components/
-│   │   ├── Contact.ts       # Contact form + info sidebar
-│   │   ├── Intro.ts         # Hero section with profile photo
-│   │   ├── Projects.ts      # Project card grid
-│   │   ├── Sidebar.ts       # Fixed nav + mobile hamburger
-│   │   ├── Social.ts        # Social profile cards
-│   │   └── Stack.ts         # Tech stack grouped by category
+│   │   ├── Contact.tsx           # Contact form + info sidebar
+│   │   ├── Intro.tsx             # Hero section with profile photo
+│   │   ├── Projects.tsx          # Project card grid
+│   │   ├── Sidebar.tsx           # Fixed nav + mobile hamburger
+│   │   ├── Social.tsx            # Social profile cards
+│   │   └── Stack.tsx             # Tech stack grouped by category
 │   ├── config/
-│   │   ├── content.ts       # ← All site copy, projects, links (edit here)
-│   │   └── theme.ts         # Theme tokens mirroring CSS variables
+│   │   ├── content.ts            # ← All site copy, projects, links (edit here)
+│   │   └── theme.ts              # Theme tokens mirroring CSS variables
+│   ├── hooks/
+│   │   ├── useActiveSection.ts   # IntersectionObserver hook for active nav link
+│   │   └── useScrollReveal.ts    # IntersectionObserver hook for scroll-reveal
 │   ├── utils/
-│   │   └── icons.ts         # react-icons → SVG string conversion
-│   ├── main.ts              # Composes page, mounts to DOM, inits behaviour
-│   └── style.css            # All styles: @theme variables, BEM classes, breakpoints
-├── index.html               # Entry HTML, Google Fonts import
+│   │   └── icons.tsx             # react-icons component maps
+│   ├── App.tsx                   # Root component composing all sections
+│   ├── main.tsx                  # Entry point — createRoot().render(<App />)
+│   └── style.css                 # All styles: @theme variables, BEM classes, breakpoints
+├── index.html                    # Entry HTML, Google Fonts import
 ├── vite.config.ts
 └── tsconfig.json
 ```
@@ -93,37 +96,37 @@ All colours, fonts, spacing, and transition speeds are CSS custom properties in 
 Change values here to re-skin the entire site.
 
 ### Add a stack icon
-1. Import the icon in `src/utils/icons.ts`
-2. Add it to the `stackIcons` record with a string key
+1. Import the icon in `src/utils/icons.tsx`
+2. Add it to the `stackIconMap` record with a string key
 3. Reference that key in `content.ts` under the relevant stack group
 
-```ts
-// src/utils/icons.ts
+```tsx
+// src/utils/icons.tsx
 import { SiDocker } from "react-icons/si";
-export const stackIcons = {
+export const stackIconMap = {
   // ...
-  docker: icon(SiDocker),
+  docker: SiDocker,
 };
 
 // src/config/content.ts
-{ name: "Docker", icon: "docker" }
+{ name: "Docker", icon: "docker", brandColor: "#2496ED" }
 ```
 
 ### Add a new section
-1. Create `src/components/NewSection.ts` following the `render*` / `init*` pattern
-2. Import and compose it in `src/main.ts`
+1. Create `src/components/NewSection.tsx` as a React component
+2. Import and compose it in `src/App.tsx`
 
-```ts
-// src/components/NewSection.ts
+```tsx
+// src/components/NewSection.tsx
 import { content } from "../config/content.ts";
 
-export function renderNewSection(): string {
-  return `<section id="new-section" class="section">...</section>`;
+export function NewSection() {
+  return <section id="new-section" className="section">...</section>;
 }
 
-// src/main.ts
-import { renderNewSection } from "./components/NewSection.ts";
-app.innerHTML = `... ${renderNewSection()} ...`;
+// src/App.tsx
+import { NewSection } from "./components/NewSection.tsx";
+// Add <NewSection /> inside the <main> element
 ```
 
 ## Architecture
@@ -131,54 +134,55 @@ app.innerHTML = `... ${renderNewSection()} ...`;
 ### Data flow
 
 ```
-src/config/content.ts     ← single source of truth
-src/utils/icons.ts        ← react-icons → SVG strings (build-time)
+src/config/content.ts         ← single source of truth
+src/utils/icons.tsx           ← react-icons component maps
+src/hooks/useScrollReveal.ts  ← scroll-reveal IntersectionObserver
+src/hooks/useActiveSection.ts ← active nav IntersectionObserver
         ↓
-src/components/*.ts       ← render*() → HTML string, init*() → event listeners
+src/components/*.tsx          ← React components
         ↓
-src/main.ts               ← composes HTML, writes to #app, calls init*()
+src/App.tsx                   ← root component
+src/main.tsx                  ← createRoot().render(<StrictMode><App /></StrictMode>)
 ```
 
 ### Component pattern
 
-Every component is a plain TypeScript module with up to two exports:
+Every component is a named React function export. State and side effects use hooks — no imperative DOM manipulation.
 
-```ts
-// Pure function — returns an HTML string from content.*
-export function renderXxx(): string { ... }
-
-// Optional — binds DOM event listeners after HTML is in the DOM
-export function initXxx(): void { ... }
-```
-
-### Icon pipeline
-
-```ts
-// icons.ts — runs once at module load time
-function icon(Icon: ComponentType<IconProps>): string {
-  return renderToStaticMarkup(createElement(Icon, { size: 36, color: "currentColor" }));
+```tsx
+// Scroll-reveal: attach ref to the element with className="... reveal"
+export function MySection() {
+  const ref = useScrollReveal<HTMLDivElement>();
+  return (
+    <section>
+      <div className="section__inner reveal" ref={ref}>
+        {/* content */}
+      </div>
+    </section>
+  );
 }
-
-export const stackIcons: Record<string, string> = {
-  javascript: icon(SiJavascript),
-  // ...
-};
-
-// In a component template:
-${stackIcons[item.icon] ?? item.icon}  // fallback to raw string if key missing
 ```
 
-Icons use `color: "currentColor"` so CSS controls their colour. The Cursor AI icon is a custom hand-crafted SVG (the 3D hexagonal gem logo) since it is not yet in SimpleIcons.
+### Icon system
+
+Icons are `ComponentType` maps — rendered directly in JSX with a string-key fallback:
+
+```tsx
+const Icon = stackIconMap[item.icon];
+{Icon ? <Icon size={36} color="currentColor" /> : <span>{item.icon}</span>}
+```
+
+Icons use `color="currentColor"` so CSS controls their colour. The Cursor AI icon is a custom `CursorIcon` component with the official multi-color 3D cube SVG.
 
 ### Interactivity
 
 | Feature | Implementation |
 |---|---|
-| Active nav link | `IntersectionObserver` on each section, adds `.sidebar__link--active` |
-| Scroll-reveal | `IntersectionObserver` on `.reveal` elements, adds `.reveal--visible` |
+| Active nav link | `useActiveSection` hook — `IntersectionObserver` returns current section id |
+| Scroll-reveal | `useScrollReveal` hook — adds `.reveal--visible` when element enters viewport |
 | Nav underline animation | CSS `::after` pseudo-element, `transform: scaleX()` transition |
-| Mobile sidebar | Hamburger toggle + overlay, `transform: translateX()` transition |
-| Contact form | `preventDefault` + button feedback, 3 s timeout, form reset |
+| Mobile sidebar | `useState(isOpen)` drives `.sidebar--open` and overlay visibility |
+| Contact form | `useState(submitted)` drives button state + 3 s reset timeout |
 
 ## Styling conventions
 
