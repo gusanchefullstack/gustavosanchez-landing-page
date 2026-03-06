@@ -1,20 +1,11 @@
-import { useState, useRef } from "react";
-import type { FormEvent } from "react";
 import { content } from "../config/content.ts";
 import { useScrollReveal } from "../hooks/useScrollReveal.ts";
+import { useForm, ValidationError } from "@formspree/react";
 
 export function Contact() {
   const ref = useScrollReveal<HTMLDivElement>();
-  const [submitted, setSubmitted] = useState(false);
-  const formRef = useRef<HTMLFormElement>(null);
+  const [state, handleSubmit] = useForm("xwkjerpe");
   const { subtitle, title, description, info } = content.contact;
-
-  function handleSubmit(e: FormEvent) {
-    e.preventDefault();
-    setSubmitted(true);
-    formRef.current?.reset();
-    setTimeout(() => setSubmitted(false), 3000);
-  }
 
   return (
     <section id="contact" className="section">
@@ -24,7 +15,7 @@ export function Contact() {
         <p className="section__description">{description}</p>
 
         <div className="contact-grid">
-          <form className="contact-form" ref={formRef} onSubmit={handleSubmit}>
+          <form className="contact-form" onSubmit={handleSubmit}>
             <div className="contact-form__group">
               <label className="contact-form__label" htmlFor="name">
                 Name
@@ -51,6 +42,11 @@ export function Contact() {
                 required
               />
             </div>
+            <ValidationError
+              prefix="Email"
+              field="email"
+              errors={state.errors}
+            />
             <div className="contact-form__group">
               <label className="contact-form__label" htmlFor="message">
                 Message
@@ -63,13 +59,19 @@ export function Contact() {
                 required
               />
             </div>
+            <ValidationError
+              prefix="Message"
+              field="message"
+              errors={state.errors}
+            />
             <button
               className="contact-form__submit"
               type="submit"
-              disabled={submitted}
+              disabled={state.submitting}
             >
-              {submitted ? "Message sent!" : "Send Message \u2192"}
+              {state.submitting ? "Sending..." : "Send Message \u2192"}
             </button>
+            {state.succeeded ? <p>Message sent!</p> : null}
           </form>
 
           <div className="contact-info">

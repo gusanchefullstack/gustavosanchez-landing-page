@@ -10,7 +10,7 @@ A personal developer portfolio and landing page built with React 19, TypeScript,
 | **Stack** | Tech skills grouped by category (Frontend, Backend, API, Database, Dev Tools) with react-icons |
 | **Projects** | Card grid showcasing featured work with tags and links |
 | **Social** | Profile cards for LinkedIn, GitHub, Hashnode, X, Bluesky, freeCodeCamp |
-| **Contact** | Contact form with info sidebar |
+| **Contact** | Contact form (powered by Formspree) with info sidebar |
 
 ## Tech stack
 
@@ -21,6 +21,7 @@ A personal developer portfolio and landing page built with React 19, TypeScript,
 | Build tool | Vite 7 |
 | Styling | Tailwind CSS 4 + CSS custom properties |
 | Icons | react-icons 5 (si / vsc / fa6 sets) |
+| Form handling | Formspree (`@formspree/react`) |
 | Font | Outfit (Google Fonts) |
 | Deployment | — |
 
@@ -182,7 +183,20 @@ Icons use `color="currentColor"` so CSS controls their colour. The Cursor AI ico
 | Scroll-reveal | `useScrollReveal` hook — adds `.reveal--visible` when element enters viewport |
 | Nav underline animation | CSS `::after` pseudo-element, `transform: scaleX()` transition |
 | Mobile sidebar | `useState(isOpen)` drives `.sidebar--open` and overlay visibility |
-| Contact form | `useState(submitted)` drives button state + 3 s reset timeout |
+| Contact form | `@formspree/react` — `useForm` hook handles submission, validation errors, and success state |
+
+### Contact form (Formspree)
+
+The contact form is wired to [Formspree](https://formspree.io). Submissions are handled server-side — no backend code required.
+
+```tsx
+// src/components/Contact.tsx
+import { useForm, ValidationError } from "@formspree/react";
+
+const [state, handleSubmit] = useForm("YOUR_FORM_ID");
+```
+
+To use your own form endpoint, replace the form ID string in `src/components/Contact.tsx` with the one from your Formspree dashboard.
 
 ## Styling conventions
 
