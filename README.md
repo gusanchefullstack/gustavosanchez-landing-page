@@ -45,7 +45,12 @@ npm run preview
 
 ```
 ├── public/
-│   └── Me.jpg                    # Profile photo
+│   ├── Me.jpg                    # Profile photo
+│   └── projects/                 # Project screenshot images (served as static assets)
+│       ├── qr-component.png
+│       ├── blog-preview-card.png
+│       ├── social-links-profile.png
+│       └── nft-preview-card.png
 ├── src/
 │   ├── components/
 │   │   ├── Contact.tsx           # Contact form + info sidebar
