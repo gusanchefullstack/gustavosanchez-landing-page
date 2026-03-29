@@ -175,6 +175,22 @@ export const content: SiteContent = {
       "A selection of recent work spanning web apps, developer tools, and creative experiments.",
     items: [
       {
+        title: "Budgeteer",
+        description:
+          "Full-stack personal budgeting app: hierarchical categories, groups, and items; calendar-based tracking buckets by frequency; planned vs actual progress; immutable transaction ledger. React UI with Express, Prisma, and MongoDB Atlas.",
+        tags: [
+          "React",
+          "TypeScript",
+          "Express",
+          "Prisma",
+          "MongoDB",
+          "TanStack Query",
+          "Tailwind CSS",
+        ],
+        image: "/projects/budgeteer-dashboard.png",
+        repoUrl: "https://github.com/gusanchefullstack/budgeteerApp",
+      },
+      {
         title: "QR Code Component",
         description:
           "Frontend Mentor challenge solution — a QR code card built with React and TailwindCSS, featuring a mobile-first layout with custom Tailwind theme variables for colors and typography.",
