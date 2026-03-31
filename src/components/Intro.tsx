@@ -3,7 +3,8 @@ import { useScrollReveal } from "../hooks/useScrollReveal.ts";
 
 export function Intro() {
   const ref = useScrollReveal<HTMLDivElement>();
-  const { greeting, name, title, tagline, ctaLabel, ctaHref, photo } = content.intro;
+  const { greeting, name, title, titleAccent, tagline, ctaLabel, ctaHref, photo } =
+    content.intro;
 
   return (
     <section id="intro" className="intro">
@@ -11,7 +12,12 @@ export function Intro() {
         <div className="intro__content">
           <p className="intro__greeting">{greeting}</p>
           <h1 className="intro__name">{name}</h1>
-          <h2 className="intro__title">{title}</h2>
+          <h2 className="intro__title">
+            {title}
+            {titleAccent ? (
+              <span className="intro__title-accent">{titleAccent}</span>
+            ) : null}
+          </h2>
           <p className="intro__tagline">{tagline}</p>
           <a className="intro__cta" href={ctaHref}>
             {ctaLabel} &darr;

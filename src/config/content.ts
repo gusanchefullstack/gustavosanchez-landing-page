@@ -17,7 +17,9 @@ export interface NavItem {
 export interface IntroContent {
   greeting: string;
   name: string;
+  /** Lead-in line; optional `titleAccent` renders after this with distinct styling */
   title: string;
+  titleAccent?: string;
   tagline: string;
   ctaLabel: string;
   ctaHref: string;
@@ -106,9 +108,10 @@ export const content: SiteContent = {
   intro: {
     greeting: "Hello, I am",
     name: "Gustavo Sanchez",
-    title: "Full-Stack Developer & Creative Technologist",
+    title: "Fullstack developer & always in ",
+    titleAccent: "learning mode",
     tagline:
-      "I build modern web experiences with clean code, thoughtful architecture, and a passion for great user interfaces. Currently exploring the intersection of AI and front-end engineering.",
+      "I build modern web experiences with clean code, thoughtful architecture, and a passion for great user interfaces. Currently exploring the intersection of AI, frontend ad backend engineering.\nMy massive transformation purpose is to help people to elevate their lives up to their full potential through technology adoption",
     ctaLabel: "View my work",
     ctaHref: "#projects",
     photo: "/Me.jpg",

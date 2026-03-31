@@ -378,12 +378,26 @@ a:hover {
   margin-bottom: 1.5rem;
 }
 
+.intro__title-accent {
+  font-weight: 600;
+  background: linear-gradient(
+    135deg,
+    var(--color-accent-start),
+    var(--color-accent-end)
+  );
+  -webkit-background-clip: text;
+  background-clip: text;
+  -webkit-text-fill-color: transparent;
+  color: transparent;
+}
+
 .intro__tagline {
   font-size: 1.1rem;
   color: var(--color-text-secondary);
   max-width: 540px;
   line-height: 1.8;
   margin-bottom: 2.5rem;
+  white-space: pre-line;
 }
 
 .intro__cta {
