@@ -1,0 +1,23 @@
+<svg
+  xmlns="http://www.w3.org/2000/svg"
+  viewBox="0 0 32 32"
+  width="32"
+  height="32"
+  role="img"
+  aria-label="Gustavo Sanchez"
+>
+  <defs>
+    <!-- Fill + linearGradient works in tab icons; stroke + url(#id) is often ignored. -->
+    <linearGradient id="brand" x1="0%" y1="100%" x2="100%" y2="0%">
+      <stop offset="0%" stop-color="#6c63ff" />
+      <stop offset="100%" stop-color="#e942f5" />
+    </linearGradient>
+  </defs>
+  <rect width="32" height="32" rx="8" fill="#0f0f23" />
+  <!-- Stacked layers (isometric rhombuses), back ? front -->
+  <g fill="url(#brand)">
+    <path opacity="0.72" d="M16 26 L26 20 L16 16 L6 20 Z" />
+    <path opacity="0.88" d="M16 20 L26 14 L16 10 L6 14 Z" />
+    <path d="M16 14 L26 8 L16 4 L6 8 Z" />
+  </g>
+</svg>
