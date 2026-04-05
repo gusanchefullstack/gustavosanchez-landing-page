@@ -108,7 +108,7 @@ export const content: SiteContent = {
   intro: {
     greeting: "Hello, I am",
     name: "Gustavo Sanchez",
-    title: "Fullstack developer & always in ",
+    title: "Software Engineer focused in Fullstack development & always in ",
     titleAccent: "learning mode",
     tagline:
       "I build modern web experiences with clean code, thoughtful architecture, and a passion for great user interfaces. Currently exploring the intersection of AI, frontend ad backend engineering.\nMy massive transformation purpose is to help people to elevate their lives up to their full potential through technology adoption",
@@ -142,7 +142,7 @@ export const content: SiteContent = {
       },
       {
         category: "API",
-        items: [{ name: "Prisma ORM", icon: "prisma", brandColor: "#5C6AC4" }],
+        items: [{ name: "Postman", icon: "postman", brandColor: "#FF6C37" }],
       },
       {
         category: "AI",
@@ -156,13 +156,13 @@ export const content: SiteContent = {
         items: [
           { name: "PostgreSQL", icon: "postgresql", brandColor: "#4169E1" },
           { name: "MongoDB",    icon: "mongodb",    brandColor: "#47A248" },
+          { name: "Prisma ORM", icon: "prisma", brandColor: "#5C6AC4" }
         ],
       },
       {
         category: "Dev Tools",
         items: [
           { name: "VS Code", icon: "vscode",  brandColor: "#007ACC" },
-          { name: "Postman", icon: "postman", brandColor: "#FF6C37" },
           { name: "Git",     icon: "git",     brandColor: "#F05032" },
           { name: "GitHub",  icon: "github",  brandColor: "#ffffff" },
           { name: "Vercel",  icon: "vercel",  brandColor: "#ffffff" },
