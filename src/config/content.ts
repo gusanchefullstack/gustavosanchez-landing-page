@@ -14,13 +14,27 @@ export interface NavItem {
   href: string;
 }
 
+/** Gray/white emphasis steps for accented words (see `.intro__accent--*` in style.css) */
+export type IntroAccentTone = 0 | 1 | 2 | 3 | 4;
+
+export interface IntroTextSpan {
+  text: string;
+  accent?: boolean;
+  /** When `accent` is true, picks a distinct light-gray / white tone (default 0); ignored if `accentGradient` */
+  accentTone?: IntroAccentTone;
+  /** When `accent` is true, use brand gradient (legacy highlight) instead of gray tones */
+  accentGradient?: boolean;
+}
+
 export interface IntroContent {
   greeting: string;
   name: string;
-  /** Lead-in line; optional `titleAccent` renders after this with distinct styling */
-  title: string;
-  titleAccent?: string;
-  tagline: string;
+  /** Primary headline (e.g. role positioning) */
+  headline: IntroTextSpan[];
+  /** Secondary line under the headline */
+  subheadline: IntroTextSpan[];
+  /** Body paragraphs; each array is one paragraph of mixed plain / accented spans */
+  taglineParagraphs: IntroTextSpan[][];
   ctaLabel: string;
   ctaHref: string;
   photo: string;
@@ -108,10 +122,47 @@ export const content: SiteContent = {
   intro: {
     greeting: "Hello, I am",
     name: "Gustavo Sanchez",
-    title: "Software Engineer focused in Fullstack development & always in ",
-    titleAccent: "learning mode",
-    tagline:
-      "I build modern web experiences with clean code, thoughtful architecture, and a passion for great user interfaces. Currently exploring the intersection of AI, frontend ad backend engineering.\nMy massive transformation purpose is to help people to elevate their lives up to their full potential through technology adoption",
+    headline: [
+      { text: "Building at the Intersection of Software " },
+      { text: "Engineering", accent: true, accentTone: 0 },
+      { text: ", " },
+      { text: "AI", accent: true, accentTone: 2 },
+      { text: " and " },
+      { text: "Sales", accent: true, accentTone: 4 },
+      { text: "." },
+    ],
+    subheadline: [
+      {
+        text: "Software Engineer focused in fullstack applications & always in ",
+      },
+      { text: "learning mode", accent: true, accentGradient: true },
+      { text: "." },
+    ],
+    taglineParagraphs: [
+      [
+        {
+          text: "I build modern web experiences with clean code, thoughtful architecture and a passion for great user interfaces. Because today the operational part of coding is already AI assisted, the key contributions of an engineer are ",
+        },
+        { text: "judgment", accent: true, accentTone: 3 },
+        { text: " and " },
+        { text: "business acumen", accent: true, accentTone: 0 },
+        {
+          text: " to understand why and when to build, ",
+        },
+        { text: "execution planning", accent: true, accentTone: 4 },
+        {
+          text: " to orchestrate AI agents and to ",
+        },
+  
+        { text: "make decisions", accent: true, accentTone: 1 },
+        { text: " about architecture and integrations." },
+      ],
+      [
+        {
+          text: "My massive transformation purpose is to help people to elevate their lives up to their full potential through technology adoption",
+        },
+      ],
+    ],
     ctaLabel: "View my work",
     ctaHref: "#projects",
     photo: "/Me.jpg",

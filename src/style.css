@@ -308,7 +308,7 @@ a:hover {
   display: flex;
   flex-direction: column;
   justify-content: center;
-  padding: 4rem;
+  padding: 4rem 6.75rem 4rem 5.5rem;
 }
 
 .intro__layout {
@@ -326,8 +326,8 @@ a:hover {
 
 .intro__photo-wrap {
   flex-shrink: 0;
-  width: 280px;
-  height: 280px;
+  width: 330px;
+  height: 330px;
   border-radius: 50%;
   padding: 4px;
   background: linear-gradient(
@@ -350,7 +350,7 @@ a:hover {
 }
 
 .intro__greeting {
-  font-size: 1.1rem;
+  font-size: 1.3rem;
   font-weight: 500;
   color: var(--color-text-accent);
   margin-bottom: 0.75rem;
@@ -372,12 +372,21 @@ a:hover {
 }
 
 .intro__title {
-  font-size: clamp(1.25rem, 2.5vw, 1.75rem);
+  font-size: clamp(1.375rem, 2.75vw, 1.925rem);
   color: var(--color-text-secondary);
   font-weight: 400;
   margin-bottom: 1.5rem;
 }
 
+.intro__title-line {
+  display: block;
+}
+
+.intro__title-line--headline {
+  margin-bottom: 0.4rem;
+}
+
+/* Brand gradient highlight (e.g. "learning mode" subheadline) */
 .intro__title-accent {
   font-weight: 600;
   background: linear-gradient(
@@ -391,13 +400,92 @@ a:hover {
   color: transparent;
 }
 
+/* Intro emphasis: solid gray/white ladder */
+.intro__accent {
+  font-weight: 600;
+}
+
+.intro__accent--0 {
+  color: var(--color-text-heading);
+}
+
+.intro__accent--1 {
+  color: #e6e8f0;
+}
+
+.intro__accent--2 {
+  color: var(--color-text-primary);
+}
+
+.intro__accent--3 {
+  color: #cfd5e3;
+}
+
+.intro__accent--4 {
+  color: #f2f3f8;
+  font-weight: 700;
+}
+
 .intro__tagline {
   font-size: 1.1rem;
   color: var(--color-text-secondary);
   max-width: 540px;
   line-height: 1.8;
-  margin-bottom: 2.5rem;
-  white-space: pre-line;
+  margin-bottom: 3.25rem;
+}
+
+.intro__tagline p {
+  margin: 0;
+}
+
+.intro__tagline p + p {
+  margin-top: 1rem;
+}
+
+/* Closing paragraphs: slightly larger than the inherited tagline size */
+.intro__tagline p:nth-last-child(-n + 2) {
+  font-size: 1.12em;
+}
+
+/* Opening tagline paragraph (“I build modern web experiences…”) — +15% vs closing-paragraph size */
+.intro__tagline > p:first-of-type {
+  font-size: 1.288em;
+}
+
+.intro__tagline-typewriter {
+  min-height: 1.6em;
+}
+
+.intro__typewriter-cursor {
+  display: inline-block;
+  width: 0.08em;
+  height: 1em;
+  margin-left: 1px;
+  vertical-align: -0.12em;
+  background: linear-gradient(
+    180deg,
+    var(--color-accent-start),
+    var(--color-accent-end)
+  );
+  animation: intro-typewriter-blink 0.95s step-end infinite;
+}
+
+@keyframes intro-typewriter-blink {
+  0%,
+  50% {
+    opacity: 1;
+  }
+  51%,
+  100% {
+    opacity: 0;
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .intro__typewriter-cursor {
+    animation: none;
+    opacity: 1;
+  }
 }
 
 .intro__cta {
@@ -425,6 +513,63 @@ a:hover {
   transform: translateY(-2px);
   box-shadow: 0 8px 25px rgba(108, 99, 255, 0.35);
   color: #fff;
+}
+
+/* Desktop: tighter hero so primary copy + CTA fit within first viewport (sidebar visible) */
+@media (min-width: 901px) {
+  .intro {
+    padding: 2rem 4.75rem 2rem 3.5rem;
+    min-height: 100vh;
+    min-height: 100dvh;
+    justify-content: center;
+    box-sizing: border-box;
+  }
+
+  .intro__layout {
+    gap: 2rem;
+    max-width: 1080px;
+  }
+
+  .intro__photo-wrap {
+    width: 260px;
+    height: 260px;
+  }
+
+  .intro__greeting {
+    font-size: 1.05rem;
+    margin-bottom: 0.35rem;
+  }
+
+  .intro__name {
+    font-size: clamp(2rem, 3.2vw, 2.85rem);
+    margin-bottom: 0.35rem;
+  }
+
+  .intro__title {
+    font-size: clamp(1.155rem, 1.485vw, 1.485rem);
+    margin-bottom: 0.75rem;
+    line-height: 1.35;
+  }
+
+  .intro__title-line--headline {
+    margin-bottom: 0.2rem;
+  }
+
+  .intro__tagline {
+    font-size: 0.9375rem;
+    line-height: 1.55;
+    max-width: min(100%, 38rem);
+    margin-bottom: 1.85rem;
+  }
+
+  .intro__tagline p + p {
+    margin-top: 0.65rem;
+  }
+
+  .intro__cta {
+    padding: 0.65rem 1.5rem;
+    font-size: 0.9375rem;
+  }
 }
 
 /* ============================================================
@@ -826,7 +971,7 @@ a:hover {
   }
 
   .intro {
-    padding: 6rem 1.5rem 4rem;
+    padding: 6rem 3.5rem 4rem 2.25rem;
   }
 
   .intro__layout {
@@ -836,8 +981,8 @@ a:hover {
   }
 
   .intro__photo-wrap {
-    width: 200px;
-    height: 200px;
+    width: 236px;
+    height: 236px;
     margin: 0 auto;
   }
 

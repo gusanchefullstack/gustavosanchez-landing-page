@@ -6,7 +6,7 @@ A personal developer portfolio and landing page built with React 19, TypeScript,
 
 | Section | Description |
 |---|---|
-| **Intro** | Hero with profile photo, name, title, tagline, and CTA |
+| **Intro** | Hero with profile photo, name, two-line headline (rich text spans), multi-paragraph tagline with optional typewriter on the last two paragraphs, and CTA |
 | **Stack** | Tech skills grouped by category (Frontend, Backend, API, Database, Dev Tools) with react-icons |
 | **Projects** | Card grid showcasing featured work with tags and links |
 | **Social** | Profile cards for LinkedIn, GitHub, Hashnode, X, Bluesky, freeCodeCamp |
@@ -63,8 +63,10 @@ npm run preview
 │   │   ├── content.ts            # ← All site copy, projects, links (edit here)
 │   │   └── theme.ts              # Theme tokens mirroring CSS variables
 │   ├── hooks/
-│   │   ├── useActiveSection.ts   # IntersectionObserver hook for active nav link
-│   │   └── useScrollReveal.ts    # IntersectionObserver hook for scroll-reveal
+│   │   ├── useActiveSection.ts        # IntersectionObserver hook for active nav link
+│   │   ├── useIntroTaglineTypewriter.ts  # Plain-text typing then rich reveal (last N tagline paragraphs)
+│   │   ├── usePrefersReducedMotion.ts    # `prefers-reduced-motion` for accessible motion defaults
+│   │   └── useScrollReveal.ts         # IntersectionObserver hook for scroll-reveal
 │   ├── utils/
 │   │   └── icons.tsx             # react-icons component maps
 │   ├── App.tsx                   # Root component composing all sections
@@ -84,7 +86,14 @@ All text, projects, social links, stack items, and metadata live in **one file**
 src/config/content.ts
 ```
 
-Edit values there — no component changes needed. The TypeScript interfaces (`SiteContent`, `Project`, `SocialLink`, `StackGroup`, etc.) will catch any structural mistakes at compile time.
+Edit values there — no component changes needed for most copy updates. The TypeScript interfaces (`SiteContent`, `IntroContent`, `IntroTextSpan`, `Project`, `SocialLink`, `StackGroup`, etc.) will catch structural mistakes at compile time.
+
+**Intro copy** is structured as span arrays:
+
+- **`headline`** / **`subheadline`** — arrays of `IntroTextSpan` (`text`, optional `accent`, `accentTone`, `accentGradient`).
+- **`accentTone`** (`0`–`4`) maps to gray/white emphasis in CSS (`.intro__accent--*`).
+- **`accentGradient: true`** uses the brand gradient (e.g. “learning mode”) instead of gray tones.
+- **`taglineParagraphs`** — each paragraph is an array of spans; the **last two** paragraphs use a **typewriter** effect by default (plain characters first, then accented markup). Timing is configured in `Intro.tsx` (`useIntroTaglineTypewriter`). Users with **`prefers-reduced-motion: reduce`** see full rich text immediately.
 
 ### Change the visual theme
 All colours, fonts, spacing, and transition speeds are CSS custom properties in the `@theme {}` block at the top of `src/style.css`:
@@ -140,12 +149,14 @@ import { NewSection } from "./components/NewSection.tsx";
 ### Data flow
 
 ```
-src/config/content.ts         ← single source of truth
-src/utils/icons.tsx           ← react-icons component maps
-src/hooks/useScrollReveal.ts  ← scroll-reveal IntersectionObserver
-src/hooks/useActiveSection.ts ← active nav IntersectionObserver
+src/config/content.ts              ← single source of truth
+src/utils/icons.tsx              ← react-icons component maps
+src/hooks/useScrollReveal.ts     ← scroll-reveal IntersectionObserver
+src/hooks/useActiveSection.ts    ← active nav IntersectionObserver
+src/hooks/useIntroTaglineTypewriter.ts  ← intro tagline typewriter (last paragraphs)
+src/hooks/usePrefersReducedMotion.ts    ← reduced-motion preference
         ↓
-src/components/*.tsx          ← React components
+src/components/*.tsx             ← React components
         ↓
 src/App.tsx                   ← root component
 src/main.tsx                  ← createRoot().render(<StrictMode><App /></StrictMode>)
@@ -186,6 +197,7 @@ Icons use `color="currentColor"` so CSS controls their colour. The Cursor AI ico
 |---|---|
 | Active nav link | `useActiveSection` hook — `IntersectionObserver` returns current section id |
 | Scroll-reveal | `useScrollReveal` hook — adds `.reveal--visible` when element enters viewport |
+| Intro tagline typewriter | `useIntroTaglineTypewriter` — types plain text, then swaps to `IntroTextSpan` markup; disabled when `usePrefersReducedMotion` is true |
 | Nav underline animation | CSS `::after` pseudo-element, `transform: scaleX()` transition |
 | Mobile sidebar | `useState(isOpen)` drives `.sidebar--open` and overlay visibility |
 | Contact form | `@formspree/react` — `useForm` hook handles submission, validation errors, and success state |
@@ -209,6 +221,7 @@ To use your own form endpoint, replace the form ID string in `src/components/Con
 - **Gradients** — always `135deg` from `--color-accent-start` → `--color-accent-end`
 - **Hover elevations** — `translateY(-4px)` on cards, `translateY(-2px)` on buttons
 - **Responsive breakpoints** — `900px` (sidebar → hamburger), `600px` (further mobile)
+- **Intro** — `.intro__title` scales both headline lines; `.intro__accent--0`…`--4` are gray/white keyword highlights; `.intro__title-accent` is the gradient highlight; `.intro__typewriter-cursor` styles the tagline cursor. Layout/spacing for the hero is tuned under `.intro` (including a `901px` media query).
 
 ## Credits
 
