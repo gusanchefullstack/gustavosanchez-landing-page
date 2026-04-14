@@ -245,6 +245,16 @@ export const content: SiteContent = {
         repoUrl: "https://github.com/gusanchefullstack/budgeteerApp",
       },
       {
+        title: "Interactive Card Details Form",
+        description:
+          "Frontend Mentor challenge — an interactive credit card details form with real-time card preview, input formatting, validation, and a success state. Built mobile-first with vanilla HTML/CSS/JS and Vite; design tokens parameterize colors, gradients, and typography.",
+        tags: ["HTML", "CSS", "JavaScript", "Vite"],
+        image: "/projects/interactive-card-details-form.png",
+        liveUrl: "https://fsdev-interactive-card-details-form.vercel.app/",
+        repoUrl:
+          "https://github.com/gusanchefullstack/fsdev-interactive-card-details-form",
+      },
+      {
         title: "QR Code Component",
         description:
           "Frontend Mentor challenge solution — a QR code card built with React and TailwindCSS, featuring a mobile-first layout with custom Tailwind theme variables for colors and typography.",
