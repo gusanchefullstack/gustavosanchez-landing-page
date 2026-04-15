@@ -229,6 +229,15 @@ export const content: SiteContent = {
       "A selection of recent work spanning web apps, developer tools, and creative experiments.",
     items: [
       {
+        title: "Body Mass Index Calculator",
+        description:
+          "Frontend Mentor challenge — a responsive BMI calculator with metric and imperial unit support, live calculation, weight classification, and healthy weight range. Built mobile-first with vanilla HTML/CSS/JS and Vite; design tokens parameterize colors, gradients, and typography.",
+        tags: ["HTML", "CSS", "JavaScript", "Vite"],
+        image: "/projects/bmi-calculator.png",
+        liveUrl: "https://fsdev-bmi-calculator-figma-hm1yyo0s0-gustavo-sanchezs-projects.vercel.app",
+        repoUrl: "https://github.com/gusanchefullstack/fsdev-bmi-calculator-figma-dev",
+      },
+      {
         title: "Budgeteer",
         description:
           "Full-stack personal budgeting app: hierarchical categories, groups, and items; calendar-based tracking buckets by frequency; planned vs actual progress; immutable transaction ledger. React UI with Express, Prisma, and MongoDB Atlas.",
