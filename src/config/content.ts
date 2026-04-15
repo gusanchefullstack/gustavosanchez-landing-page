@@ -254,6 +254,16 @@ export const content: SiteContent = {
         repoUrl: "https://github.com/gusanchefullstack/budgeteerApp",
       },
       {
+        title: "Officelite Coming Soon Site",
+        description:
+          "Frontend Mentor challenge — a 2-page coming soon site with pricing plans, a live 30-day countdown timer, and a sign-up form with custom-styled select and validation. Built mobile-first with vanilla HTML/CSS/JS and Vite; design tokens parameterize colors, typography, and spacing.",
+        tags: ["HTML", "CSS", "JavaScript", "Vite"],
+        image: "/projects/officelite-coming-soon.png",
+        liveUrl: "https://fsdev-officelite-coming-soon-site-d.vercel.app",
+        repoUrl:
+          "https://github.com/gusanchefullstack/fsdev-officelite-coming-soon-site",
+      },
+      {
         title: "Interactive Card Details Form",
         description:
           "Frontend Mentor challenge — an interactive credit card details form with real-time card preview, input formatting, validation, and a success state. Built mobile-first with vanilla HTML/CSS/JS and Vite; design tokens parameterize colors, gradients, and typography.",
