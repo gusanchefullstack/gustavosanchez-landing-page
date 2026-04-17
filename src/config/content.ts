@@ -229,6 +229,15 @@ export const content: SiteContent = {
       "A selection of recent work spanning web apps, developer tools, and creative experiments.",
     items: [
       {
+        title: "Character Counter",
+        description:
+          "Frontend Mentor challenge — a real-time text analyzer with character, word, and sentence counts; approximate reading time; letter density with sort + collapse; and a persistent dark/light theme. Built mobile-first with semantic HTML, vanilla JS (ES modules), CSS custom properties for design tokens, and Vite. WCAG-minded focus states and prefers-reduced-motion support.",
+        tags: ["HTML", "CSS", "JavaScript", "Vite"],
+        image: "/projects/character-counter.png",
+        liveUrl: "https://fsdev-character-counter.vercel.app/",
+        repoUrl: "https://github.com/gusanchefullstack/fsdev-character-counter",
+      },
+      {
         title: "Intro Section with Dropdown Navigation",
         description:
           "Frontend Mentor challenge — a responsive landing page with interactive dropdown navigation menus, a slide-in mobile sidebar with overlay, and a two-column hero layout. Built with semantic HTML, CSS custom properties, vanilla JS, and Vite; three breakpoints for mobile, tablet, and desktop.",
