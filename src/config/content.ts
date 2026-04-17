@@ -229,6 +229,15 @@ export const content: SiteContent = {
       "A selection of recent work spanning web apps, developer tools, and creative experiments.",
     items: [
       {
+        title: "Intro Section with Dropdown Navigation",
+        description:
+          "Frontend Mentor challenge — a responsive landing page with interactive dropdown navigation menus, a slide-in mobile sidebar with overlay, and a two-column hero layout. Built with semantic HTML, CSS custom properties, vanilla JS, and Vite; three breakpoints for mobile, tablet, and desktop.",
+        tags: ["HTML", "CSS", "JavaScript", "Vite"],
+        image: "/projects/intro-section-dropdown-nav.png",
+        liveUrl: "https://fsdev-intro-section-with-dropdown-navigation-60umnjew7.vercel.app",
+        repoUrl: "https://github.com/gusanchefullstack/fsdev-intro-section-with-dropdown-navigation",
+      },
+      {
         title: "Body Mass Index Calculator",
         description:
           "Frontend Mentor challenge — a responsive BMI calculator with metric and imperial unit support, live calculation, weight classification, and healthy weight range. Built mobile-first with vanilla HTML/CSS/JS and Vite; design tokens parameterize colors, gradients, and typography.",
