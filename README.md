@@ -1,5 +1,10 @@
 # Gustavo Sanchez — Personal Landing Page
 
+![React](https://img.shields.io/badge/React-19-61DAFB?logo=react&logoColor=white)
+![TypeScript](https://img.shields.io/badge/TypeScript-5.9-3178C6?logo=typescript&logoColor=white)
+![Vite](https://img.shields.io/badge/Vite-7-646CFF?logo=vite&logoColor=white)
+![Tailwind CSS](https://img.shields.io/badge/Tailwind-4-06B6D4?logo=tailwindcss&logoColor=white)
+
 A personal developer portfolio and landing page built with React 19, TypeScript, Vite, and Tailwind CSS. Designed with a Hyperspace-inspired dark theme featuring a fixed sidebar navigation, smooth scroll-reveal animations, and a fully content-driven architecture.
 
 ## Live sections
@@ -8,7 +13,7 @@ A personal developer portfolio and landing page built with React 19, TypeScript,
 |---|---|
 | **Intro** | Hero with profile photo, name, two-line headline (rich text spans), multi-paragraph tagline with optional typewriter on the last two paragraphs, and CTA |
 | **Stack** | Tech skills grouped by category (Frontend, Backend, API, Database, Dev Tools) with react-icons |
-| **Projects** | Card grid showcasing featured work with tags and links |
+| **Projects** | Card grid showcasing featured work with tags and links; filterable by title (text search) and technology (tag chips with AND logic) |
 | **Social** | Profile cards for LinkedIn, GitHub, Hashnode, X, Bluesky, freeCodeCamp |
 | **Contact** | Contact form (powered by Formspree) with info sidebar |
 
@@ -201,6 +206,7 @@ Icons use `color="currentColor"` so CSS controls their colour. The Cursor AI ico
 | Nav underline animation | CSS `::after` pseudo-element, `transform: scaleX()` transition |
 | Mobile sidebar | `useState(isOpen)` drives `.sidebar--open` and overlay visibility |
 | Contact form | `@formspree/react` — `useForm` hook handles submission, validation errors, and success state |
+| Projects filter | `useState` + `useMemo` in `Projects.tsx` — text input filters by title substring, chip toggles filter by tag with AND logic, derived tag list from `content.ts` |
 
 ### Contact form (Formspree)
 
@@ -222,6 +228,47 @@ To use your own form endpoint, replace the form ID string in `src/components/Con
 - **Hover elevations** — `translateY(-4px)` on cards, `translateY(-2px)` on buttons
 - **Responsive breakpoints** — `900px` (sidebar → hamburger), `600px` (further mobile)
 - **Intro** — `.intro__title` scales both headline lines; `.intro__accent--0`…`--4` are gray/white keyword highlights; `.intro__title-accent` is the gradient highlight; `.intro__typewriter-cursor` styles the tagline cursor. Layout/spacing for the hero is tuned under `.intro` (including a `901px` media query).
+
+## What I learned
+
+This project is both a personal portfolio and a learning log. Notes captured along the way:
+
+### Architecture
+- **Content-driven UI.** A single `src/config/content.ts` typed with `SiteContent` keeps copy, projects, stack, and social links out of component files. Components stay about rendering; edits never require touching JSX.
+- **Client-side filtering with `useMemo`.** The Projects filter derives the unique tag list and the filtered items via memoized selectors over `content.projects.items` — avoids recomputation on every render and keeps the component readable.
+- **Hooks over imperative DOM.** `IntersectionObserver` logic lives in `useScrollReveal` / `useActiveSection`; reduced-motion handling in `usePrefersReducedMotion`. Composable, testable, no manual cleanup boilerplate in components.
+
+### Tooling & stack
+- **React 19 + `jsx: react-jsx`** — no per-file `import React`; the runtime handles it.
+- **TypeScript `verbatimModuleSyntax: true`** — type-only symbols must use `import type` or the build fails. Clear separation pays off in tree-shaking.
+- **CSS custom properties in `style` prop** — `style={{ "--brand-color": val } as CSSProperties}`. The cast is mandatory; TS doesn't widen arbitrary CSS vars.
+- **Tailwind v4 `@theme {}`** — tokens declared in CSS, not `tailwind.config.js`. Simpler mental model when the palette is already a design system.
+
+### Key references
+- [React 19 docs](https://react.dev) — `useMemo`, ref callbacks, transitions.
+- [Vite guide](https://vitejs.dev/guide/) — dev server, static asset handling for `public/`.
+- [TypeScript 5.9 handbook](https://www.typescriptlang.org/docs/) — `verbatimModuleSyntax`, `erasableSyntaxOnly`.
+- [Tailwind CSS v4](https://tailwindcss.com/docs) — `@theme` directive and CSS-first config.
+- [react-icons](https://react-icons.github.io/react-icons/) — SimpleIcons, VS Code, Font Awesome sets.
+- [Formspree React](https://formspree.io/react/) — `useForm` / `ValidationError`.
+- [MDN: IntersectionObserver](https://developer.mozilla.org/en-US/docs/Web/API/Intersection_Observer_API) — root, threshold, entry lifecycle.
+- [WAI-ARIA `aria-pressed`](https://www.w3.org/TR/wai-aria-1.2/#aria-pressed) — the correct attribute for toggle buttons (used by the filter chips).
+
+### Errors solved
+- **Vite port collision.** `5173` was in use; Vite auto-falls back to `5174`. Always read the actual URL from the dev server log instead of assuming.
+- **Invisible typewriter cursor under reduced motion.** Fixed by gating the typewriter hook on `usePrefersReducedMotion` so users who opt out see the full rich markup immediately.
+- **`verbatimModuleSyntax` build failures.** Type-only imports (e.g. `CSSProperties`) must use `import type`, otherwise the emitted JS retains an unused runtime import and fails type-check.
+
+## Author
+
+**Gustavo Sanchez** — [gustavosanchez.dev](https://www.gustavosanchez.dev) — gustavosanchezgalarza@gmail.com
+
+[![LinkedIn](https://img.shields.io/badge/LinkedIn-0A66C2?logo=linkedin&logoColor=white)](https://www.linkedin.com/in/gustavosanchezgalarza/)
+[![GitHub](https://img.shields.io/badge/GitHub-24292f?logo=github&logoColor=white)](https://github.com/gusanchefullstack)
+[![Hashnode](https://img.shields.io/badge/Hashnode-2962FF?logo=hashnode&logoColor=white)](https://hashnode.com/@gusanchedev)
+[![X](https://img.shields.io/badge/X-000000?logo=x&logoColor=white)](https://x.com/gusanchedev)
+[![Bluesky](https://img.shields.io/badge/Bluesky-0085FF?logo=bluesky&logoColor=white)](https://bsky.app/profile/gusanchedev.bsky.social)
+[![freeCodeCamp](https://img.shields.io/badge/freeCodeCamp-0A0A23?logo=freecodecamp&logoColor=white)](https://www.freecodecamp.org/gusanchedev)
 
 ## Credits
 
