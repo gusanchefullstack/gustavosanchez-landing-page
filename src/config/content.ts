@@ -229,6 +229,15 @@ export const content: SiteContent = {
       "A selection of recent work spanning web apps, developer tools, and creative experiments.",
     items: [
       {
+        title: "Weather App",
+        description:
+          "Frontend Mentor challenge — a responsive weather app that searches any city worldwide and displays current conditions, a 7-day daily forecast, and an hourly breakdown. Metric/Imperial unit toggle re-fetches data live. Built mobile-first with semantic HTML, vanilla JS (ES modules), CSS custom properties, and Vite. No API key required — powered by Open-Meteo.",
+        tags: ["HTML", "CSS", "JavaScript", "Vite", "Open-Meteo API"],
+        image: "/projects/weather-app.png",
+        liveUrl: "https://fsdev-weather-app-dev.vercel.app",
+        repoUrl: "https://github.com/gusanchefullstack/fsdev-weather-app",
+      },
+      {
         title: "Character Counter",
         description:
           "Frontend Mentor challenge — a real-time text analyzer with character, word, and sentence counts; approximate reading time; letter density with sort + collapse; and a persistent dark/light theme. Built mobile-first with semantic HTML, vanilla JS (ES modules), CSS custom properties for design tokens, and Vite. WCAG-minded focus states and prefers-reduced-motion support.",
