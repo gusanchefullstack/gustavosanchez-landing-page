@@ -229,6 +229,15 @@ export const content: SiteContent = {
       "A selection of recent work spanning web apps, developer tools, and creative experiments.",
     items: [
       {
+        title: "IP Address Tracker",
+        description:
+          "Frontend Mentor challenge — a React 19 + TypeScript single-page app that looks up any IP address or domain and displays geolocation data (IP, location, timezone, ISP) in an info card, then plots the location on an interactive Leaflet map. Powered by the IPify Geo API via Axios.",
+        tags: ["React", "TypeScript", "Vite", "Leaflet", "Axios", "IPify API"],
+        image: "/projects/ip-address-tracker.png",
+        liveUrl: "https://fsdev-ip-address-tracker-dev.vercel.app",
+        repoUrl: "https://github.com/gusanchefullstack/fsdev-ip-address-tracker",
+      },
+      {
         title: "Weather App",
         description:
           "Frontend Mentor challenge — a responsive weather app that searches any city worldwide and displays current conditions, a 7-day daily forecast, and an hourly breakdown. Metric/Imperial unit toggle re-fetches data live. Built mobile-first with semantic HTML, vanilla JS (ES modules), CSS custom properties, and Vite. No API key required — powered by Open-Meteo.",
