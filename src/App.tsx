@@ -1,3 +1,4 @@
+import { Analytics } from "@vercel/analytics/react";
 import { Sidebar } from "./components/Sidebar.tsx";
 import { Intro } from "./components/Intro.tsx";
 import { Stack } from "./components/Stack.tsx";
@@ -20,6 +21,7 @@ export function App() {
           <p dangerouslySetInnerHTML={{ __html: content.footer }} />
         </footer>
       </main>
+      <Analytics />
     </>
   );
 }
