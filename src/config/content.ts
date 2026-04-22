@@ -229,6 +229,15 @@ export const content: SiteContent = {
       "A selection of recent work spanning web apps, developer tools, and creative experiments.",
     items: [
       {
+        title: "Password Generator App",
+        description:
+          "Frontend Mentor challenge — a fully accessible, responsive password generator built with React 19 and TypeScript. Users configure character length and character types (uppercase, lowercase, numbers, symbols), generate a secure password, see its strength rating, and copy it to the clipboard.",
+        tags: ["React 19", "TypeScript", "Vite", "CSS Modules"],
+        image: "/projects/password-generator-app.png",
+        liveUrl: "https://fsdev-password-generator-app.vercel.app",
+        repoUrl: "https://github.com/gusanchefullstack/fsdev-password-generator-app",
+      },
+      {
         title: "IP Address Tracker",
         description:
           "Frontend Mentor challenge — a React 19 + TypeScript single-page app that looks up any IP address or domain and displays geolocation data (IP, location, timezone, ISP) in an info card, then plots the location on an interactive Leaflet map. Powered by the IPify Geo API via Axios.",
