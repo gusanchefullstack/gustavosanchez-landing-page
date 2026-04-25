@@ -229,6 +229,15 @@ export const content: SiteContent = {
       "A selection of recent work spanning web apps, developer tools, and creative experiments.",
     items: [
       {
+        title: "Job Listings with Filtering",
+        description:
+          "Frontend Mentor challenge — a responsive job listing page with tag-based filtering. Users click category tags (role, level, languages, tools) to narrow listings in real time; active filters appear in a persistent filter bar that can be cleared individually or all at once. Built with React 19, TypeScript, and CSS Modules.",
+        tags: ["React 19", "TypeScript", "Vite", "CSS Modules", "Responsive Design", "Accessibility"],
+        image: "/projects/job-listings-with-filtering.png",
+        liveUrl: "https://fsdev-job-listings-with-filtering-d.vercel.app",
+        repoUrl: "https://github.com/gusanchefullstack/fsdev-job-listings-with-filtering",
+      },
+      {
         title: "Password Generator App",
         description:
           "Frontend Mentor challenge — a fully accessible, responsive password generator built with React 19 and TypeScript. Users configure character length and character types (uppercase, lowercase, numbers, symbols), generate a secure password, see its strength rating, and copy it to the clipboard.",
