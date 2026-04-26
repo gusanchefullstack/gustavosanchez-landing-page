@@ -229,6 +229,15 @@ export const content: SiteContent = {
       "A selection of recent work spanning web apps, developer tools, and creative experiments.",
     items: [
       {
+        title: "Savings Tracker",
+        description:
+          "Frontend Mentor premium challenge — a savings goals tracker SPA with full goal CRUD, deposit tracking, monthly bar chart (Recharts), filter/sort controls, and a responsive card grid layout. Data persists via localStorage across sessions. Built with React 19, TypeScript, Vite, and CSS Modules.",
+        tags: ["React 19", "TypeScript", "Vite", "CSS Modules", "Recharts", "localStorage"],
+        image: "/projects/savings-tracker.png",
+        liveUrl: "https://fsdev-savings-tracker-dev.vercel.app",
+        repoUrl: "https://github.com/gusanchefullstack/fsdev-savings-tracker",
+      },
+      {
         title: "Job Listings with Filtering",
         description:
           "Frontend Mentor challenge — a responsive job listing page with tag-based filtering. Users click category tags (role, level, languages, tools) to narrow listings in real time; active filters appear in a persistent filter bar that can be cleared individually or all at once. Built with React 19, TypeScript, and CSS Modules.",
