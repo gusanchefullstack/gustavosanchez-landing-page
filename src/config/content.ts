@@ -229,6 +229,15 @@ export const content: SiteContent = {
       "A selection of recent work spanning web apps, developer tools, and creative experiments.",
     items: [
       {
+        title: "Shortly — URL Shortening API",
+        description:
+          "Frontend Mentor challenge — a responsive URL shortening landing page that integrates with the CleanURI API to shorten links, persists results in localStorage across page refreshes, and features one-click clipboard copy with visual feedback. Includes accessible form validation and a full Vitest test suite. Built with React 19, TypeScript, Vite, and CSS Modules.",
+        tags: ["React 19", "TypeScript", "Vite", "CSS Modules", "CleanURI API", "localStorage", "Vitest"],
+        image: "/projects/url-shortening-api.png",
+        liveUrl: "https://fsdev-url-shortening-api-landing-pa.vercel.app",
+        repoUrl: "https://github.com/gusanchefullstack/fsdev-url-shortening-api-landing-page",
+      },
+      {
         title: "Savings Tracker",
         description:
           "Frontend Mentor premium challenge — a savings goals tracker SPA with full goal CRUD, deposit tracking, monthly bar chart (Recharts), filter/sort controls, and a responsive card grid layout. Data persists via localStorage across sessions. Built with React 19, TypeScript, Vite, and CSS Modules.",
