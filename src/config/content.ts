@@ -233,7 +233,7 @@ export const content: SiteContent = {
         description:
           "Frontend Mentor challenge — a responsive URL shortening landing page that integrates with the CleanURI API to shorten links, persists results in localStorage across page refreshes, and features one-click clipboard copy with visual feedback. Includes accessible form validation and a full Vitest test suite. Built with React 19, TypeScript, Vite, and CSS Modules.",
         tags: ["React 19", "TypeScript", "Vite", "CSS Modules", "CleanURI API", "localStorage", "Vitest"],
-        image: "/projects/url-shortening-api.png",
+        image: "https://raw.githubusercontent.com/gusanchefullstack/fsdev-url-shortening-api-landing-page/main/screenshots/desktop-1440px.png",
         liveUrl: "https://fsdev-url-shortening-api-landing-pa.vercel.app",
         repoUrl: "https://github.com/gusanchefullstack/fsdev-url-shortening-api-landing-page",
       },
