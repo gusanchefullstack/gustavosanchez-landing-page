@@ -229,6 +229,15 @@ export const content: SiteContent = {
       "A selection of recent work spanning web apps, developer tools, and creative experiments.",
     items: [
       {
+        title: "Flashcard App",
+        description:
+          "Frontend Mentor challenge — an interactive flashcard study app with card flip animation, category filtering, shuffle mode, and per-card progress tracking (Not Started / In Progress / Mastered). Study Statistics sidebar shows real-time totals. Data persists via localStorage. Built with React 19, TypeScript, Vite, and CSS Modules.",
+        tags: ["React 19", "TypeScript", "Vite", "CSS Modules", "localStorage", "Vitest"],
+        image: "/projects/flashcard-app.png",
+        liveUrl: "https://fsdev-flashcard-app-dev.vercel.app",
+        repoUrl: "https://github.com/gusanchefullstack/fsdev-flashcard-app",
+      },
+      {
         title: "Shortly — URL Shortening API",
         description:
           "Frontend Mentor challenge — a responsive URL shortening landing page that integrates with the CleanURI API to shorten links, persists results in localStorage across page refreshes, and features one-click clipboard copy with visual feedback. Includes accessible form validation and a full Vitest test suite. Built with React 19, TypeScript, Vite, and CSS Modules.",
