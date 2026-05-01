@@ -229,6 +229,15 @@ export const content: SiteContent = {
       "A selection of recent work spanning web apps, developer tools, and creative experiments.",
     items: [
       {
+        title: "Maker Pre-Launch Landing Page",
+        description:
+          "Frontend Mentor challenge — a responsive pre-launch landing page featuring a hero section with side illustrations, a 4-column features grid, side-by-side pricing cards with a highlighted paid tier, and an email notification form with inline validation. Built with React 19, TypeScript, Vite, and CSS Modules.",
+        tags: ["React 19", "TypeScript", "Vite", "CSS Modules", "Vitest"],
+        image: "/projects/maker-pre-launch-landing-page.jpg",
+        liveUrl: "https://fsdev-maker-pre-launch-landing-page.vercel.app",
+        repoUrl: "https://github.com/gusanchefullstack/fsdev-maker-pre-launch-landing-page",
+      },
+      {
         title: "Flashcard App",
         description:
           "Frontend Mentor challenge — an interactive flashcard study app with card flip animation, category filtering, shuffle mode, and per-card progress tracking (Not Started / In Progress / Mastered). Study Statistics sidebar shows real-time totals. Data persists via localStorage. Built with React 19, TypeScript, Vite, and CSS Modules.",
