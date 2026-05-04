@@ -229,6 +229,15 @@ export const content: SiteContent = {
       "A selection of recent work spanning web apps, developer tools, and creative experiments.",
     items: [
       {
+        title: "Galleria Slideshow Site",
+        description:
+          "Frontend Mentor challenge — a responsive art gallery slideshow web app. Browse 15 famous paintings in a masonry grid and navigate through them in a full-screen detail view with lightbox, progress bar, and source attribution. Built with React 19, TypeScript, Vite, CSS Modules, and React Router v6.",
+        tags: ["React 19", "TypeScript", "Vite", "CSS Modules", "React Router v6"],
+        image: "/projects/galleria-slideshow-site.jpg",
+        liveUrl: "https://fsdev-galleria-slideshow-site.vercel.app",
+        repoUrl: "https://github.com/gusanchefullstack/fsdev-galleria-slideshow-site",
+      },
+      {
         title: "Maker Pre-Launch Landing Page",
         description:
           "Frontend Mentor challenge — a responsive pre-launch landing page featuring a hero section with side illustrations, a 4-column features grid, side-by-side pricing cards with a highlighted paid tier, and an email notification form with inline validation. Built with React 19, TypeScript, Vite, and CSS Modules.",
