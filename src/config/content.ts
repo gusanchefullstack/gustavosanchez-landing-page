@@ -229,6 +229,15 @@ export const content: SiteContent = {
       "A selection of recent work spanning web apps, developer tools, and creative experiments.",
     items: [
       {
+        title: "Pomodoro App",
+        description:
+          "Frontend Mentor challenge — a fully-featured Pomodoro timer with customizable modes (pomodoro, short break, long break), an SVG circular progress ring, a font picker (Kumbh Sans, Roboto Slab, Space Mono), and an accent color picker (red, cyan, purple). Settings persist via localStorage. Built with React 19, TypeScript, Vite, and CSS Modules.",
+        tags: ["React 19", "TypeScript", "Vite", "CSS Modules", "Vitest"],
+        image: "/projects/pomodoro-app.png",
+        liveUrl: "https://fsdev-pomodoro-app.vercel.app",
+        repoUrl: "https://github.com/gusanchefullstack/fsdev-pomodoro-app",
+      },
+      {
         title: "Galleria Slideshow Site",
         description:
           "Frontend Mentor challenge — a responsive art gallery slideshow web app. Browse 15 famous paintings in a masonry grid and navigate through them in a full-screen detail view with lightbox, progress bar, and source attribution. Built with React 19, TypeScript, Vite, CSS Modules, and React Router v6.",
