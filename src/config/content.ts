@@ -478,7 +478,7 @@ export const content: SiteContent = {
       "Have a project in mind or just want to say hello? Drop me a message and I will get back to you as soon as possible.",
     info: {
       email: "hello@gustavosanchez.dev",
-      location: "San Francisco, CA / Remote / Worldwide",
+      location: "San Francisco, CA",
       availability: "Open to full-time roles",
     },
   },
