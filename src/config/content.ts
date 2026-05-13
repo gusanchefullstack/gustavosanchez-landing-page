@@ -229,6 +229,15 @@ export const content: SiteContent = {
       "A selection of recent work spanning web apps, developer tools, and creative experiments.",
     items: [
       {
+        title: "Note-taking App",
+        description:
+          "Frontend Mentor challenge — a full-featured note-taking SPA with CRUD, archive, tag filtering, search, light/dark/system theme switching, font switching (sans-serif/serif/monospace), and localStorage-based auth simulation. Fully keyboard accessible with skip link, arrow-key list nav, and live search region. Built with React 19, TypeScript, Vite, CSS Modules, React Router v6, and Vitest (28 tests).",
+        tags: ["React 19", "TypeScript", "Vite", "CSS Modules", "React Router v6", "Vitest"],
+        image: "/projects/note-taking-app.png",
+        liveUrl: "https://fsdev-note-taking-web-app-dev.vercel.app",
+        repoUrl: "https://github.com/gusanchefullstack/fsdev-note-taking-web-app",
+      },
+      {
         title: "Pomodoro App",
         description:
           "Frontend Mentor challenge — a fully-featured Pomodoro timer with customizable modes (pomodoro, short break, long break), an SVG circular progress ring, a font picker (Kumbh Sans, Roboto Slab, Space Mono), and an accent color picker (red, cyan, purple). Settings persist via localStorage. Built with React 19, TypeScript, Vite, and CSS Modules.",
