@@ -8,7 +8,7 @@ export function Social() {
   const { subtitle, title, description, links } = content.social;
 
   return (
-    <section id="social" className="section section--alt">
+    <section id="social" className="section">
       <div className="section__inner reveal" ref={ref}>
         <span className="section__subtitle">{subtitle}</span>
         <h2 className="section__title">{title}</h2>

@@ -2,6 +2,7 @@ import { Sidebar } from "./components/Sidebar.tsx";
 import { Intro } from "./components/Intro.tsx";
 import { Stack } from "./components/Stack.tsx";
 import { Projects } from "./components/Projects.tsx";
+import { Blog } from "./components/Blog.tsx";
 import { Social } from "./components/Social.tsx";
 import { Contact } from "./components/Contact.tsx";
 import { content } from "./config/content.ts";
@@ -14,6 +15,7 @@ export function App() {
         <Intro />
         <Stack />
         <Projects />
+        <Blog />
         <Social />
         <Contact />
         <footer className="footer">

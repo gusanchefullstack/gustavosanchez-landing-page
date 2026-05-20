@@ -91,6 +91,11 @@ export interface SiteContent {
     description: string;
     items: Project[];
   };
+  blog: {
+    subtitle: string;
+    title: string;
+    description: string;
+  };
   social: {
     subtitle: string;
     title: string;
@@ -115,6 +120,7 @@ export const content: SiteContent = {
     { label: "Intro", href: "#intro" },
     { label: "Stack", href: "#stack" },
     { label: "Projects", href: "#projects" },
+    { label: "Blog", href: "#blog" },
     { label: "Social", href: "#social" },
     { label: "Contact", href: "#contact" },
   ],
@@ -427,6 +433,13 @@ export const content: SiteContent = {
         repoUrl: "https://github.com/gusanchefullstack/fsdev-NFT-preview-card-component",
       },
     ],
+  },
+
+  blog: {
+    subtitle: "Writing",
+    title: "Blog",
+    description:
+      "Thoughts on web development, software engineering, and the intersection of technology and business — published on Hashnode.",
   },
 
   social: {
