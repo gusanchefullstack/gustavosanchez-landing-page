@@ -1,12 +1,10 @@
 import { HiOutlineDocumentText } from "react-icons/hi";
 import { content } from "../config/content.ts";
-import { useHashnodePosts } from "../hooks/useHashnodePosts.ts";
 import { useScrollReveal } from "../hooks/useScrollReveal.ts";
 
 export function Blog() {
   const ref = useScrollReveal<HTMLDivElement>();
-  const { subtitle, title, description } = content.blog;
-  const { posts, loading, error } = useHashnodePosts();
+  const { subtitle, title, description, hashnodeUrl, items } = content.blog;
 
   return (
     <section id="blog" className="section section--alt">
@@ -15,16 +13,17 @@ export function Blog() {
         <h2 className="section__title">{title}</h2>
         <p className="section__description">{description}</p>
 
-        {loading && <p className="blog-status">Loading articles…</p>}
-        {error && <p className="blog-status blog-status--error">{error}</p>}
-
-        {!loading && !error && posts.length === 0 && (
-          <p className="blog-status">No articles found.</p>
-        )}
-
-        {posts.length > 0 && (
+        {items.length === 0 ? (
+          <p className="blog-empty">
+            Posts coming soon.{" "}
+            <a href={hashnodeUrl} target="_blank" rel="noopener noreferrer">
+              Follow me on Hashnode
+            </a>{" "}
+            to get notified.
+          </p>
+        ) : (
           <ul className="blog-list" role="list">
-            {posts.map((post) => (
+            {items.map((post) => (
               <li key={post.url}>
                 <a
                   className="blog-entry"

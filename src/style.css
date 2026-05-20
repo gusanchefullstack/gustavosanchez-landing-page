@@ -1086,13 +1086,9 @@ a:hover {
   transform: translateX(3px);
 }
 
-.blog-status {
+.blog-empty {
   color: var(--color-text-secondary);
-  font-size: 0.95rem;
-}
-
-.blog-status--error {
-  color: #f87171;
+  font-size: 1rem;
 }
 
 /* ============================================================

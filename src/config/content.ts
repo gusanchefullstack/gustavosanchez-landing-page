@@ -61,6 +61,13 @@ export interface Project {
   repoUrl?: string;
 }
 
+export interface BlogPost {
+  title: string;
+  url: string;
+  /** Optional short description shown under the title */
+  brief?: string;
+}
+
 export interface SocialLink {
   platform: string;
   handle: string;
@@ -95,6 +102,8 @@ export interface SiteContent {
     subtitle: string;
     title: string;
     description: string;
+    hashnodeUrl: string;
+    items: BlogPost[];
   };
   social: {
     subtitle: string;
@@ -440,6 +449,11 @@ export const content: SiteContent = {
     title: "Blog",
     description:
       "Thoughts on web development, software engineering, and the intersection of technology and business — published on Hashnode.",
+    hashnodeUrl: "https://hashnode.com/@gusanchedev",
+    items: [
+      // Add entries here as you publish posts on Hashnode:
+      // { title: "My First Post", url: "https://gusanchedev.hashnode.dev/my-first-post" },
+    ],
   },
 
   social: {
