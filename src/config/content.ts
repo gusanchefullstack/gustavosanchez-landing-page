@@ -504,6 +504,13 @@ export const content: SiteContent = {
         icon: "freecodecamp",
         brandColor: "#0A0A23",
       },
+      {
+        platform: "Frontend Masters",
+        handle: "gustavosanchezdev",
+        url: "https://frontendmasters.com/u/gustavosanchezdev/",
+        icon: "frontendmasters",
+        brandColor: "#C02D28",
+      },
     ],
   },
 

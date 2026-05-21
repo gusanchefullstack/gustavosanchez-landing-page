@@ -58,6 +58,18 @@ export const stackIconMap: Record<string, ComponentType<IconProps>> = {
   claude: SiClaude,
 };
 
+export function FrontendMastersIcon({ size = 36 }: IconProps) {
+  return (
+    <img
+      src="/frontendmasters.png"
+      alt="Frontend Masters"
+      width={size}
+      height={size}
+      style={{ borderRadius: "50%", objectFit: "cover" }}
+    />
+  );
+}
+
 export const socialIconMap: Record<string, ComponentType<IconProps>> = {
   github: SiGithub,
   linkedin: FaLinkedin,
@@ -65,4 +77,5 @@ export const socialIconMap: Record<string, ComponentType<IconProps>> = {
   bluesky: SiBluesky,
   hashnode: SiHashnode,
   freecodecamp: SiFreecodecamp,
+  frontendmasters: FrontendMastersIcon,
 };
