@@ -1,0 +1,153 @@
+- generic [active] [ref=e1]:
+  - generic [ref=e2]:
+    - generic [ref=e5]:
+      - generic [ref=e7]:
+        - link "Hashnode" [ref=e8] [cursor=pointer]:
+          - /url: /
+          - img "Hashnode" [ref=e9]
+        - button "Toggle Sidebar" [ref=e12] [cursor=pointer]:
+          - generic [ref=e15]: Toggle Sidebar
+      - generic [ref=e16]:
+        - list [ref=e19]:
+          - listitem [ref=e20]:
+            - link "Home" [ref=e21] [cursor=pointer]:
+              - /url: /
+              - generic [ref=e24]: Home
+          - listitem [ref=e25]:
+            - link "Blogs" [ref=e26] [cursor=pointer]:
+              - /url: /login?callbackUrl=/dashboards
+              - generic [ref=e29]: Blogs
+          - listitem [ref=e30]:
+            - link "Bookmarks" [ref=e31] [cursor=pointer]:
+              - /url: /login?callbackUrl=/bookmarks
+              - generic [ref=e34]: Bookmarks
+          - listitem [ref=e35]:
+            - link "Forums" [ref=e36] [cursor=pointer]:
+              - /url: /forums
+              - generic [ref=e39]: Forums
+          - listitem [ref=e40]:
+            - link "Hackathons" [ref=e41] [cursor=pointer]:
+              - /url: /hackathons
+              - generic [ref=e44]: Hackathons
+          - listitem [ref=e45]:
+            - link "Search ⌘ k" [ref=e46] [cursor=pointer]:
+              - /url: /search
+              - generic [ref=e49]: Search
+              - generic [ref=e50]: ⌘ k
+        - generic [ref=e51]:
+          - generic [ref=e52]: Author
+          - list [ref=e54]:
+            - listitem [ref=e55]:
+              - link "Write" [ref=e56] [cursor=pointer]:
+                - /url: /login?callbackUrl=/drafts
+                - generic [ref=e58]: Write
+            - listitem [ref=e59]:
+              - link "Drafts" [ref=e60] [cursor=pointer]:
+                - /url: /login?callbackUrl=/drafts
+                - generic [ref=e62]: Drafts
+      - generic [ref=e63]:
+        - generic [ref=e68]:
+          - generic [ref=e69]:
+            - generic [ref=e70]: What's New
+            - button [ref=e71] [cursor=pointer]
+          - link "🔌 GraphQL API is moving to a paid offering Free GraphQL API access is retired. Reading and publishing both require a Pro plan you can upgrade to from your blog dashboard." [ref=e73] [cursor=pointer]:
+            - /url: /changelog/2026-05-13-graphql-api-paid-access
+            - generic [ref=e74]: 🔌
+            - generic [ref=e75]:
+              - paragraph [ref=e76]: GraphQL API is moving to a paid offering
+              - paragraph [ref=e77]: Free GraphQL API access is retired. Reading and publishing both require a Pro plan you can upgrade to from your blog dashboard.
+        - list [ref=e78]:
+          - listitem [ref=e79]:
+            - button "Explore" [ref=e80]:
+              - generic [ref=e82]: Explore
+            - generic: New
+            - navigation "Resources" [ref=e83]:
+              - link "Bug0 - The AI-native e2e QA regression testing" [ref=e84] [cursor=pointer]:
+                - /url: https://bug0.com?utm_source=hashnode&utm_medium=sidebar&utm_campaign=cross_product
+              - link "Bug0 Browsers - Cloud Chromium on demand, per-minute, live preview" [ref=e85] [cursor=pointer]:
+                - /url: https://browsers.bug0.com?utm_source=hashnode&utm_medium=sidebar&utm_campaign=cross_product
+              - link "Passmark - The open-source AI framework for regression testing" [ref=e86] [cursor=pointer]:
+                - /url: https://go.bug0.com/passmark
+              - link "Changelog" [ref=e87] [cursor=pointer]:
+                - /url: /changelog
+              - link "Brand" [ref=e88] [cursor=pointer]:
+                - /url: /brand
+              - link "@hashnode on X" [ref=e89] [cursor=pointer]:
+                - /url: https://x.com/hashnode
+              - link "Hashnode on LinkedIn" [ref=e90] [cursor=pointer]:
+                - /url: https://www.linkedin.com/company/hashnode
+              - link "Code of Conduct" [ref=e91] [cursor=pointer]:
+                - /url: /code-of-conduct
+              - link "Support - hello+support@hashnode.com" [ref=e92] [cursor=pointer]:
+                - /url: mailto:hello+support@hashnode.com
+          - listitem [ref=e93]:
+            - link "Sign in" [ref=e94] [cursor=pointer]:
+              - /url: /login
+              - generic [ref=e96]: Sign in
+          - generic [ref=e97]:
+            - link "Terms" [ref=e98] [cursor=pointer]:
+              - /url: /terms
+            - link "Privacy" [ref=e99] [cursor=pointer]:
+              - /url: /privacy-policy
+            - link "Sitemap" [ref=e100] [cursor=pointer]:
+              - /url: /sitemap.xml
+            - button "Shortcuts" [ref=e101]
+          - paragraph [ref=e102]: © 2026 LinearBytes Inc.
+    - main [ref=e103]:
+      - main [ref=e104]:
+        - main [ref=e105]:
+          - heading "@gusanchedev" [level=1] [ref=e109]
+          - generic [ref=e112]:
+            - button "Profile avatar" [ref=e113]:
+              - img "Profile avatar" [ref=e114]
+            - generic [ref=e115]:
+              - generic [ref=e116]:
+                - generic [ref=e117]:
+                  - heading "Gustavo Sanchez" [level=1] [ref=e118]
+                  - paragraph [ref=e119]: "@gusanchedev"
+                - generic [ref=e120]:
+                  - link "Website" [ref=e121] [cursor=pointer]:
+                    - /url: https://www.gustavosanchez.dev/
+                    - text: Website
+                  - button "Share" [ref=e123] [cursor=pointer]:
+                    - generic [ref=e125]: Share
+              - paragraph [ref=e126]: Software Engineer
+              - generic [ref=e127]:
+                - generic [ref=e128]: San Francisco, California
+                - generic [ref=e130]: Joined September 2020
+              - generic [ref=e132]:
+                - link "Twitter" [ref=e133] [cursor=pointer]:
+                  - /url: https://twitter.com/gusanchedev
+                - link "GitHub" [ref=e135] [cursor=pointer]:
+                  - /url: https://github.com/gusanchefullstack
+                - link "LinkedIn" [ref=e137] [cursor=pointer]:
+                  - /url: https://www.linkedin.com/in/gustavosanchezgalarza/
+          - generic [ref=e140]:
+            - complementary [ref=e141]:
+              - generic [ref=e142]:
+                - heading "About" [level=3] [ref=e146]
+                - generic [ref=e147]: Building at the Intersection of Software Engineering, AI and Sales | Enterprise Software Sales Leader in Career Transition | Ex-Sales Director @ Genesys & MSFT
+              - generic [ref=e148]:
+                - heading "Available for" [level=3] [ref=e152]
+                - paragraph [ref=e153]: Nothing here yet.
+              - generic [ref=e154]:
+                - heading "Gustavo Sanchez's blogs" [level=3] [ref=e158]
+                - paragraph [ref=e159]: No blogs yet.
+            - generic [ref=e160]:
+              - generic [ref=e161]:
+                - link "Articles" [ref=e162] [cursor=pointer]:
+                  - /url: /@gusanchedev
+                - link "Threads" [ref=e163] [cursor=pointer]:
+                  - /url: /@gusanchedev/threads
+                - link "Comments 1" [ref=e164] [cursor=pointer]:
+                  - /url: /@gusanchedev/comments
+                  - text: Comments
+                  - generic [ref=e165]: "1"
+              - generic [ref=e166]:
+                - heading "No articles yet" [level=2] [ref=e169]
+                - paragraph [ref=e170]: No articles have been published yet.
+    - generic [ref=e171]:
+      - heading "Search Hashnode" [level=2] [ref=e172]
+      - paragraph [ref=e173]: Search posts, tags, users, and pages
+    - region "Notifications alt+T"
+  - alert [ref=e174]

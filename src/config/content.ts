@@ -453,6 +453,7 @@ export const content: SiteContent = {
     items: [
       // Add entries here as you publish posts on Hashnode:
       // { title: "My First Post", url: "https://gusanchedev.hashnode.dev/my-first-post" },
+      { title: "My First Post", url: "https://gustavosanchez.hashnode.dev/my-learning-path-to-software-engineer" },
     ],
   },
 
