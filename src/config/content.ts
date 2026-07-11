@@ -244,6 +244,15 @@ export const content: SiteContent = {
       "A selection of recent work spanning web apps, developer tools, and creative experiments.",
     items: [
       {
+        title: "Devjobs Web App",
+        description:
+          "Frontend Mentor premium challenge — a responsive job board where users browse job listings, filter by title/company, location, and full-time status, view full job details, and apply. Includes light/dark theme support (system preference + manual toggle) and fully responsive layouts for mobile, tablet, and desktop. Built with React 19, TypeScript, Vite, React Router, and CSS Modules.",
+        tags: ["React 19", "TypeScript", "Vite", "React Router", "CSS Modules", "Vitest", "React Testing Library"],
+        image: "/projects/devjobs-web-app.png",
+        liveUrl: "https://fsdev-devjobs-web-app.vercel.app",
+        repoUrl: "https://github.com/gusanchefullstack/fsdev-devjobs-web-app",
+      },
+      {
         title: "Note-taking App",
         description:
           "Frontend Mentor challenge — a full-featured note-taking SPA with CRUD, archive, tag filtering, search, light/dark/system theme switching, font switching (sans-serif/serif/monospace), and localStorage-based auth simulation. Fully keyboard accessible with skip link, arrow-key list nav, and live search region. Built with React 19, TypeScript, Vite, CSS Modules, React Router v6, and Vitest (28 tests).",
