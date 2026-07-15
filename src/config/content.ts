@@ -244,6 +244,15 @@ export const content: SiteContent = {
       "A selection of recent work spanning web apps, developer tools, and creative experiments.",
     items: [
       {
+        title: "Bookmark Manager App",
+        description:
+          "A full-stack bookmark manager (Frontend Mentor challenge) — save, search, filter by tags, sort, archive/pin bookmarks, and toggle light/dark theme, behind real user accounts (JWT auth) rather than a static mock. Built with React 19, TypeScript, Vite, Express, Prisma, PostgreSQL (Neon), and Resend.",
+        tags: ["React 19", "TypeScript", "Vite", "Express", "Prisma", "PostgreSQL", "JWT Auth", "Resend"],
+        image: "/projects/bookmark-manager-app.png",
+        liveUrl: "https://fsdev-bookmark-manager-frontend.vercel.app",
+        repoUrl: "https://github.com/gusanchefullstack/fsdev-bookmark-manager-app",
+      },
+      {
         title: "Devjobs Web App",
         description:
           "Frontend Mentor premium challenge — a responsive job board where users browse job listings, filter by title/company, location, and full-time status, view full job details, and apply. Includes light/dark theme support (system preference + manual toggle) and fully responsive layouts for mobile, tablet, and desktop. Built with React 19, TypeScript, Vite, React Router, and CSS Modules.",
