@@ -19,6 +19,7 @@ import {
   SiX,
   SiBluesky,
   SiClaude,
+  SiFigma,
 } from "react-icons/si";
 import { VscVscode } from "react-icons/vsc";
 import { FaLinkedin } from "react-icons/fa6";
@@ -56,6 +57,7 @@ export const stackIconMap: Record<string, ComponentType<IconProps>> = {
   github: SiGithub,
   vercel: SiVercel,
   claude: SiClaude,
+  figma: SiFigma,
 };
 
 export function FrontendMastersIcon({ size = 36 }: IconProps) {

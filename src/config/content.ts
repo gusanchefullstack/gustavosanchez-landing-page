@@ -215,6 +215,7 @@ export const content: SiteContent = {
         items: [
           { name: "Claude Code", icon: "claude", brandColor: "#D4A27F" },
           { name: "Cursor",      icon: "cursor", brandColor: "#d6d5d2" },
+          { name: "Figma",       icon: "figma",  brandColor: "#F24E1E" },
         ],
       },
       {
