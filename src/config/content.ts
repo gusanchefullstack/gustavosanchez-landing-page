@@ -250,7 +250,7 @@ export const content: SiteContent = {
           "Frontend Mentor full-stack challenge — browse, search, and bookmark movies and TV series behind real per-user accounts, backed by a separate Express/Prisma API service. Responsive at 375/768/1440 per the Figma design, with 129 automated tests (87 frontend, 42 backend) and a 100 Lighthouse accessibility score on all four browse routes. Built with React 19, React Router, Vite, TypeScript, and CSS Modules on the frontend; Express, Prisma, and Prisma Postgres on the backend; deployed on Vercel and Render.",
         tags: ["React 19", "TypeScript", "Vite", "React Router", "CSS Modules", "Express", "Prisma", "PostgreSQL"],
         image: "/projects/entertainment-web-app.png",
-        liveUrl: "https://fsdev-entertainment-web-app.vercel.app",
+        liveUrl: "https://frontend-kappa-three-73.vercel.app/",
         repoUrl: "https://github.com/gusanchefullstack/fsdev-entertainment-web-app-frontend",
       },
       {
