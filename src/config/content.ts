@@ -245,6 +245,15 @@ export const content: SiteContent = {
       "A selection of recent work spanning web apps, developer tools, and creative experiments.",
     items: [
       {
+        title: "Advice Generator App",
+        description:
+          "Frontend Mentor challenge — a single-page app that serves a random piece of advice and fetches a new one at the roll of a dice, powered by the Advice Slip API. Built spec-first: the constitution, specification, plan, and task breakdown were each committed before any source file existed. Built with React 19, TypeScript, Vite, and CSS Modules.",
+        tags: ["React 19", "TypeScript", "Vite", "CSS Modules", "Vitest"],
+        image: "/projects/advice-generator-app.png",
+        liveUrl: "https://fsdev-advice-generator-app.vercel.app",
+        repoUrl: "https://github.com/gusanchefullstack/fsdev-advice-generator-app",
+      },
+      {
         title: "Entertainment Web App",
         description:
           "Frontend Mentor full-stack challenge — browse, search, and bookmark movies and TV series behind real per-user accounts, backed by a separate Express/Prisma API service. Responsive at 375/768/1440 per the Figma design, with 129 automated tests (87 frontend, 42 backend) and a 100 Lighthouse accessibility score on all four browse routes. Built with React 19, React Router, Vite, TypeScript, and CSS Modules on the frontend; Express, Prisma, and Prisma Postgres on the backend; deployed on Vercel and Render.",
