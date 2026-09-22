@@ -536,11 +536,11 @@ export const content: SiteContent = {
         brandColor: "#0085FF",
       },
       {
-        platform: "freeCodeCamp",
-        handle: "gusanchedev",
-        url: "https://www.freecodecamp.org/gusanchedev",
-        icon: "freecodecamp",
-        brandColor: "#0A0A23",
+        platform: "Frontend Mentor",
+        handle: "gusanchefullstack",
+        url: "https://www.frontendmentor.io/profile/gusanchefullstack",
+        icon: "frontendmentor",
+        brandColor: "#3F54A3",
       },
       {
         platform: "Frontend Masters",

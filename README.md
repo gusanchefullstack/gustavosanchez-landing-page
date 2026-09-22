@@ -14,7 +14,7 @@ A personal developer portfolio and landing page built with React 19, TypeScript,
 | **Intro** | Hero with profile photo, name, two-line headline (rich text spans), multi-paragraph tagline with optional typewriter on the last two paragraphs, and CTA |
 | **Stack** | Tech skills grouped by category (Frontend, Backend, API, Database, Dev Tools) with react-icons |
 | **Projects** | Card grid showcasing featured work with tags and links; filterable by title (text search) and technology (tag chips with AND logic) |
-| **Social** | Profile cards for LinkedIn, GitHub, Hashnode, X, Bluesky, freeCodeCamp |
+| **Social** | Profile cards for LinkedIn, GitHub, Hashnode, X, Bluesky, Frontend Mentor, Frontend Masters |
 | **Contact** | Contact form (powered by Formspree) with info sidebar |
 
 ## Tech stack
@@ -268,7 +268,7 @@ This project is both a personal portfolio and a learning log. Notes captured alo
 [![Hashnode](https://img.shields.io/badge/Hashnode-2962FF?logo=hashnode&logoColor=white)](https://hashnode.com/@gusanchedev)
 [![X](https://img.shields.io/badge/X-000000?logo=x&logoColor=white)](https://x.com/gusanchedev)
 [![Bluesky](https://img.shields.io/badge/Bluesky-0085FF?logo=bluesky&logoColor=white)](https://bsky.app/profile/gusanchedev.bsky.social)
-[![freeCodeCamp](https://img.shields.io/badge/freeCodeCamp-0A0A23?logo=freecodecamp&logoColor=white)](https://www.freecodecamp.org/gusanchedev)
+[![Frontend Mentor](https://img.shields.io/badge/Frontend%20Mentor-3F54A3?logo=frontendmentor&logoColor=white)](https://www.frontendmentor.io/profile/gusanchefullstack)
 
 ## Credits
 
