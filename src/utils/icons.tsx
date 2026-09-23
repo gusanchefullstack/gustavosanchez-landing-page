@@ -23,6 +23,7 @@ import {
 } from "react-icons/si";
 import { VscVscode } from "react-icons/vsc";
 import { FaLinkedin } from "react-icons/fa6";
+import { FiArrowUpRight } from "react-icons/fi";
 
 type IconProps = { size?: number; color?: string };
 
@@ -71,6 +72,10 @@ export function FrontendMastersIcon({ size = 36 }: IconProps) {
     />
   );
 }
+
+/** Project card link icons — used directly by components, not keyed from content.ts */
+export const LiveDemoIcon = FiArrowUpRight;
+export const SourceCodeIcon = SiGithub;
 
 export const socialIconMap: Record<string, ComponentType<IconProps>> = {
   github: SiGithub,

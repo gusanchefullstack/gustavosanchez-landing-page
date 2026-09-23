@@ -1,6 +1,33 @@
 import { useMemo, useState } from "react";
 import { content } from "../config/content.ts";
+import type { DeployPlatform, Project } from "../config/content.ts";
 import { useScrollReveal } from "../hooks/useScrollReveal.ts";
+import { LiveDemoIcon, SourceCodeIcon } from "../utils/icons.tsx";
+
+/** Tech tags rendered on a card before collapsing the rest into a "+N" chip. */
+const MAX_VISIBLE_TAGS = 4;
+
+const deploymentLabels: Record<DeployPlatform, string> = {
+  vercel: "Vercel",
+  render: "Render",
+  aws: "AWS",
+  netlify: "Netlify",
+  cloudflare: "Cloudflare",
+};
+
+function deploymentList(deployment: Project["deployment"]): DeployPlatform[] {
+  if (!deployment) return [];
+  return Array.isArray(deployment) ? deployment : [deployment];
+}
+
+/** Selected tags first, so an active filter is always visible on the card. */
+function orderTags(tags: string[], selected: string[]): string[] {
+  if (selected.length === 0) return tags;
+  return [
+    ...tags.filter((t) => selected.includes(t)),
+    ...tags.filter((t) => !selected.includes(t)),
+  ];
+}
 
 export function Projects() {
   const ref = useScrollReveal<HTMLDivElement>();
@@ -116,14 +143,47 @@ export function Projects() {
                   </div>
                 )}
                 <div className="project-card__body">
+                  <div className="project-card__badges">
+                    <span
+                      className={`project-badge project-badge--${project.kind}`}
+                    >
+                      {project.kind === "fullstack" ? "Full-stack" : "Frontend"}
+                    </span>
+                    {deploymentList(project.deployment).map((platform) => (
+                      <span
+                        className={`project-badge project-badge--${platform}`}
+                        key={platform}
+                      >
+                        {deploymentLabels[platform]}
+                      </span>
+                    ))}
+                    {project.sdd && (
+                      <span
+                        className="project-badge project-badge--sdd"
+                        title="Spec-driven development"
+                      >
+                        SDD
+                      </span>
+                    )}
+                  </div>
                   <h3 className="project-card__title">{project.title}</h3>
                   <p className="project-card__desc">{project.description}</p>
                   <div className="project-card__tags">
-                    {project.tags.map((tag) => (
-                      <span className="project-card__tag" key={tag}>
-                        {tag}
+                    {orderTags(project.tags, selectedTags)
+                      .slice(0, MAX_VISIBLE_TAGS)
+                      .map((tag) => (
+                        <span className="project-card__tag" key={tag}>
+                          {tag}
+                        </span>
+                      ))}
+                    {project.tags.length > MAX_VISIBLE_TAGS && (
+                      <span
+                        className="project-card__tag project-card__tag--more"
+                        title={project.tags.join(", ")}
+                      >
+                        +{project.tags.length - MAX_VISIBLE_TAGS}
                       </span>
-                    ))}
+                    )}
                   </div>
                   <div className="project-card__links">
                     {project.liveUrl && (
@@ -132,7 +192,9 @@ export function Projects() {
                         href={project.liveUrl}
                         target="_blank"
                         rel="noopener"
+                        aria-label={`Live Demo for ${project.title}`}
                       >
+                        <LiveDemoIcon size={15} aria-hidden="true" />
                         Live Demo
                       </a>
                     )}
@@ -142,7 +204,9 @@ export function Projects() {
                         href={project.repoUrl}
                         target="_blank"
                         rel="noopener"
+                        aria-label={`Source Code for ${project.title}`}
                       >
+                        <SourceCodeIcon size={15} aria-hidden="true" />
                         Source Code
                       </a>
                     )}

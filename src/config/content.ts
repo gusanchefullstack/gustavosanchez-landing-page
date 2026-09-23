@@ -51,10 +51,22 @@ export interface StackGroup {
   items: StackItem[];
 }
 
+/** Whether the project is UI-only or ships its own backend/database. */
+export type ProjectKind = "frontend" | "fullstack";
+
+/** Hosting platform(s) the live build runs on. */
+export type DeployPlatform = "vercel" | "render" | "aws" | "netlify" | "cloudflare";
+
 export interface Project {
   title: string;
   description: string;
   tags: string[];
+  /** Frontend-only vs. full-stack — rendered as a card badge */
+  kind: ProjectKind;
+  /** Where the live build is hosted; omit when the project is not deployed */
+  deployment?: DeployPlatform | DeployPlatform[];
+  /** True when the project was built spec-driven (constitution → spec → plan → tasks) */
+  sdd?: boolean;
   image?: string;
   emoji?: string;
   liveUrl?: string;
@@ -249,6 +261,9 @@ export const content: SiteContent = {
         description:
           "Frontend Mentor challenge — a single-page app that serves a random piece of advice and fetches a new one at the roll of a dice, powered by the Advice Slip API. Built spec-first: the constitution, specification, plan, and task breakdown were each committed before any source file existed. Built with React 19, TypeScript, Vite, and CSS Modules.",
         tags: ["React 19", "TypeScript", "Vite", "CSS Modules", "Vitest"],
+        kind: "frontend",
+        deployment: "vercel",
+        sdd: true,
         image: "/projects/advice-generator-app.png",
         liveUrl: "https://fsdev-advice-generator-app.vercel.app",
         repoUrl: "https://github.com/gusanchefullstack/fsdev-advice-generator-app",
@@ -258,6 +273,9 @@ export const content: SiteContent = {
         description:
           "Frontend Mentor full-stack challenge — browse, search, and bookmark movies and TV series behind real per-user accounts, backed by a separate Express/Prisma API service. Responsive at 375/768/1440 per the Figma design, with 129 automated tests (87 frontend, 42 backend) and a 100 Lighthouse accessibility score on all four browse routes. Built with React 19, React Router, Vite, TypeScript, and CSS Modules on the frontend; Express, Prisma, and Prisma Postgres on the backend; deployed on Vercel and Render.",
         tags: ["React 19", "TypeScript", "Vite", "React Router", "CSS Modules", "Express", "Prisma", "PostgreSQL"],
+        kind: "fullstack",
+        deployment: ["vercel", "render"],
+        sdd: true,
         image: "/projects/entertainment-web-app.png",
         liveUrl: "https://frontend-kappa-three-73.vercel.app/",
         repoUrl: "https://github.com/gusanchefullstack/fsdev-entertainment-web-app-frontend",
@@ -267,6 +285,8 @@ export const content: SiteContent = {
         description:
           "A full-stack bookmark manager (Frontend Mentor challenge) — save, search, filter by tags, sort, archive/pin bookmarks, and toggle light/dark theme, behind real user accounts (JWT auth) rather than a static mock. Built with React 19, TypeScript, Vite, Express, Prisma, PostgreSQL (Neon), and Resend.",
         tags: ["React 19", "TypeScript", "Vite", "Express", "Prisma", "PostgreSQL", "JWT Auth", "Resend"],
+        kind: "fullstack",
+        deployment: "vercel",
         image: "/projects/bookmark-manager-app.png",
         liveUrl: "https://fsdev-bookmark-manager-frontend.vercel.app",
         repoUrl: "https://github.com/gusanchefullstack/fsdev-bookmark-manager-app",
@@ -276,6 +296,8 @@ export const content: SiteContent = {
         description:
           "Frontend Mentor premium challenge — a responsive job board where users browse job listings, filter by title/company, location, and full-time status, view full job details, and apply. Includes light/dark theme support (system preference + manual toggle) and fully responsive layouts for mobile, tablet, and desktop. Built with React 19, TypeScript, Vite, React Router, and CSS Modules.",
         tags: ["React 19", "TypeScript", "Vite", "React Router", "CSS Modules", "Vitest", "React Testing Library"],
+        kind: "frontend",
+        deployment: "vercel",
         image: "/projects/devjobs-web-app.png",
         liveUrl: "https://fsdev-devjobs-web-app.vercel.app",
         repoUrl: "https://github.com/gusanchefullstack/fsdev-devjobs-web-app",
@@ -285,6 +307,8 @@ export const content: SiteContent = {
         description:
           "Frontend Mentor challenge — a full-featured note-taking SPA with CRUD, archive, tag filtering, search, light/dark/system theme switching, font switching (sans-serif/serif/monospace), and localStorage-based auth simulation. Fully keyboard accessible with skip link, arrow-key list nav, and live search region. Built with React 19, TypeScript, Vite, CSS Modules, React Router v6, and Vitest (28 tests).",
         tags: ["React 19", "TypeScript", "Vite", "CSS Modules", "React Router v6", "Vitest"],
+        kind: "frontend",
+        deployment: "vercel",
         image: "/projects/note-taking-app.png",
         liveUrl: "https://fsdev-note-taking-web-app-dev.vercel.app",
         repoUrl: "https://github.com/gusanchefullstack/fsdev-note-taking-web-app",
@@ -294,6 +318,8 @@ export const content: SiteContent = {
         description:
           "Frontend Mentor challenge — a fully-featured Pomodoro timer with customizable modes (pomodoro, short break, long break), an SVG circular progress ring, a font picker (Kumbh Sans, Roboto Slab, Space Mono), and an accent color picker (red, cyan, purple). Settings persist via localStorage. Built with React 19, TypeScript, Vite, and CSS Modules.",
         tags: ["React 19", "TypeScript", "Vite", "CSS Modules", "Vitest"],
+        kind: "frontend",
+        deployment: "vercel",
         image: "/projects/pomodoro-app.png",
         liveUrl: "https://fsdev-pomodoro-app.vercel.app",
         repoUrl: "https://github.com/gusanchefullstack/fsdev-pomodoro-app",
@@ -303,6 +329,8 @@ export const content: SiteContent = {
         description:
           "Frontend Mentor challenge — a responsive art gallery slideshow web app. Browse 15 famous paintings in a masonry grid and navigate through them in a full-screen detail view with lightbox, progress bar, and source attribution. Built with React 19, TypeScript, Vite, CSS Modules, and React Router v6.",
         tags: ["React 19", "TypeScript", "Vite", "CSS Modules", "React Router v6"],
+        kind: "frontend",
+        deployment: "vercel",
         image: "/projects/galleria-slideshow-site.jpg",
         liveUrl: "https://fsdev-galleria-slideshow-site.vercel.app",
         repoUrl: "https://github.com/gusanchefullstack/fsdev-galleria-slideshow-site",
@@ -312,6 +340,8 @@ export const content: SiteContent = {
         description:
           "Frontend Mentor challenge — a responsive pre-launch landing page featuring a hero section with side illustrations, a 4-column features grid, side-by-side pricing cards with a highlighted paid tier, and an email notification form with inline validation. Built with React 19, TypeScript, Vite, and CSS Modules.",
         tags: ["React 19", "TypeScript", "Vite", "CSS Modules", "Vitest"],
+        kind: "frontend",
+        deployment: "vercel",
         image: "/projects/maker-pre-launch-landing-page.jpg",
         liveUrl: "https://fsdev-maker-pre-launch-landing-page.vercel.app",
         repoUrl: "https://github.com/gusanchefullstack/fsdev-maker-pre-launch-landing-page",
@@ -321,6 +351,8 @@ export const content: SiteContent = {
         description:
           "Frontend Mentor challenge — an interactive flashcard study app with card flip animation, category filtering, shuffle mode, and per-card progress tracking (Not Started / In Progress / Mastered). Study Statistics sidebar shows real-time totals. Data persists via localStorage. Built with React 19, TypeScript, Vite, and CSS Modules.",
         tags: ["React 19", "TypeScript", "Vite", "CSS Modules", "localStorage", "Vitest"],
+        kind: "frontend",
+        deployment: "vercel",
         image: "/projects/flashcard-app.png",
         liveUrl: "https://fsdev-flashcard-app-dev.vercel.app",
         repoUrl: "https://github.com/gusanchefullstack/fsdev-flashcard-app",
@@ -330,6 +362,8 @@ export const content: SiteContent = {
         description:
           "Frontend Mentor challenge — a responsive URL shortening landing page that integrates with the CleanURI API to shorten links, persists results in localStorage across page refreshes, and features one-click clipboard copy with visual feedback. Includes accessible form validation and a full Vitest test suite. Built with React 19, TypeScript, Vite, and CSS Modules.",
         tags: ["React 19", "TypeScript", "Vite", "CSS Modules", "CleanURI API", "localStorage", "Vitest"],
+        kind: "frontend",
+        deployment: "vercel",
         image: "https://raw.githubusercontent.com/gusanchefullstack/fsdev-url-shortening-api-landing-page/main/screenshots/desktop-1440px.png",
         liveUrl: "https://fsdev-url-shortening-api-landing-pa.vercel.app",
         repoUrl: "https://github.com/gusanchefullstack/fsdev-url-shortening-api-landing-page",
@@ -339,6 +373,8 @@ export const content: SiteContent = {
         description:
           "Frontend Mentor premium challenge — a savings goals tracker SPA with full goal CRUD, deposit tracking, monthly bar chart (Recharts), filter/sort controls, and a responsive card grid layout. Data persists via localStorage across sessions. Built with React 19, TypeScript, Vite, and CSS Modules.",
         tags: ["React 19", "TypeScript", "Vite", "CSS Modules", "Recharts", "localStorage"],
+        kind: "frontend",
+        deployment: "vercel",
         image: "/projects/savings-tracker.png",
         liveUrl: "https://fsdev-savings-tracker-dev.vercel.app",
         repoUrl: "https://github.com/gusanchefullstack/fsdev-savings-tracker",
@@ -348,6 +384,8 @@ export const content: SiteContent = {
         description:
           "Frontend Mentor challenge — a responsive job listing page with tag-based filtering. Users click category tags (role, level, languages, tools) to narrow listings in real time; active filters appear in a persistent filter bar that can be cleared individually or all at once. Built with React 19, TypeScript, and CSS Modules.",
         tags: ["React 19", "TypeScript", "Vite", "CSS Modules", "Responsive Design", "Accessibility"],
+        kind: "frontend",
+        deployment: "vercel",
         image: "/projects/job-listings-with-filtering.png",
         liveUrl: "https://fsdev-job-listings-with-filtering-d.vercel.app",
         repoUrl: "https://github.com/gusanchefullstack/fsdev-job-listings-with-filtering",
@@ -357,6 +395,8 @@ export const content: SiteContent = {
         description:
           "Frontend Mentor challenge — a fully accessible, responsive password generator built with React 19 and TypeScript. Users configure character length and character types (uppercase, lowercase, numbers, symbols), generate a secure password, see its strength rating, and copy it to the clipboard.",
         tags: ["React 19", "TypeScript", "Vite", "CSS Modules"],
+        kind: "frontend",
+        deployment: "vercel",
         image: "/projects/password-generator-app.png",
         liveUrl: "https://fsdev-password-generator-app.vercel.app",
         repoUrl: "https://github.com/gusanchefullstack/fsdev-password-generator-app",
@@ -366,6 +406,8 @@ export const content: SiteContent = {
         description:
           "Frontend Mentor challenge — a React 19 + TypeScript single-page app that looks up any IP address or domain and displays geolocation data (IP, location, timezone, ISP) in an info card, then plots the location on an interactive Leaflet map. Powered by the IPify Geo API via Axios.",
         tags: ["React", "TypeScript", "Vite", "Leaflet", "Axios", "IPify API"],
+        kind: "frontend",
+        deployment: "vercel",
         image: "/projects/ip-address-tracker.png",
         liveUrl: "https://fsdev-ip-address-tracker-dev.vercel.app",
         repoUrl: "https://github.com/gusanchefullstack/fsdev-ip-address-tracker",
@@ -375,6 +417,8 @@ export const content: SiteContent = {
         description:
           "Frontend Mentor challenge — a responsive weather app that searches any city worldwide and displays current conditions, a 7-day daily forecast, and an hourly breakdown. Metric/Imperial unit toggle re-fetches data live. Built mobile-first with semantic HTML, vanilla JS (ES modules), CSS custom properties, and Vite. No API key required — powered by Open-Meteo.",
         tags: ["HTML", "CSS", "JavaScript", "Vite", "Open-Meteo API"],
+        kind: "frontend",
+        deployment: "vercel",
         image: "/projects/weather-app.png",
         liveUrl: "https://fsdev-weather-app-dev.vercel.app",
         repoUrl: "https://github.com/gusanchefullstack/fsdev-weather-app",
@@ -384,6 +428,8 @@ export const content: SiteContent = {
         description:
           "Frontend Mentor challenge — a real-time text analyzer with character, word, and sentence counts; approximate reading time; letter density with sort + collapse; and a persistent dark/light theme. Built mobile-first with semantic HTML, vanilla JS (ES modules), CSS custom properties for design tokens, and Vite. WCAG-minded focus states and prefers-reduced-motion support.",
         tags: ["HTML", "CSS", "JavaScript", "Vite"],
+        kind: "frontend",
+        deployment: "vercel",
         image: "/projects/character-counter.png",
         liveUrl: "https://fsdev-character-counter.vercel.app/",
         repoUrl: "https://github.com/gusanchefullstack/fsdev-character-counter",
@@ -393,6 +439,8 @@ export const content: SiteContent = {
         description:
           "Frontend Mentor challenge — a responsive landing page with interactive dropdown navigation menus, a slide-in mobile sidebar with overlay, and a two-column hero layout. Built with semantic HTML, CSS custom properties, vanilla JS, and Vite; three breakpoints for mobile, tablet, and desktop.",
         tags: ["HTML", "CSS", "JavaScript", "Vite"],
+        kind: "frontend",
+        deployment: "vercel",
         image: "/projects/intro-section-dropdown-nav.png",
         liveUrl: "https://fsdev-intro-section-with-dropdown-navigation-60umnjew7.vercel.app",
         repoUrl: "https://github.com/gusanchefullstack/fsdev-intro-section-with-dropdown-navigation",
@@ -402,6 +450,8 @@ export const content: SiteContent = {
         description:
           "Frontend Mentor challenge — a responsive BMI calculator with metric and imperial unit support, live calculation, weight classification, and healthy weight range. Built mobile-first with vanilla HTML/CSS/JS and Vite; design tokens parameterize colors, gradients, and typography.",
         tags: ["HTML", "CSS", "JavaScript", "Vite"],
+        kind: "frontend",
+        deployment: "vercel",
         image: "/projects/bmi-calculator.png",
         liveUrl: "https://fsdev-bmi-calculator-figma-hm1yyo0s0-gustavo-sanchezs-projects.vercel.app",
         repoUrl: "https://github.com/gusanchefullstack/fsdev-bmi-calculator-figma-dev",
@@ -419,6 +469,7 @@ export const content: SiteContent = {
           "TanStack Query",
           "Tailwind CSS",
         ],
+        kind: "fullstack",
         image: "/projects/budgeteer-dashboard.png",
         repoUrl: "https://github.com/gusanchefullstack/budgeteerApp",
       },
@@ -427,6 +478,8 @@ export const content: SiteContent = {
         description:
           "Frontend Mentor challenge — a 2-page coming soon site with pricing plans, a live 30-day countdown timer, and a sign-up form with custom-styled select and validation. Built mobile-first with vanilla HTML/CSS/JS and Vite; design tokens parameterize colors, typography, and spacing.",
         tags: ["HTML", "CSS", "JavaScript", "Vite"],
+        kind: "frontend",
+        deployment: "vercel",
         image: "/projects/officelite-coming-soon.png",
         liveUrl: "https://fsdev-officelite-coming-soon-site-d.vercel.app",
         repoUrl:
@@ -437,6 +490,8 @@ export const content: SiteContent = {
         description:
           "Frontend Mentor challenge — an interactive credit card details form with real-time card preview, input formatting, validation, and a success state. Built mobile-first with vanilla HTML/CSS/JS and Vite; design tokens parameterize colors, gradients, and typography.",
         tags: ["HTML", "CSS", "JavaScript", "Vite"],
+        kind: "frontend",
+        deployment: "vercel",
         image: "/projects/interactive-card-details-form.png",
         liveUrl: "https://fsdev-interactive-card-details-form.vercel.app/",
         repoUrl:
@@ -447,6 +502,8 @@ export const content: SiteContent = {
         description:
           "Frontend Mentor challenge solution — a QR code card built with React and TailwindCSS, featuring a mobile-first layout with custom Tailwind theme variables for colors and typography.",
         tags: ["React", "TypeScript", "TailwindCSS", "Vite"],
+        kind: "frontend",
+        deployment: "vercel",
         image: "/projects/qr-component.png",
         liveUrl: "https://fsdev-qr-component-code.vercel.app/",
         repoUrl: "https://github.com/gusanchefullstack/fsdev-qr-component-code",
@@ -456,6 +513,8 @@ export const content: SiteContent = {
         description:
           "Frontend Mentor blog preview card solution with interactive hover and focus states. Built mobile-first with custom Tailwind theme configuration for colors, typography, border radius, and shadows.",
         tags: ["React", "TypeScript", "TailwindCSS", "Vite"],
+        kind: "frontend",
+        deployment: "vercel",
         image: "/projects/blog-preview-card.png",
         liveUrl: "https://fsdev-blog-preview-card.vercel.app/",
         repoUrl: "https://github.com/gusanchefullstack/fsdev-blog-preview-card",
@@ -465,6 +524,8 @@ export const content: SiteContent = {
         description:
           "A social links profile card UI with a clean, accessible layout. Mobile-first responsive design built with TypeScript and Vite.",
         tags: ["TypeScript", "CSS", "Vite"],
+        kind: "frontend",
+        deployment: "vercel",
         image: "/projects/social-links-profile.png",
         liveUrl: "https://fsdev-social-links-profile.vercel.app",
         repoUrl: "https://github.com/gusanchefullstack/fsdev-social-links-profile",
@@ -474,6 +535,8 @@ export const content: SiteContent = {
         description:
           "Frontend Mentor NFT preview card solution showcasing a hover overlay image effect using Tailwind's group utility. Responsive, mobile-first design with custom Tailwind theme tokens.",
         tags: ["React", "TypeScript", "TailwindCSS", "Vite"],
+        kind: "frontend",
+        deployment: "vercel",
         image: "/projects/nft-preview-card.png",
         liveUrl: "https://fsdev-nft-preview-card-component.vercel.app/",
         repoUrl: "https://github.com/gusanchefullstack/fsdev-NFT-preview-card-component",

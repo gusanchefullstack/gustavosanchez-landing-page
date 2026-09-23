@@ -82,6 +82,7 @@ Icon sources used:
 ## Adding/changing content
 
 - **Text, projects, social links, stack items** → `src/config/content.ts` only, no component changes needed.
+- **New project** → every entry needs a required `kind: "frontend" | "fullstack"` (the build fails without it). Optional `deployment` takes one `DeployPlatform` or an array (`["vercel", "render"]`) — omit it entirely for undeployed projects. Optional `sdd: true` marks spec-driven builds. All three render as badges at the top of the card.
 - **New stack icon** → add entry to `stackIconMap` in `src/utils/icons.tsx`, reference key in `content.ts`.
 - **New section** → create `src/components/NewSection.tsx` as a React component, import and compose in `src/App.tsx`.
 
