@@ -65,8 +65,7 @@ npm run preview
 │   │   ├── Social.tsx            # Social profile cards
 │   │   └── Stack.tsx             # Tech stack grouped by category
 │   ├── config/
-│   │   ├── content.ts            # ← All site copy, projects, links (edit here)
-│   │   └── theme.ts              # Theme tokens mirroring CSS variables
+│   │   └── content.ts            # ← All site copy, projects, links (edit here)
 │   ├── hooks/
 │   │   ├── useActiveSection.ts        # IntersectionObserver hook for active nav link
 │   │   ├── useIntroTaglineTypewriter.ts  # Plain-text typing then rich reveal (last N tagline paragraphs)

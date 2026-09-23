@@ -69,7 +69,6 @@ Icon sources used:
 | File | Purpose |
 |---|---|
 | `src/config/content.ts` | All site copy, projects, social links, stack groups — edit here to personalise |
-| `src/config/theme.ts` | Theme tokens as TS constants mirroring CSS variables |
 | `src/style.css` | All styles: `@theme` variables, BEM component classes, responsive breakpoints |
 | `src/utils/icons.tsx` | Icon maps (`stackIconMap`, `socialIconMap`) plus named icon exports |
 | `src/App.tsx` | Root component — composes Sidebar, all sections, footer |
