@@ -257,6 +257,18 @@ export const content: SiteContent = {
       "A selection of recent work spanning web apps, developer tools, and creative experiments.",
     items: [
       {
+        title: "GitHub User Search App",
+        description:
+          "Frontend Mentor challenge — a React 19 + TypeScript app that looks up any GitHub user through the GitHub REST API and shows their profile card with light/dark themes, responsive layouts, and friendly error states. Built spec-first with GitHub Spec Kit and tested with 34 Vitest + React Testing Library tests.",
+        tags: ["React 19", "TypeScript", "Vite", "CSS Modules", "Vitest"],
+        kind: "frontend",
+        deployment: "vercel",
+        sdd: true,
+        image: "/projects/github-user-search-app.png",
+        liveUrl: "https://fsdev-github-user-search-app.vercel.app",
+        repoUrl: "https://github.com/gusanchefullstack/fsdev-github-user-search-app",
+      },
+      {
         title: "Advice Generator App",
         description:
           "Frontend Mentor challenge — a single-page app that serves a random piece of advice and fetches a new one at the roll of a dice, powered by the Advice Slip API. Built spec-first: the constitution, specification, plan, and task breakdown were each committed before any source file existed. Built with React 19, TypeScript, Vite, and CSS Modules.",
