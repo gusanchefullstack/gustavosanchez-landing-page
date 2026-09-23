@@ -18,7 +18,7 @@ React 19 + TypeScript + Vite SPA. All UI is declarative JSX; no imperative DOM m
 
 ```
 src/config/content.ts       ← single source of truth for all text/data
-src/utils/icons.tsx         ← react-icons component map (stackIconMap, socialIconMap)
+src/utils/icons.tsx         ← react-icons component maps + named icon exports
 src/hooks/useScrollReveal.ts  ← IntersectionObserver hook for .reveal fade-in
 src/hooks/useActiveSection.ts ← IntersectionObserver hook for active nav link
        ↓
@@ -49,10 +49,19 @@ const Icon = stackIconMap[item.icon];
 {Icon ? <Icon size={36} color="currentColor" /> : <span>{item.icon}</span>}
 ```
 
+Icons that are **not** keyed from `content.ts` are plain named exports instead of map
+entries — `LiveDemoIcon` / `SourceCodeIcon` (project card links), `CursorIcon`,
+`FrontendMastersIcon`. Import them directly:
+```tsx
+<LiveDemoIcon size={15} aria-hidden="true" />
+```
+react-icons does not set `aria-hidden`, so pass it explicitly on decorative icons.
+
 Icon sources used:
 - `react-icons/si` — SimpleIcons (most tech logos)
 - `react-icons/vsc` — VS Code icon set (`VscVscode`)
 - `react-icons/fa6` — Font Awesome 6 (`FaLinkedin`)
+- `react-icons/fi` — Feather (`FiArrowUpRight`)
 - Cursor AI — `CursorIcon` custom component with official multi-color SVG
 
 ## Key files
@@ -62,7 +71,7 @@ Icon sources used:
 | `src/config/content.ts` | All site copy, projects, social links, stack groups — edit here to personalise |
 | `src/config/theme.ts` | Theme tokens as TS constants mirroring CSS variables |
 | `src/style.css` | All styles: `@theme` variables, BEM component classes, responsive breakpoints |
-| `src/utils/icons.tsx` | Icon component map; exports `stackIconMap` and `socialIconMap` |
+| `src/utils/icons.tsx` | Icon maps (`stackIconMap`, `socialIconMap`) plus named icon exports |
 | `src/App.tsx` | Root component — composes Sidebar, all sections, footer |
 | `src/hooks/useScrollReveal.ts` | IntersectionObserver ref hook for scroll-reveal |
 | `src/hooks/useActiveSection.ts` | IntersectionObserver hook returning active section id |
@@ -78,11 +87,15 @@ Icon sources used:
 - **Sidebar nav active state**: animated `scaleX` underline via `::after` pseudo-element transitioning from 0 → 1.
 - **Scroll reveal**: elements with class `reveal` fade in via `IntersectionObserver` adding `reveal--visible`.
 - **CSS custom properties in style prop**: use `style={{ "--brand-color": value } as CSSProperties}` — the type assertion is required.
+- **Project card heights**: all cards are locked to one height — `grid-auto-rows: 1fr` on `.projects-grid`, `.project-card` as a flex column, `.project-card__links` pinned with `margin-top: auto`. The badge row, title (2-line clamp), description (3-line clamp) and tag row each clamp **and** reserve their space with `min-height`. Changing a clamp, a font size or a line-height means re-measuring the matching `min-height`, or the cards go ragged again. Verify by asserting every `.project-card` reports the same `offsetHeight`.
+- **Link contrast**: project card links use `--color-text-link` (#9d97ff, 5.79:1 on cards). Do not unify them with `--color-text-accent` (#6c63ff) — that is the tag-chip colour and measures 3.39:1, below WCAG AA.
 
 ## Adding/changing content
 
 - **Text, projects, social links, stack items** → `src/config/content.ts` only, no component changes needed.
 - **New project** → every entry needs a required `kind: "frontend" | "fullstack"` (the build fails without it). Optional `deployment` takes one `DeployPlatform` or an array (`["vercel", "render"]`) — omit it entirely for undeployed projects. Optional `sdd: true` marks spec-driven builds. All three render as badges at the top of the card.
+- **Project tags** → cards render at most `MAX_VISIBLE_TAGS` (4) plus a `+N` chip. `orderTags` hoists tags matching the active filter to the front, so a filtered card always visibly shows the tag it matched. Both live in `Projects.tsx`; the filter itself still matches against the full `tags` array.
+- **New card link** → give it a unique `aria-label` (`` `Live Demo for ${project.title}` ``). The visible text repeats across every card, so without one the screen-reader link list is ambiguous; keep the visible text at the start of the label for WCAG 2.5.3.
 - **New stack icon** → add entry to `stackIconMap` in `src/utils/icons.tsx`, reference key in `content.ts`.
 - **New section** → create `src/components/NewSection.tsx` as a React component, import and compose in `src/App.tsx`.
 
