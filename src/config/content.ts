@@ -257,6 +257,18 @@ export const content: SiteContent = {
       "A selection of recent work spanning web apps, developer tools, and creative experiments.",
     items: [
       {
+        title: "Nelson — Budget Control App",
+        description:
+          "A full-stack personal budget app — plan income and expenses by category, get budget items automatically split into expected-occurrence \"buckets\", and record transactions that land in the right bucket by date. Tracks estimated vs. actual amounts with over-budget and missed-payment alerts and reports, supports USD and COP across timezones, and offers three ways to build a budget (quick entry, a guided stepper, or a drag-and-drop tree editor), with light/dark themes and WCAG-checked colors and charts. Built spec-first with GitHub Spec Kit; backend uses Better Auth, Zod validation, and Temporal-based date handling.",
+        tags: ["React 19", "TypeScript", "Vite", "TanStack Query", "TanStack Router", "Express", "Prisma", "PostgreSQL"],
+        kind: "fullstack",
+        deployment: "vercel",
+        sdd: true,
+        image: "/projects/nelson-budget-control-app.png",
+        liveUrl: "https://fsdev-nelson-budget-frontend.vercel.app",
+        repoUrl: "https://github.com/gusanchefullstack/fsdev-nelson-budget-frontend",
+      },
+      {
         title: "FX Checker",
         description:
           "Frontend Mentor challenge — a currency converter with live central-bank exchange rates, a searchable currency picker, a live-markets ticker, and a rate-history chart from 1 day to 5 years, plus multi-currency compare, favorites, and a browser-saved conversion log. Adds shareable pair URLs, keyboard shortcuts, CSV export, an offline fallback, and a 100 Lighthouse accessibility score. Built spec-first with GitHub Spec Kit and tested with 121 Vitest + React Testing Library tests, with rates from the Frankfurter API.",
