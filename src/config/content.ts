@@ -305,18 +305,6 @@ export const content: SiteContent = {
         repoUrl: "https://github.com/gusanchefullstack/fsdev-advice-generator-app",
       },
       {
-        title: "Entertainment Web App",
-        description:
-          "Frontend Mentor full-stack challenge — browse, search, and bookmark movies and TV series behind real per-user accounts, backed by a separate Express/Prisma API service. Responsive at 375/768/1440 per the Figma design, with 129 automated tests (87 frontend, 42 backend) and a 100 Lighthouse accessibility score on all four browse routes. Built with React 19, React Router, Vite, TypeScript, and CSS Modules on the frontend; Express, Prisma, and Prisma Postgres on the backend; deployed on Vercel and Render.",
-        tags: ["React 19", "TypeScript", "Vite", "React Router", "CSS Modules", "Express", "Prisma", "PostgreSQL"],
-        kind: "fullstack",
-        deployment: ["vercel", "render"],
-        sdd: true,
-        image: "/projects/entertainment-web-app.png",
-        liveUrl: "https://frontend-kappa-three-73.vercel.app/",
-        repoUrl: "https://github.com/gusanchefullstack/fsdev-entertainment-web-app-frontend",
-      },
-      {
         title: "Bookmark Manager App",
         description:
           "A full-stack bookmark manager (Frontend Mentor challenge) — save, search, filter by tags, sort, archive/pin bookmarks, and toggle light/dark theme, behind real user accounts (JWT auth) rather than a static mock. Built with React 19, TypeScript, Vite, Express, Prisma, PostgreSQL (Neon), and Resend.",
@@ -394,17 +382,6 @@ export const content: SiteContent = {
         repoUrl: "https://github.com/gusanchefullstack/fsdev-flashcard-app",
       },
       {
-        title: "Shortly — URL Shortening API",
-        description:
-          "Frontend Mentor challenge — a responsive URL shortening landing page that integrates with the CleanURI API to shorten links, persists results in localStorage across page refreshes, and features one-click clipboard copy with visual feedback. Includes accessible form validation and a full Vitest test suite. Built with React 19, TypeScript, Vite, and CSS Modules.",
-        tags: ["React 19", "TypeScript", "Vite", "CSS Modules", "CleanURI API", "localStorage", "Vitest"],
-        kind: "frontend",
-        deployment: "vercel",
-        image: "https://raw.githubusercontent.com/gusanchefullstack/fsdev-url-shortening-api-landing-page/main/screenshots/desktop-1440px.png",
-        liveUrl: "https://fsdev-url-shortening-api-landing-pa.vercel.app",
-        repoUrl: "https://github.com/gusanchefullstack/fsdev-url-shortening-api-landing-page",
-      },
-      {
         title: "Savings Tracker",
         description:
           "Frontend Mentor premium challenge — a savings goals tracker SPA with full goal CRUD, deposit tracking, monthly bar chart (Recharts), filter/sort controls, and a responsive card grid layout. Data persists via localStorage across sessions. Built with React 19, TypeScript, Vite, and CSS Modules.",
@@ -449,39 +426,6 @@ export const content: SiteContent = {
         repoUrl: "https://github.com/gusanchefullstack/fsdev-ip-address-tracker",
       },
       {
-        title: "Weather App",
-        description:
-          "Frontend Mentor challenge — a responsive weather app that searches any city worldwide and displays current conditions, a 7-day daily forecast, and an hourly breakdown. Metric/Imperial unit toggle re-fetches data live. Built mobile-first with semantic HTML, vanilla JS (ES modules), CSS custom properties, and Vite. No API key required — powered by Open-Meteo.",
-        tags: ["HTML", "CSS", "JavaScript", "Vite", "Open-Meteo API"],
-        kind: "frontend",
-        deployment: "vercel",
-        image: "/projects/weather-app.png",
-        liveUrl: "https://fsdev-weather-app-dev.vercel.app",
-        repoUrl: "https://github.com/gusanchefullstack/fsdev-weather-app",
-      },
-      {
-        title: "Character Counter",
-        description:
-          "Frontend Mentor challenge — a real-time text analyzer with character, word, and sentence counts; approximate reading time; letter density with sort + collapse; and a persistent dark/light theme. Built mobile-first with semantic HTML, vanilla JS (ES modules), CSS custom properties for design tokens, and Vite. WCAG-minded focus states and prefers-reduced-motion support.",
-        tags: ["HTML", "CSS", "JavaScript", "Vite"],
-        kind: "frontend",
-        deployment: "vercel",
-        image: "/projects/character-counter.png",
-        liveUrl: "https://fsdev-character-counter.vercel.app/",
-        repoUrl: "https://github.com/gusanchefullstack/fsdev-character-counter",
-      },
-      {
-        title: "Intro Section with Dropdown Navigation",
-        description:
-          "Frontend Mentor challenge — a responsive landing page with interactive dropdown navigation menus, a slide-in mobile sidebar with overlay, and a two-column hero layout. Built with semantic HTML, CSS custom properties, vanilla JS, and Vite; three breakpoints for mobile, tablet, and desktop.",
-        tags: ["HTML", "CSS", "JavaScript", "Vite"],
-        kind: "frontend",
-        deployment: "vercel",
-        image: "/projects/intro-section-dropdown-nav.png",
-        liveUrl: "https://fsdev-intro-section-with-dropdown-navigation-60umnjew7.vercel.app",
-        repoUrl: "https://github.com/gusanchefullstack/fsdev-intro-section-with-dropdown-navigation",
-      },
-      {
         title: "Body Mass Index Calculator",
         description:
           "Frontend Mentor challenge — a responsive BMI calculator with metric and imperial unit support, live calculation, weight classification, and healthy weight range. Built mobile-first with vanilla HTML/CSS/JS and Vite; design tokens parameterize colors, gradients, and typography.",
@@ -491,47 +435,6 @@ export const content: SiteContent = {
         image: "/projects/bmi-calculator.png",
         liveUrl: "https://fsdev-bmi-calculator-figma-hm1yyo0s0-gustavo-sanchezs-projects.vercel.app",
         repoUrl: "https://github.com/gusanchefullstack/fsdev-bmi-calculator-figma-dev",
-      },
-      {
-        title: "Budgeteer",
-        description:
-          "Full-stack personal budgeting app: hierarchical categories, groups, and items; calendar-based tracking buckets by frequency; planned vs actual progress; immutable transaction ledger. React UI with Express, Prisma, and MongoDB Atlas.",
-        tags: [
-          "React",
-          "TypeScript",
-          "Express",
-          "Prisma",
-          "MongoDB",
-          "TanStack Query",
-          "Tailwind CSS",
-        ],
-        kind: "fullstack",
-        image: "/projects/budgeteer-dashboard.png",
-        repoUrl: "https://github.com/gusanchefullstack/budgeteerApp",
-      },
-      {
-        title: "Officelite Coming Soon Site",
-        description:
-          "Frontend Mentor challenge — a 2-page coming soon site with pricing plans, a live 30-day countdown timer, and a sign-up form with custom-styled select and validation. Built mobile-first with vanilla HTML/CSS/JS and Vite; design tokens parameterize colors, typography, and spacing.",
-        tags: ["HTML", "CSS", "JavaScript", "Vite"],
-        kind: "frontend",
-        deployment: "vercel",
-        image: "/projects/officelite-coming-soon.png",
-        liveUrl: "https://fsdev-officelite-coming-soon-site-d.vercel.app",
-        repoUrl:
-          "https://github.com/gusanchefullstack/fsdev-officelite-coming-soon-site",
-      },
-      {
-        title: "Interactive Card Details Form",
-        description:
-          "Frontend Mentor challenge — an interactive credit card details form with real-time card preview, input formatting, validation, and a success state. Built mobile-first with vanilla HTML/CSS/JS and Vite; design tokens parameterize colors, gradients, and typography.",
-        tags: ["HTML", "CSS", "JavaScript", "Vite"],
-        kind: "frontend",
-        deployment: "vercel",
-        image: "/projects/interactive-card-details-form.png",
-        liveUrl: "https://fsdev-interactive-card-details-form.vercel.app/",
-        repoUrl:
-          "https://github.com/gusanchefullstack/fsdev-interactive-card-details-form",
       },
       {
         title: "QR Code Component",
