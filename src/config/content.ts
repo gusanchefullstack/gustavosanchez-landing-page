@@ -31,8 +31,6 @@ export interface IntroContent {
   name: string;
   /** Primary headline (e.g. role positioning) */
   headline: IntroTextSpan[];
-  /** Secondary line under the headline */
-  subheadline: IntroTextSpan[];
   /** Body paragraphs; each array is one paragraph of mixed plain / accented spans */
   taglineParagraphs: IntroTextSpan[][];
   ctaLabel: string;
@@ -150,44 +148,35 @@ export const content: SiteContent = {
     greeting: "Hello, I am",
     name: "Gustavo Sanchez",
     headline: [
-      { text: "Building at the Intersection of Software " },
-      { text: "Engineering", accent: true, accentTone: 0 },
-      { text: ", " },
-      { text: "AI", accent: true, accentTone: 2 },
-      { text: " and " },
-      { text: "Sales", accent: true, accentTone: 4 },
-      { text: "." },
-    ],
-    subheadline: [
       {
-        text: "Software Engineer focused in fullstack applications & always in ",
+        text: "I’m an engineer (in electronic and telecommunications) from Colombia 🇨🇴. Recently I moved to the US and I’m dedicated to continue my pathway as software engineer.",
       },
-      { text: "learning mode", accent: true, accentGradient: true },
-      { text: "." },
     ],
     taglineParagraphs: [
       [
         {
-          text: "I build modern web experiences with clean code, thoughtful architecture and a passion for great user interfaces. Because today the operational part of coding is already AI assisted, the key contributions of an engineer are ",
+          text: "I love to build modern web experiences using clean code, thoughtful architectures and great user interfaces. Because today the operational part of coding is already AI assisted or even replaced, the key contributions of an engineer are ",
         },
-        { text: "judgment", accent: true, accentTone: 3 },
+        { text: "judgment", accent: true, accentGradient: true },
         { text: " and " },
-        { text: "business acumen", accent: true, accentTone: 0 },
+        { text: "business acumen", accent: true, accentGradient: true },
+        { text: " to understand why and when to build, " },
+        { text: "execution planning", accent: true, accentGradient: true },
+        { text: " to orchestrate AI agents and to " },
+        { text: "make decisions", accent: true, accentGradient: true },
         {
-          text: " to understand why and when to build, ",
+          text: " about architecture and integrations based in solid technical background and systems design.",
         },
-        { text: "execution planning", accent: true, accentTone: 4 },
-        {
-          text: " to orchestrate AI agents and to ",
-        },
-  
-        { text: "make decisions", accent: true, accentTone: 1 },
-        { text: " about architecture and integrations." },
       ],
       [
         {
-          text: "My massive transformation purpose is to help people to elevate their lives up to their full potential through technology adoption",
+          text: "In this new journey of my career I want to craft software solutions leveraging my previous knowledge of systems engineering and software B2B sales to combine them with new learnings about Artificial Intelligence for designing, developing and deployment of powerful AI apps.",
         },
+      ],
+      [
+        { text: "This new time demands from us an " },
+        { text: "always be learning", accent: true, accentGradient: true },
+        { text: " mindset." },
       ],
     ],
     ctaLabel: "View my work",

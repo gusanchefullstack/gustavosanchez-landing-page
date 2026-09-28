@@ -398,7 +398,7 @@ a:hover {
   margin-bottom: 0.4rem;
 }
 
-/* Brand gradient highlight (e.g. "learning mode" subheadline) */
+/* Brand gradient highlight (`accentGradient` spans) */
 .intro__title-accent {
   font-weight: 600;
   background: linear-gradient(
@@ -446,58 +446,14 @@ a:hover {
   margin-bottom: 3.25rem;
 }
 
+/* All tagline paragraphs share one size, slightly larger than the inherited tagline size */
 .intro__tagline p {
   margin: 0;
+  font-size: 1.12em;
 }
 
 .intro__tagline p + p {
   margin-top: 1rem;
-}
-
-/* Closing paragraphs: slightly larger than the inherited tagline size */
-.intro__tagline p:nth-last-child(-n + 2) {
-  font-size: 1.12em;
-}
-
-/* Opening tagline paragraph (“I build modern web experiences…”) — +15% vs closing-paragraph size */
-.intro__tagline > p:first-of-type {
-  font-size: 1.288em;
-}
-
-.intro__tagline-typewriter {
-  min-height: 1.6em;
-}
-
-.intro__typewriter-cursor {
-  display: inline-block;
-  width: 0.08em;
-  height: 1em;
-  margin-left: 1px;
-  vertical-align: -0.12em;
-  background: linear-gradient(
-    180deg,
-    var(--color-accent-start),
-    var(--color-accent-end)
-  );
-  animation: intro-typewriter-blink 0.95s step-end infinite;
-}
-
-@keyframes intro-typewriter-blink {
-  0%,
-  50% {
-    opacity: 1;
-  }
-  51%,
-  100% {
-    opacity: 0;
-  }
-}
-
-@media (prefers-reduced-motion: reduce) {
-  .intro__typewriter-cursor {
-    animation: none;
-    opacity: 1;
-  }
 }
 
 .intro__cta {

@@ -1,6 +1,5 @@
 import type { IntroTextSpan } from "../config/content.ts";
 import { content } from "../config/content.ts";
-import { useIntroTaglineTypewriter } from "../hooks/useIntroTaglineTypewriter.ts";
 import { useScrollReveal } from "../hooks/useScrollReveal.ts";
 
 function renderIntroSpans(parts: IntroTextSpan[]) {
@@ -28,19 +27,11 @@ export function Intro() {
     greeting,
     name,
     headline,
-    subheadline,
     taglineParagraphs,
     ctaLabel,
     ctaHref,
     photo,
   } = content.intro;
-
-  const typewriter = useIntroTaglineTypewriter(taglineParagraphs, {
-    lastParagraphCount: 2,
-    msPerChar: 18,
-    plainToRichMs: 120,
-    betweenParagraphMs: 450,
-  });
 
   return (
     <section id="intro" className="intro">
@@ -52,27 +43,11 @@ export function Intro() {
             <span className="intro__title-line intro__title-line--headline">
               {renderIntroSpans(headline)}
             </span>
-            <span className="intro__title-line">{renderIntroSpans(subheadline)}</span>
           </h2>
           <div className="intro__tagline">
-            {taglineParagraphs.map((para, pi) => {
-              if (pi < typewriter.twStart) {
-                return <p key={pi}>{renderIntroSpans(para)}</p>;
-              }
-              if (typewriter.completedRich[pi]) {
-                return <p key={pi}>{renderIntroSpans(para)}</p>;
-              }
-              if (typewriter.typingIndex === pi) {
-                const full = typewriter.fullTexts[pi - typewriter.twStart];
-                return (
-                  <p key={pi} className="intro__tagline-typewriter">
-                    {full.slice(0, typewriter.plainLen)}
-                    <span className="intro__typewriter-cursor" aria-hidden />
-                  </p>
-                );
-              }
-              return null;
-            })}
+            {taglineParagraphs.map((para, pi) => (
+              <p key={pi}>{renderIntroSpans(para)}</p>
+            ))}
           </div>
           <a className="intro__cta" href={ctaHref}>
             {ctaLabel} &darr;

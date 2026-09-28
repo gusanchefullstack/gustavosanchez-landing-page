@@ -11,7 +11,7 @@ A personal developer portfolio and landing page built with React 19, TypeScript,
 
 | Section | Description |
 |---|---|
-| **Intro** | Hero with profile photo, name, two-line headline (rich text spans), multi-paragraph tagline with optional typewriter on the last two paragraphs, and CTA |
+| **Intro** | Hero with profile photo, name, headline (rich text spans), multi-paragraph tagline, and CTA |
 | **Stack** | Tech skills grouped by category (Frontend, Backend, API, Database, Dev Tools) with react-icons |
 | **Projects** | Card grid showcasing featured work with tags and links; filterable by title (text search) and technology (tag chips with AND logic) |
 | **Social** | Profile cards for LinkedIn, GitHub, Hashnode, X, Bluesky, Frontend Mentor, Frontend Masters |
@@ -68,8 +68,6 @@ npm run preview
 │   │   └── content.ts            # ← All site copy, projects, links (edit here)
 │   ├── hooks/
 │   │   ├── useActiveSection.ts        # IntersectionObserver hook for active nav link
-│   │   ├── useIntroTaglineTypewriter.ts  # Plain-text typing then rich reveal (last N tagline paragraphs)
-│   │   ├── usePrefersReducedMotion.ts    # `prefers-reduced-motion` for accessible motion defaults
 │   │   └── useScrollReveal.ts         # IntersectionObserver hook for scroll-reveal
 │   ├── utils/
 │   │   └── icons.tsx             # react-icons component maps
@@ -94,10 +92,10 @@ Edit values there — no component changes needed for most copy updates. The Typ
 
 **Intro copy** is structured as span arrays:
 
-- **`headline`** / **`subheadline`** — arrays of `IntroTextSpan` (`text`, optional `accent`, `accentTone`, `accentGradient`).
+- **`headline`** — array of `IntroTextSpan` (`text`, optional `accent`, `accentTone`, `accentGradient`).
 - **`accentTone`** (`0`–`4`) maps to gray/white emphasis in CSS (`.intro__accent--*`).
 - **`accentGradient: true`** uses the brand gradient (e.g. “learning mode”) instead of gray tones.
-- **`taglineParagraphs`** — each paragraph is an array of spans; the **last two** paragraphs use a **typewriter** effect by default (plain characters first, then accented markup). Timing is configured in `Intro.tsx` (`useIntroTaglineTypewriter`). Users with **`prefers-reduced-motion: reduce`** see full rich text immediately.
+- **`taglineParagraphs`** — each paragraph is an array of spans.
 
 ### Change the visual theme
 All colours, fonts, spacing, and transition speeds are CSS custom properties in the `@theme {}` block at the top of `src/style.css`:
@@ -157,8 +155,6 @@ src/config/content.ts              ← single source of truth
 src/utils/icons.tsx              ← react-icons component maps
 src/hooks/useScrollReveal.ts     ← scroll-reveal IntersectionObserver
 src/hooks/useActiveSection.ts    ← active nav IntersectionObserver
-src/hooks/useIntroTaglineTypewriter.ts  ← intro tagline typewriter (last paragraphs)
-src/hooks/usePrefersReducedMotion.ts    ← reduced-motion preference
         ↓
 src/components/*.tsx             ← React components
         ↓
@@ -201,7 +197,6 @@ Icons use `color="currentColor"` so CSS controls their colour. The Cursor AI ico
 |---|---|
 | Active nav link | `useActiveSection` hook — `IntersectionObserver` returns current section id |
 | Scroll-reveal | `useScrollReveal` hook — adds `.reveal--visible` when element enters viewport |
-| Intro tagline typewriter | `useIntroTaglineTypewriter` — types plain text, then swaps to `IntroTextSpan` markup; disabled when `usePrefersReducedMotion` is true |
 | Nav underline animation | CSS `::after` pseudo-element, `transform: scaleX()` transition |
 | Mobile sidebar | `useState(isOpen)` drives `.sidebar--open` and overlay visibility |
 | Contact form | `@formspree/react` — `useForm` hook handles submission, validation errors, and success state |
@@ -226,7 +221,7 @@ To use your own form endpoint, replace the form ID string in `src/components/Con
 - **Gradients** — always `135deg` from `--color-accent-start` → `--color-accent-end`
 - **Hover elevations** — `translateY(-4px)` on cards, `translateY(-2px)` on buttons
 - **Responsive breakpoints** — `900px` (sidebar → hamburger), `600px` (further mobile)
-- **Intro** — `.intro__title` scales both headline lines; `.intro__accent--0`…`--4` are gray/white keyword highlights; `.intro__title-accent` is the gradient highlight; `.intro__typewriter-cursor` styles the tagline cursor. Layout/spacing for the hero is tuned under `.intro` (including a `901px` media query).
+- **Intro** — `.intro__title` scales both headline lines; `.intro__accent--0`…`--4` are gray/white keyword highlights; `.intro__title-accent` is the gradient highlight. Layout/spacing for the hero is tuned under `.intro` (including a `901px` media query).
 
 ## What I learned
 
@@ -235,7 +230,7 @@ This project is both a personal portfolio and a learning log. Notes captured alo
 ### Architecture
 - **Content-driven UI.** A single `src/config/content.ts` typed with `SiteContent` keeps copy, projects, stack, and social links out of component files. Components stay about rendering; edits never require touching JSX.
 - **Client-side filtering with `useMemo`.** The Projects filter derives the unique tag list and the filtered items via memoized selectors over `content.projects.items` — avoids recomputation on every render and keeps the component readable.
-- **Hooks over imperative DOM.** `IntersectionObserver` logic lives in `useScrollReveal` / `useActiveSection`; reduced-motion handling in `usePrefersReducedMotion`. Composable, testable, no manual cleanup boilerplate in components.
+- **Hooks over imperative DOM.** `IntersectionObserver` logic lives in `useScrollReveal` / `useActiveSection`. Composable, testable, no manual cleanup boilerplate in components.
 
 ### Tooling & stack
 - **React 19 + `jsx: react-jsx`** — no per-file `import React`; the runtime handles it.
@@ -255,7 +250,6 @@ This project is both a personal portfolio and a learning log. Notes captured alo
 
 ### Errors solved
 - **Vite port collision.** `5173` was in use; Vite auto-falls back to `5174`. Always read the actual URL from the dev server log instead of assuming.
-- **Invisible typewriter cursor under reduced motion.** Fixed by gating the typewriter hook on `usePrefersReducedMotion` so users who opt out see the full rich markup immediately.
 - **`verbatimModuleSyntax` build failures.** Type-only imports (e.g. `CSSProperties`) must use `import type`, otherwise the emitted JS retains an unused runtime import and fails type-check.
 
 ## Author
