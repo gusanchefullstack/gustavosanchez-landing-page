@@ -246,6 +246,18 @@ export const content: SiteContent = {
       "A selection of recent work spanning web apps, developer tools, and creative experiments.",
     items: [
       {
+        title: "Nelson — Personal Budget App",
+        description:
+          "\"Every dollar, on the wing.\" A full-stack personal budget app that tracks every expected payment in its own bucket, with live balances, Guided or Complete budget creation, forecast-vs-actual reports with projections and insights, and in-app threshold alerts. Features a low-poly 3D hummingbird landing (React Three Fiber), light/dark themes, and WCAG 2.2 AA axe audits at 375/768/1440 px with Playwright. Built spec-first with GitHub Spec Kit; the Express 5 + Prisma 7 backend on Neon PostgreSQL uses Better Auth, Zod, and the Temporal API.",
+        tags: ["React 19", "TypeScript", "Vite", "TanStack Query", "TanStack Router", "TailwindCSS", "Recharts", "Express", "Prisma", "PostgreSQL", "Vitest"],
+        kind: "fullstack",
+        deployment: "vercel",
+        sdd: true,
+        image: "/projects/nelson-personal-budget-app.png",
+        liveUrl: "https://fsdev-nelson-frontend.vercel.app",
+        repoUrl: "https://github.com/gusanchefullstack/fsdev-nelson-frontend",
+      },
+      {
         title: "Nelson — Budget Control App",
         description:
           "A full-stack personal budget app — plan income and expenses by category, get budget items automatically split into expected-occurrence \"buckets\", and record transactions that land in the right bucket by date. Tracks estimated vs. actual amounts with over-budget and missed-payment alerts and reports, supports USD and COP across timezones, and offers three ways to build a budget (quick entry, a guided stepper, or a drag-and-drop tree editor), with light/dark themes and WCAG-checked colors and charts. Built spec-first with GitHub Spec Kit; backend uses Better Auth, Zod validation, and Temporal-based date handling.",
