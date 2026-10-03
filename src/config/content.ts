@@ -246,6 +246,16 @@ export const content: SiteContent = {
       "A selection of recent work spanning web apps, developer tools, and creative experiments.",
     items: [
       {
+        title: "IdiomsMasterGirl — Daily Idiom Practice",
+        description:
+          "\"One idiom a day: learn it, say it, write it.\" A local-first English practice partner I built for my wife, an A2 learner in San Francisco. Each day she hears a curated idiom in a natural American voice, records herself twice and gets accuracy and clarity scores with warm tips that name the exact words she missed. She then writes three sentences that the tutor grades and corrects, and reads them aloud, with a daily score, a 30-day chart and a streak. The open core runs on the laptop: Gemma 4 via Ollama as the tutor and faster-whisper for speech recognition with per-word confidence, so her recordings never leave the device. ElevenLabs voice is opt-in and cached. Built spec-first with GitHub Spec Kit.",
+        tags: ["Next.js 16", "TypeScript", "Ollama", "faster-whisper", "React 19", "Gemma", "Python", "FastAPI", "SQLite", "ElevenLabs", "Vitest"],
+        kind: "fullstack",
+        sdd: true,
+        image: "/projects/idioms-master-girl.png",
+        repoUrl: "https://github.com/gusanchefullstack/idioms-master-girl",
+      },
+      {
         title: "Nelson — Personal Budget App",
         description:
           "\"Every dollar, on the wing.\" A full-stack personal budget app that tracks every expected payment in its own bucket, with live balances, Guided or Complete budget creation, forecast-vs-actual reports with projections and insights, and in-app threshold alerts. Features a low-poly 3D hummingbird landing (React Three Fiber), light/dark themes, and WCAG 2.2 AA axe audits at 375/768/1440 px with Playwright. Built spec-first with GitHub Spec Kit; the Express 5 + Prisma 7 backend on Neon PostgreSQL uses Better Auth, Zod, and the Temporal API.",
