@@ -249,7 +249,7 @@ export const content: SiteContent = {
         title: "IdiomsMasterGirl — Daily Idiom Practice",
         description:
           "\"One idiom a day: learn it, say it, write it.\" A local-first English practice partner I built for my wife, an A2 learner in San Francisco. Each day she hears a curated idiom in a natural American voice, records herself twice and gets accuracy and clarity scores with warm tips that name the exact words she missed. She then writes three sentences that the tutor grades and corrects, and reads them aloud, with a daily score, a 30-day chart and a streak. The open core runs on the laptop: Gemma 4 via Ollama as the tutor and faster-whisper for speech recognition with per-word confidence, so her recordings never leave the device. ElevenLabs voice is opt-in and cached. Built spec-first with GitHub Spec Kit.",
-        tags: ["Next.js 16", "TypeScript", "Ollama", "faster-whisper", "React 19", "Gemma", "Python", "FastAPI", "SQLite", "ElevenLabs", "Vitest"],
+        tags: ["AI", "Next.js 16", "Ollama", "faster-whisper", "TypeScript", "React 19", "Gemma", "Python", "FastAPI", "SQLite", "ElevenLabs", "Vitest"],
         kind: "fullstack",
         sdd: true,
         image: "/projects/idioms-master-girl.png",
