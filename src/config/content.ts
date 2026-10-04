@@ -486,11 +486,12 @@ export const content: SiteContent = {
     subtitle: "Writing",
     title: "Blog",
     description:
-      "Thoughts on web development, software engineering, and the intersection of technology and business — published on Hashnode.",
+      "Thoughts on web development, software engineering, and the intersection of technology and business — published on Hashnode and DEV.",
     hashnodeUrl: "https://hashnode.com/@gusanchedev",
     items: [
       // Add entries here as you publish posts on Hashnode:
       // { title: "My First Post", url: "https://gusanchedev.hashnode.dev/my-first-post" },
+      { title: "I Built My Wife a Patient English Idiom Coach That Runs on Our Laptop", url: "https://dev.to/gusanchedev/i-built-my-wife-a-patient-english-idiom-coach-that-runs-on-our-laptop-2m0h" },
       { title: "My learning path to software engineer", url: "https://gustavosanchez.hashnode.dev/my-learning-path-to-software-engineer" },
     ],
   },
