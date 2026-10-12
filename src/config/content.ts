@@ -112,7 +112,7 @@ export interface SiteContent {
     subtitle: string;
     title: string;
     description: string;
-    hashnodeUrl: string;
+    devUrl: string;
     items: BlogPost[];
   };
   social: {
@@ -486,13 +486,13 @@ export const content: SiteContent = {
     subtitle: "Writing",
     title: "Blog",
     description:
-      "Thoughts on web development, software engineering, and the intersection of technology and business — published on Hashnode and DEV.",
-    hashnodeUrl: "https://hashnode.com/@gusanchedev",
+      "Thoughts on web development, software engineering, and the intersection of technology and business — published on DEV.",
+    devUrl: "https://dev.to/gusanchedev",
     items: [
-      // Add entries here as you publish posts on Hashnode:
-      // { title: "My First Post", url: "https://gusanchedev.hashnode.dev/my-first-post" },
+      // Add entries here as you publish posts on DEV:
+      // { title: "My First Post", url: "https://dev.to/gusanchedev/my-first-post" },
       { title: "I Built My Wife a Patient English Idiom Coach That Runs on Our Laptop", url: "https://dev.to/gusanchedev/i-built-my-wife-a-patient-english-idiom-coach-that-runs-on-our-laptop-2m0h" },
-      { title: "My learning path to software engineer", url: "https://gustavosanchez.hashnode.dev/my-learning-path-to-software-engineer" },
+      { title: "My learning path to software engineer", url: "https://dev.to/gusanchedev/my-learning-path-to-software-engineer-2lb" },
     ],
   },
 
@@ -517,11 +517,11 @@ export const content: SiteContent = {
         brandColor: "#24292f",
       },
       {
-        platform: "Hashnode",
+        platform: "DEV",
         handle: "@gusanchedev",
-        url: "https://hashnode.com/@gusanchedev",
-        icon: "hashnode",
-        brandColor: "#2962FF",
+        url: "https://dev.to/gusanchedev",
+        icon: "devto",
+        brandColor: "#0A0A0A",
       },
       {
         platform: "X / Twitter",

@@ -4,7 +4,7 @@ import { useScrollReveal } from "../hooks/useScrollReveal.ts";
 
 export function Blog() {
   const ref = useScrollReveal<HTMLDivElement>();
-  const { subtitle, title, description, hashnodeUrl, items } = content.blog;
+  const { subtitle, title, description, devUrl, items } = content.blog;
 
   return (
     <section id="blog" className="section section--alt">
@@ -16,8 +16,8 @@ export function Blog() {
         {items.length === 0 ? (
           <p className="blog-empty">
             Posts coming soon.{" "}
-            <a href={hashnodeUrl} target="_blank" rel="noopener noreferrer">
-              Follow me on Hashnode
+            <a href={devUrl} target="_blank" rel="noopener noreferrer">
+              Follow me on DEV
             </a>{" "}
             to get notified.
           </p>

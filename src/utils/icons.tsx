@@ -14,7 +14,7 @@ import {
   SiGit,
   SiGithub,
   SiVercel,
-  SiHashnode,
+  SiDevdotto,
   SiFrontendmentor,
   SiX,
   SiBluesky,
@@ -82,7 +82,7 @@ export const socialIconMap: Record<string, ComponentType<IconProps>> = {
   linkedin: FaLinkedin,
   x: SiX,
   bluesky: SiBluesky,
-  hashnode: SiHashnode,
+  devto: SiDevdotto,
   frontendmentor: SiFrontendmentor,
   frontendmasters: FrontendMastersIcon,
 };
