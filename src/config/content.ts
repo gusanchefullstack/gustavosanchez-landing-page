@@ -503,6 +503,7 @@ export const content: SiteContent = {
     items: [
       // Add entries here as you publish posts on DEV:
       // { title: "My First Post", url: "https://dev.to/gusanchedev/my-first-post" },
+      { title: "EnglishChunks.guru — speak real English, one chunk a day, scored by open-source AI", url: "https://dev.to/gusanchedev/englishchunksguru-speak-real-english-one-chunk-a-day-scored-by-open-source-ai-5f93" },
       { title: "I Built My Wife a Patient English Idiom Coach That Runs on Our Laptop", url: "https://dev.to/gusanchedev/i-built-my-wife-a-patient-english-idiom-coach-that-runs-on-our-laptop-2m0h" },
       { title: "My learning path to software engineer", url: "https://dev.to/gusanchedev/my-learning-path-to-software-engineer-2lb" },
     ],
