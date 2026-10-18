@@ -246,6 +246,18 @@ export const content: SiteContent = {
       "A selection of recent work spanning web apps, developer tools, and creative experiments.",
     items: [
       {
+        title: "EnglishChunks.guru — Daily English Speaking Coach",
+        description:
+          "\"Real English. Ready when you need it.\" A 12-minute daily speaking coach for English learners built around chunks, the ready-made phrases native speakers use. Each day brings one chunk at your level (A1–C2): hear it with three examples, record yourself twice for a 0–100 score with a tip on the exact sounds to fix, write three sentences that come back polished, then read them aloud. Pronunciation is scored by self-hosted open models on a DigitalOcean Droplet (Silero VAD, NVIDIA Parakeet, wav2vec2 phoneme alignment), so recordings never reach a third-party API and are deleted once scored. Gemma 4 writes the feedback, gpt-oss-20b audits every library chunk, and ElevenLabs voices the audio. Includes streaks, progress charts, an admin moderation queue, Stripe plans and WCAG 2.2 AA axe checks. Built spec-first with GitHub Spec Kit.",
+        tags: ["AI", "Next.js 16", "TypeScript", "React 19", "Gemma", "Python", "FastAPI", "DigitalOcean", "PostgreSQL", "Drizzle", "Better Auth", "ElevenLabs", "Stripe", "Playwright"],
+        kind: "fullstack",
+        deployment: "vercel",
+        sdd: true,
+        image: "/projects/englishchunks-guru.png",
+        liveUrl: "https://englishchunks.guru",
+        repoUrl: "https://github.com/gusanchefullstack/englishchunks.guru",
+      },
+      {
         title: "IdiomsMasterGirl — Daily Idiom Practice",
         description:
           "\"One idiom a day: learn it, say it, write it.\" A local-first English practice partner I built for my wife, an A2 learner in San Francisco. Each day she hears a curated idiom in a natural American voice, records herself twice and gets accuracy and clarity scores with warm tips that name the exact words she missed. She then writes three sentences that the tutor grades and corrects, and reads them aloud, with a daily score, a 30-day chart and a streak. The open core runs on the laptop: Gemma 4 via Ollama as the tutor and faster-whisper for speech recognition with per-word confidence, so her recordings never leave the device. ElevenLabs voice is opt-in and cached. Built spec-first with GitHub Spec Kit.",
