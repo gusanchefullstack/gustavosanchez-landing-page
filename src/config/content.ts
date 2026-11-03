@@ -36,6 +36,34 @@ export interface IntroContent {
   ctaLabel: string;
   ctaHref: string;
   photo: string;
+  /** Small pill above the hero headline */
+  badge: { label: string; href: string };
+  /** Static start of the hero headline; one of `heroWords` is appended and rotates */
+  heroLead: string;
+  heroWords: string[];
+  /** One-sentence summary under the hero headline */
+  heroSummary: string;
+}
+
+export interface Stat {
+  value: string;
+  label: string;
+}
+
+/**
+ * A project filter chip. A project matches when it carries any of `tags`,
+ * when its description mentions `text`, or — for `sdd` — when it was built spec-driven.
+ */
+export interface ProjectFilter {
+  label: string;
+  tags?: string[];
+  text?: string;
+  sdd?: boolean;
+}
+
+export interface ProjectFilterGroup {
+  category: string;
+  filters: ProjectFilter[];
 }
 
 export interface StackItem {
@@ -96,6 +124,8 @@ export interface SiteContent {
   siteTitle: string;
   nav: NavItem[];
   intro: IntroContent;
+  /** "At a glance" row under the hero; `{projects}` is replaced with the project count */
+  stats: Stat[];
   stack: {
     subtitle: string;
     title: string;
@@ -106,6 +136,8 @@ export interface SiteContent {
     subtitle: string;
     title: string;
     description: string;
+    /** Curated chips: frameworks, methodologies and AI tooling only — no HTML/CSS/JS basics */
+    filterGroups: ProjectFilterGroup[];
     items: Project[];
   };
   blog: {
@@ -182,7 +214,32 @@ export const content: SiteContent = {
     ctaLabel: "View my work",
     ctaHref: "#projects",
     photo: "/Me.jpg",
+    badge: { label: "New: EnglishChunks.guru is live", href: "#projects" },
+    heroLead: "Engineering judgment for",
+    heroWords: [
+      "AI-powered apps.",
+      "full-stack products.",
+      "accessible interfaces.",
+      "what ships next.",
+    ],
+    heroSummary:
+      "Full-stack developer from Colombia, now in San Francisco. I plan the work, orchestrate AI agents and make the architecture calls, then ship it spec-first.",
   },
+
+  stats: [
+    {
+      value: "{projects}",
+      label: "Projects shipped, from UI challenges to full-stack AI apps.",
+    },
+    {
+      value: "Spec → Ship",
+      label: "Constitution, spec, plan, tasks. Then the agents write code.",
+    },
+    {
+      value: "WCAG AA",
+      label: "Accessibility audited with axe and Playwright on recent builds.",
+    },
+  ],
 
   stack: {
     subtitle: "Tech Stack",
@@ -244,6 +301,38 @@ export const content: SiteContent = {
     title: "Featured Projects",
     description:
       "A selection of recent work spanning web apps, developer tools, and creative experiments.",
+    filterGroups: [
+      {
+        category: "Frameworks",
+        filters: [
+          { label: "React", tags: ["React", "React 19"] },
+          { label: "Next.js", tags: ["Next.js 16"] },
+          { label: "Express", tags: ["Express"] },
+          { label: "FastAPI", tags: ["FastAPI"] },
+          { label: "Prisma", tags: ["Prisma"] },
+          { label: "TanStack", tags: ["TanStack Query", "TanStack Router"] },
+          { label: "React Router", tags: ["React Router", "React Router v6"] },
+          { label: "Tailwind CSS", tags: ["TailwindCSS"] },
+        ],
+      },
+      {
+        category: "Methodologies",
+        filters: [
+          { label: "Spec-driven", sdd: true },
+          { label: "Testing", tags: ["Vitest", "Playwright", "React Testing Library"] },
+          { label: "Accessibility", tags: ["Accessibility"], text: "WCAG" },
+        ],
+      },
+      {
+        category: "AI",
+        filters: [
+          { label: "AI apps", tags: ["AI"] },
+          { label: "Gemma", tags: ["Gemma"] },
+          { label: "Ollama", tags: ["Ollama"] },
+          { label: "Speech", tags: ["faster-whisper", "ElevenLabs"] },
+        ],
+      },
+    ],
     items: [
       {
         title: "EnglishChunks.guru — Daily English Speaking Coach",
@@ -580,5 +669,5 @@ export const content: SiteContent = {
   },
 
   footer:
-    'Designed & built with Vite, TypeScript & Tailwind CSS. Design inspired by <a href="https://html5up.net/hyperspace" target="_blank" rel="noopener">Hyperspace</a> by <a href="https://html5up.net" target="_blank" rel="noopener noreferrer">HTML5 UP</a>.',
+    "Designed &amp; built with React 19, TypeScript &amp; Vite.",
 };
