@@ -8,12 +8,15 @@ export function Contact() {
   const { subtitle, title, description, info } = content.contact;
 
   return (
-    <section id="contact" className="section">
-      <div className="section__inner reveal" ref={ref}>
-        <span className="section__subtitle">{subtitle}</span>
-        <h2 className="section__title">{title}</h2>
+    <section id="contact" className="section" aria-labelledby="contact-title">
+      <header className="section__head">
+        <span className="section__eyebrow">{subtitle}</span>
+        <h2 id="contact-title" className="section__title">
+          {title}
+        </h2>
         <p className="section__description">{description}</p>
-
+      </header>
+      <div className="reveal" ref={ref}>
         <div className="contact-grid">
           <form className="contact-form" onSubmit={handleSubmit}>
             <div className="contact-form__group">
@@ -65,13 +68,17 @@ export function Contact() {
               errors={state.errors}
             />
             <button
-              className="contact-form__submit"
+              className="button button--primary contact-form__submit"
               type="submit"
               disabled={state.submitting}
             >
               {state.submitting ? "Sending..." : "Send Message \u2192"}
             </button>
-            {state.succeeded ? <p>Message sent!</p> : null}
+            {state.succeeded ? (
+              <p className="contact-form__success" role="status">
+                Message sent!
+              </p>
+            ) : null}
           </form>
 
           <div className="contact-info">
@@ -79,7 +86,10 @@ export function Contact() {
               <span className="contact-info__icon">@</span>
               <div>
                 <div className="contact-info__label">Email</div>
-                <a className="contact-info__value" href={`mailto:${info.email}`}>
+                <a
+                  className="contact-info__value"
+                  href={`mailto:${info.email}`}
+                >
                   {info.email}
                 </a>
               </div>
