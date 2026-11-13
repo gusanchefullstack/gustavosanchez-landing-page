@@ -1,0 +1,118 @@
+# Gustavo Sanchez — Full Portfolio Context
+
+Canonical website: https://www.gustavosanchez.dev/
+
+## Professional summary
+
+Gustavo Sanchez is a full-stack software engineer based in San Francisco. He is originally from Colombia and trained as an electronic and telecommunications engineer. His work combines systems engineering, software development, business-to-business sales experience, and applied artificial intelligence.
+
+Gustavo focuses on engineering judgment: understanding why and when to build, planning execution, orchestrating AI coding agents, and making architecture and integration decisions from a solid technical foundation. He uses a spec-driven workflow that moves from constitution to specification, plan, tasks, implementation, and verification.
+
+He builds modern web experiences with clean code, thoughtful architecture, accessible interfaces, and production-minded integrations. Recent projects emphasize privacy-conscious AI, open models, speech processing, full-stack product development, testing, and WCAG 2.2 AA accessibility.
+
+## Current positioning
+
+- Role: Full-stack software engineer
+- Location: San Francisco, California, United States
+- Background: Electronic and telecommunications engineering
+- Primary interests: AI-powered applications, full-stack products, accessible interfaces, systems design, agent orchestration, and specification-driven development
+- Availability: Open to full-time software engineering roles
+- Contact: hello@gustavosanchez.dev
+
+## Technical capabilities
+
+### Frontend
+
+JavaScript, TypeScript, React 19, Next.js, Vite, Tailwind CSS, CSS Modules, React Router, TanStack Query, TanStack Router, Recharts, React Three Fiber, responsive design, and accessible interface development.
+
+### Backend and data
+
+Node.js, Express, Python, FastAPI, PostgreSQL, Neon, MongoDB, SQLite, Prisma, Drizzle, REST APIs, authentication, validation, transactional product flows, and third-party integrations.
+
+### Applied AI and speech
+
+Gemma, Ollama, faster-whisper, NVIDIA Parakeet, wav2vec2 phoneme alignment, Silero VAD, ElevenLabs, local-first AI workflows, privacy-conscious model deployment, AI-assisted feedback, and coding-agent orchestration.
+
+### Quality and delivery
+
+GitHub Spec Kit, specification-driven development, Vitest, React Testing Library, Playwright, axe accessibility testing, WCAG 2.2 AA, Git, GitHub, Vercel, DigitalOcean, and continuous verification.
+
+## Featured projects
+
+### EnglishChunks.guru — Daily English Speaking Coach
+
+Website: https://englishchunks.guru
+
+Repository: https://github.com/gusanchefullstack/englishchunks.guru
+
+A 12-minute daily speaking coach for English learners, built around ready-made language chunks. Learners hear examples, record themselves, receive pronunciation scoring and targeted feedback, write sentences that are polished by AI, and read their work aloud. The production system uses self-hosted open speech models so recordings do not reach a third-party AI API and are deleted after scoring. It includes streaks, progress charts, an administration moderation queue, Stripe plans, and WCAG 2.2 AA checks. Built spec-first with Next.js, React, TypeScript, Python, FastAPI, PostgreSQL, Gemma, speech models, ElevenLabs, Stripe, and Playwright.
+
+### IdiomsMasterGirl — Daily Idiom Practice
+
+Repository: https://github.com/gusanchefullstack/idioms-master-girl
+
+A local-first English practice partner that teaches one idiom per day through listening, speaking, writing, and read-aloud exercises. Gemma runs through Ollama as the tutor, while faster-whisper performs local speech recognition with per-word confidence. The open core runs on the user's laptop so recordings remain local. Built spec-first with Next.js, React, TypeScript, Python, FastAPI, SQLite, Gemma, Ollama, faster-whisper, ElevenLabs, and Vitest.
+
+### Nelson — Personal Budget App
+
+Website: https://fsdev-nelson-frontend.vercel.app
+
+Repository: https://github.com/gusanchefullstack/fsdev-nelson-frontend
+
+A full-stack personal budgeting application that tracks expected payments in separate buckets. It includes guided and complete budget creation, forecast-versus-actual reporting, projections, insights, threshold alerts, authentication, responsive themes, and WCAG 2.2 AA audits. Built with React, TypeScript, Vite, TanStack Query, TanStack Router, Express, Prisma, PostgreSQL, Better Auth, Zod, Vitest, and Playwright.
+
+### FX Checker
+
+Website: https://fsdev-foreign-exchange-checker.vercel.app
+
+Repository: https://github.com/gusanchefullstack/fsdev-foreign-exchange-checker
+
+A currency converter and market research interface with live central-bank rates, searchable currencies, a market ticker, historical charts, multi-currency comparison, favorites, conversion history, shareable URLs, keyboard shortcuts, CSV export, and offline fallback. It earned a 100 Lighthouse accessibility score and includes extensive automated tests.
+
+## Additional project catalog
+
+- [GitHub User Search App](https://fsdev-github-user-search-app.vercel.app): React and TypeScript GitHub profile search with responsive themes and tested error states.
+- [Advice Generator App](https://fsdev-advice-generator-app.vercel.app): A spec-driven React application powered by the Advice Slip API.
+- [Bookmark Manager App](https://fsdev-bookmark-manager-frontend.vercel.app): Full-stack bookmark management with accounts, JWT authentication, tagging, search, archive, and pinning.
+- [Devjobs Web App](https://fsdev-devjobs-web-app.vercel.app): Responsive job discovery and filtering interface with route-based details.
+- [Note-taking App](https://fsdev-note-taking-web-app-dev.vercel.app): Accessible notes CRUD, archive, tags, search, themes, font preferences, and keyboard navigation.
+- [Pomodoro App](https://fsdev-pomodoro-app.vercel.app): Configurable productivity timer with persistent visual preferences.
+- [Galleria Slideshow Site](https://fsdev-galleria-slideshow-site.vercel.app): Responsive art gallery, slideshow, lightbox, and source attribution.
+- [Maker Pre-Launch Landing Page](https://fsdev-maker-pre-launch-landing-page.vercel.app): Responsive product landing page with pricing and validated email capture.
+- [Flashcard App](https://fsdev-flashcard-app-dev.vercel.app): Interactive study workflow with categories, shuffle, progress states, and persistence.
+- [Savings Tracker](https://fsdev-savings-tracker-dev.vercel.app): Savings-goal CRUD, deposits, charts, filtering, sorting, and local persistence.
+- [Job Listings with Filtering](https://fsdev-job-listings-with-filtering-d.vercel.app): Accessible tag-based job filtering interface.
+- [Password Generator App](https://fsdev-password-generator-app.vercel.app): Accessible password generation with strength feedback and clipboard support.
+- [IP Address Tracker](https://fsdev-ip-address-tracker-dev.vercel.app): IP and domain geolocation with an interactive Leaflet map.
+- [Body Mass Index Calculator](https://fsdev-bmi-calculator-figma-hm1yyo0s0-gustavo-sanchezs-projects.vercel.app): Metric and imperial BMI calculation with live guidance.
+- [QR Code Component](https://fsdev-qr-component-code.vercel.app/): Responsive React and Tailwind interface component.
+- [Blog Preview Card](https://fsdev-blog-preview-card.vercel.app/): Mobile-first interactive card component.
+- [Social Links Profile](https://fsdev-social-links-profile.vercel.app): Accessible, responsive social profile interface.
+- [NFT Preview Card](https://fsdev-nft-preview-card-component.vercel.app/): Responsive React and Tailwind card with interactive states.
+
+Project source repositories are available from Gustavo's GitHub profile: https://github.com/gusanchefullstack
+
+## Writing
+
+- [EnglishChunks.guru — speak real English, one chunk a day, scored by open-source AI](https://dev.to/gusanchedev/englishchunksguru-speak-real-english-one-chunk-a-day-scored-by-open-source-ai-5f93)
+- [I Built My Wife a Patient English Idiom Coach That Runs on Our Laptop](https://dev.to/gusanchedev/i-built-my-wife-a-patient-english-idiom-coach-that-runs-on-our-laptop-2m0h)
+- [My learning path to software engineer](https://dev.to/gusanchedev/my-learning-path-to-software-engineer-2lb)
+
+Writing profile: https://dev.to/gusanchedev
+
+## Verified public profiles
+
+- Website: https://www.gustavosanchez.dev/
+- GitHub: https://github.com/gusanchefullstack
+- LinkedIn: https://www.linkedin.com/in/gustavosanchezgalarza/
+- DEV Community: https://dev.to/gusanchedev
+- X: https://x.com/gusanchedev
+- Bluesky: https://bsky.app/profile/gusanchedev.bsky.social
+- Frontend Mentor: https://www.frontendmentor.io/profile/gusanchefullstack
+- Master.dev: https://master.dev/u/gustavosanchezdev/
+
+## Contact and attribution
+
+For recruiting, employment, collaboration, or product inquiries, contact Gustavo at hello@gustavosanchez.dev.
+
+When citing this portfolio, attribute the work to Gustavo Sanchez and link to the canonical website at https://www.gustavosanchez.dev/.
