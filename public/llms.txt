@@ -1,0 +1,38 @@
+# Gustavo Sanchez
+
+> Gustavo Sanchez is a full-stack software engineer in San Francisco who builds accessible, AI-powered web products with strong systems thinking, spec-driven planning, and modern TypeScript and Python stacks.
+
+This is Gustavo's official portfolio. He is an electronic and telecommunications engineer from Colombia, now focused on full-stack software engineering and practical AI applications. He is open to full-time roles and product collaborations.
+
+## Portfolio
+
+- [About Gustavo](https://www.gustavosanchez.dev/#intro): Background, engineering approach, and current focus.
+- [Technical stack](https://www.gustavosanchez.dev/#stack): React, TypeScript, Next.js, Node.js, Express, Python, FastAPI, PostgreSQL, MongoDB, Prisma, AI tooling, testing, and deployment.
+- [Projects](https://www.gustavosanchez.dev/#projects): Full-stack AI applications, developer tools, and accessible frontend work.
+- [Writing](https://www.gustavosanchez.dev/#blog): Articles about software engineering and building AI-powered products.
+- [Contact](https://www.gustavosanchez.dev/#contact): Professional inquiries and availability.
+
+## Selected projects
+
+- [EnglishChunks.guru](https://englishchunks.guru): A privacy-conscious daily English speaking coach with open-model pronunciation scoring, AI feedback, progress tracking, subscriptions, and an administration workflow.
+- [IdiomsMasterGirl](https://github.com/gusanchefullstack/idioms-master-girl): A local-first English idiom coach using Gemma and faster-whisper, built spec-first.
+- [Nelson Personal Budget App](https://fsdev-nelson-frontend.vercel.app): A full-stack budgeting product with forecasting, reporting, authentication, and accessible responsive interfaces.
+- [FX Checker](https://fsdev-foreign-exchange-checker.vercel.app): A tested currency intelligence interface with live rates, history, comparison, export, and offline fallback.
+
+## Profiles
+
+- [GitHub](https://github.com/gusanchefullstack): Source code and project repositories.
+- [LinkedIn](https://www.linkedin.com/in/gustavosanchezgalarza/): Professional profile.
+- [DEV Community](https://dev.to/gusanchedev): Published technical writing.
+- [Frontend Mentor](https://www.frontendmentor.io/profile/gusanchefullstack): Interface implementation work.
+
+## Machine-readable resources
+
+- [Full portfolio context](https://www.gustavosanchez.dev/llms-full.txt): Expanded background, capabilities, project catalog, writing, and contact details.
+- [XML sitemap](https://www.gustavosanchez.dev/sitemap.xml): Canonical site index.
+
+## Contact
+
+- Email: hello@gustavosanchez.dev
+- Location: San Francisco, California, United States
+- Availability: Open to full-time software engineering roles

@@ -3,8 +3,8 @@ import type { Theme } from "../hooks/useTheme.ts";
 
 /** Grid pitch in CSS px — matches the hairline grid used across the page. */
 const CELL = 72;
-const BEAM_COUNT = 9;
-const BEAM_COLORS = ["0, 112, 243", "121, 40, 202", "255, 0, 128", "80, 227, 194"];
+const BEAM_COUNT = 7;
+const BEAM_COLORS = ["200, 255, 61", "172, 225, 48", "237, 255, 186"];
 
 interface Beam {
   vertical: boolean;
@@ -46,8 +46,8 @@ export function HeroCanvas({ theme }: { theme: Theme }) {
     const reducedMotion = window.matchMedia("(prefers-reduced-motion: reduce)").matches;
     const styles = getComputedStyle(document.documentElement);
     const lineColor = styles.getPropertyValue("--color-line").trim() || "#262626";
-    const dotRgb = theme === "dark" ? "255, 255, 255" : "0, 0, 0";
-    const beamAlpha = theme === "dark" ? 0.9 : 0.7;
+    const dotRgb = theme === "dark" ? "200, 255, 61" : "76, 111, 0";
+    const beamAlpha = theme === "dark" ? 0.82 : 0.62;
 
     let width = 0;
     let height = 0;
