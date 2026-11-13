@@ -647,10 +647,10 @@ export const content: SiteContent = {
         brandColor: "#3F54A3",
       },
       {
-        platform: "Frontend Masters",
+        platform: "Master.dev",
         handle: "gustavosanchezdev",
-        url: "https://frontendmasters.com/u/gustavosanchezdev/",
-        icon: "frontendmasters",
+        url: "https://master.dev/u/gustavosanchezdev/",
+        icon: "masterdev",
         brandColor: "#C02D28",
       },
     ],
