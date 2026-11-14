@@ -1,15 +1,15 @@
 # Gustavo Sanchez
 
-> Gustavo Sanchez is a full-stack software engineer in San Francisco who builds accessible, AI-powered web products with strong systems thinking, spec-driven planning, and modern TypeScript and Python stacks.
+> Gustavo Sanchez is a full-stack AI engineer in San Francisco who combines production software delivery, systems thinking, and 17 years of enterprise software GTM leadership.
 
-This is Gustavo's official portfolio. He is an electronic and telecommunications engineer from Colombia, now focused on full-stack software engineering and practical AI applications. He is open to full-time roles and product collaborations.
+This is Gustavo's official portfolio. He is an electronic and telecommunications engineer from Colombia who builds practical AI products with modern TypeScript and Python stacks. He is authorized to work in the United States and does not require sponsorship.
 
 ## Portfolio
 
-- [About Gustavo](https://www.gustavosanchez.dev/#intro): Background, engineering approach, and current focus.
-- [Technical stack](https://www.gustavosanchez.dev/#stack): React, TypeScript, Next.js, Node.js, Express, Python, FastAPI, PostgreSQL, MongoDB, Prisma, AI tooling, testing, and deployment.
-- [Projects](https://www.gustavosanchez.dev/#projects): Full-stack AI applications, developer tools, and accessible frontend work.
-- [Writing](https://www.gustavosanchez.dev/#blog): Articles about software engineering and building AI-powered products.
+- [Signal](https://www.gustavosanchez.dev/#intro): Role positioning, delivery evidence, location, and availability.
+- [Case studies](https://www.gustavosanchez.dev/#work): EnglishChunks.guru, Nelson, and FX Checker with constraints, system decisions, outcomes, and measured proof.
+- [How Gustavo works](https://www.gustavosanchez.dev/#process): A four-stage workflow from problem framing through production verification.
+- [Experience](https://www.gustavosanchez.dev/#experience): Software engineering, enterprise GTM leadership, telecommunications engineering, education, and certifications.
 - [Contact](https://www.gustavosanchez.dev/#contact): Professional inquiries and availability.
 
 ## Selected projects
@@ -30,9 +30,11 @@ This is Gustavo's official portfolio. He is an electronic and telecommunications
 
 - [Full portfolio context](https://www.gustavosanchez.dev/llms-full.txt): Expanded background, capabilities, project catalog, writing, and contact details.
 - [XML sitemap](https://www.gustavosanchez.dev/sitemap.xml): Canonical site index.
+- [Public résumé](https://www.gustavosanchez.dev/Gustavo-Sanchez-Resume.pdf): Web-safe one-page résumé for recruiting and professional review.
 
 ## Contact
 
 - Email: hello@gustavosanchez.dev
 - Location: San Francisco, California, United States
 - Availability: Open to full-time software engineering roles
+- Work authorization: Authorized to work in the United States; no sponsorship required

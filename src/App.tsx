@@ -1,10 +1,10 @@
 import { Header } from "./components/Header.tsx";
 import { Intro } from "./components/Intro.tsx";
-import { Stack } from "./components/Stack.tsx";
-import { Projects } from "./components/Projects.tsx";
-import { Blog } from "./components/Blog.tsx";
-import { Social } from "./components/Social.tsx";
+import { CaseStudies } from "./components/CaseStudies.tsx";
+import { Process } from "./components/Process.tsx";
+import { Experience } from "./components/Experience.tsx";
 import { Contact } from "./components/Contact.tsx";
+import { ResumeDock } from "./components/ResumeDock.tsx";
 import { content } from "./config/content.ts";
 import { useTheme } from "./hooks/useTheme.ts";
 
@@ -20,13 +20,13 @@ export function App() {
       <main id="main" className="main">
         <div className="main__rails">
           <Intro theme={theme} />
-          <Stack />
-          <Projects />
-          <Blog />
-          <Social />
+          <CaseStudies />
+          <Process />
+          <Experience />
           <Contact />
         </div>
       </main>
+      <ResumeDock />
       <footer className="footer">
         <div className="footer__inner">
           <p dangerouslySetInnerHTML={{ __html: content.footer }} />

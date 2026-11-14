@@ -71,8 +71,8 @@ export function Header({ theme, onToggleTheme }: HeaderProps) {
               <ThemeDarkIcon size={16} aria-hidden="true" />
             )}
           </button>
-          <a className="button button--primary button--small header__cta" href="#contact">
-            Contact
+          <a className="button button--primary button--small header__cta" href={content.resume.href}>
+            Résumé
           </a>
           <button
             type="button"

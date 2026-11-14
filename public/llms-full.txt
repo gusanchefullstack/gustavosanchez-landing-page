@@ -17,6 +17,7 @@ He builds modern web experiences with clean code, thoughtful architecture, acces
 - Background: Electronic and telecommunications engineering
 - Primary interests: AI-powered applications, full-stack products, accessible interfaces, systems design, agent orchestration, and specification-driven development
 - Availability: Open to full-time software engineering roles
+- Work authorization: Authorized to work in the United States; no sponsorship required
 - Contact: hello@gustavosanchez.dev
 
 ## Technical capabilities
@@ -114,5 +115,7 @@ Writing profile: https://dev.to/gusanchedev
 ## Contact and attribution
 
 For recruiting, employment, collaboration, or product inquiries, contact Gustavo at hello@gustavosanchez.dev.
+
+Public résumé: https://www.gustavosanchez.dev/Gustavo-Sanchez-Resume.pdf
 
 When citing this portfolio, attribute the work to Gustavo Sanchez and link to the canonical website at https://www.gustavosanchez.dev/.

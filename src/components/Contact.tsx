@@ -108,6 +108,15 @@ export function Contact() {
                 <div className="contact-info__value">{info.availability}</div>
               </div>
             </div>
+            <div className="contact-info__item">
+              <span className="contact-info__icon">✓</span>
+              <div>
+                <div className="contact-info__label">Work authorization</div>
+                <div className="contact-info__value">
+                  U.S. work authorized · No sponsorship required
+                </div>
+              </div>
+            </div>
           </div>
         </div>
       </div>
