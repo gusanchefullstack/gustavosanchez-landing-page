@@ -1,14 +1,12 @@
 <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 32 32">
-  <title>Gustavo Sanchez circuit G</title>
+  <title>Apps powered by AI</title>
   <rect width="32" height="32" rx="7" fill="#080a09" />
   <rect x="0.75" y="0.75" width="30.5" height="30.5" rx="6.25" fill="none" stroke="#293029" stroke-width="1.5" />
+  <rect x="6" y="6" width="8" height="8" rx="2" fill="#f0ede4" />
+  <rect x="6" y="18" width="8" height="8" rx="2" fill="#f0ede4" />
+  <rect x="18" y="18" width="8" height="8" rx="2" fill="#f0ede4" />
   <path
-    d="M23.1 9.2A8.9 8.9 0 1 0 23.7 22V16.8H16.2"
-    fill="none"
-    stroke="#c8ff3d"
-    stroke-width="3.4"
-    stroke-linecap="round"
-    stroke-linejoin="round"
+    d="M22 4.5C22.6 7.8 24.2 9.4 27.5 10C24.2 10.6 22.6 12.2 22 15.5C21.4 12.2 19.8 10.6 16.5 10C19.8 9.4 21.4 7.8 22 4.5Z"
+    fill="#c8ff3d"
   />
-  <circle cx="16.2" cy="16.8" r="2.15" fill="#c8ff3d" />
 </svg>
