@@ -120,12 +120,68 @@ export interface ContactInfo {
   availability: string;
 }
 
+export interface CaseStudy {
+  number: string;
+  name: string;
+  descriptor: string;
+  thesis: string;
+  image: string;
+  imageAlt: string;
+  challenge: string;
+  approach: string;
+  outcome: string;
+  proof: { value: string; label: string }[];
+  tags: string[];
+  liveUrl: string;
+  repoUrl: string;
+}
+
+export interface ProcessStep {
+  number: string;
+  title: string;
+  description: string;
+  output: string;
+}
+
+export interface CareerChapter {
+  period: string;
+  role: string;
+  organization: string;
+  summary: string;
+  proof: string[];
+}
+
 export interface SiteContent {
   siteTitle: string;
   nav: NavItem[];
   intro: IntroContent;
   /** "At a glance" row under the hero; `{projects}` is replaced with the project count */
   stats: Stat[];
+  caseStudies: {
+    subtitle: string;
+    title: string;
+    description: string;
+    items: CaseStudy[];
+  };
+  process: {
+    subtitle: string;
+    title: string;
+    description: string;
+    steps: ProcessStep[];
+  };
+  experience: {
+    subtitle: string;
+    title: string;
+    description: string;
+    chapters: CareerChapter[];
+    credentials: string[];
+  };
+  resume: {
+    href: string;
+    label: string;
+    location: string;
+    workAuthorization: string;
+  };
   stack: {
     subtitle: string;
     title: string;
@@ -168,11 +224,10 @@ export const content: SiteContent = {
   siteTitle: "Gustavo Sanchez",
 
   nav: [
-    { label: "Intro", href: "#intro" },
-    { label: "Stack", href: "#stack" },
-    { label: "Projects", href: "#projects" },
-    { label: "Blog", href: "#blog" },
-    { label: "Social", href: "#social" },
+    { label: "Signal", href: "#intro" },
+    { label: "Proof", href: "#work" },
+    { label: "Process", href: "#process" },
+    { label: "Experience", href: "#experience" },
     { label: "Contact", href: "#contact" },
   ],
 
@@ -211,35 +266,205 @@ export const content: SiteContent = {
         { text: " mindset." },
       ],
     ],
-    ctaLabel: "View my work",
-    ctaHref: "#projects",
+    ctaLabel: "View case studies",
+    ctaHref: "#work",
     photo: "/Me.jpg",
-    badge: { label: "New: EnglishChunks.guru is live", href: "#projects" },
-    heroLead: "Engineering judgment for",
+    badge: { label: "Open to full-stack AI engineering roles", href: "#contact" },
+    heroLead: "I turn product ambiguity into",
     heroWords: [
-      "AI-powered apps.",
-      "full-stack products.",
-      "accessible interfaces.",
-      "what ships next.",
+      "shipped AI systems.",
+      "production software.",
+      "measurable proof.",
+      "customer value.",
     ],
     heroSummary:
-      "Full-stack developer from Colombia, now in San Francisco. I plan the work, orchestrate AI agents and make the architecture calls, then ship it spec-first.",
+      "Full-stack software engineer in San Francisco. I combine systems engineering, production AI delivery and 17 years of enterprise GTM leadership to build the right thing—and prove it works.",
   },
 
   stats: [
     {
-      value: "{projects}",
-      label: "Projects shipped, from UI challenges to full-stack AI apps.",
+      value: "20+",
+      label: "Software projects shipped in 2026.",
     },
     {
-      value: "Spec → Ship",
-      label: "Constitution, spec, plan, tasks. Then the agents write code.",
+      value: "17 yrs",
+      label: "Enterprise software and GTM leadership.",
     },
     {
-      value: "WCAG AA",
-      label: "Accessibility audited with axe and Playwright on recent builds.",
+      value: "$19M",
+      label: "ACV pipeline built while leading at Genesys.",
     },
   ],
+
+  caseStudies: {
+    subtitle: "Selected proof",
+    title: "Three products. Three kinds of engineering judgment.",
+    description:
+      "Not a gallery of screenshots. These are short case studies about the tradeoffs, systems and verification behind production-minded software.",
+    items: [
+      {
+        number: "01",
+        name: "EnglishChunks.guru",
+        descriptor: "AI speaking coach in production",
+        thesis:
+          "A privacy-first learning product that turns open speech models into useful, specific feedback.",
+        image: "/projects/englishchunks-guru.png",
+        imageAlt: "EnglishChunks.guru daily speaking lesson interface",
+        challenge:
+          "Give English learners pronunciation feedback that is fast and specific without sending sensitive voice recordings to a third-party AI API.",
+        approach:
+          "I split the product across a Next.js application and a self-hosted speech pipeline on DigitalOcean. Silero VAD, NVIDIA Parakeet and wav2vec2 handle scoring; Gemma writes personalized feedback; an admin queue keeps content quality human-reviewed.",
+        outcome:
+          "The result is a subscription-ready daily practice loop with level-based lessons, writing feedback, streaks and progress tracking—built around a deliberate privacy boundary.",
+        proof: [
+          { value: "0", label: "recordings sent to third-party AI APIs" },
+          { value: "A1–C2", label: "learner levels supported" },
+          { value: "4", label: "AI and speech systems orchestrated" },
+        ],
+        tags: ["Next.js 16", "TypeScript", "Python", "FastAPI", "PostgreSQL", "Stripe"],
+        liveUrl: "https://englishchunks.guru",
+        repoUrl: "https://github.com/gusanchefullstack/englishchunks.guru",
+      },
+      {
+        number: "02",
+        name: "Nelson",
+        descriptor: "Full-stack personal budgeting",
+        thesis:
+          "A financial model designed around how people actually reserve and spend money.",
+        image: "/projects/nelson-personal-budget-app.png",
+        imageAlt: "Nelson personal budget dashboard",
+        challenge:
+          "Make forecast-versus-actual budgeting understandable while preserving the precision needed for balances, payment buckets and threshold alerts.",
+        approach:
+          "I modeled each expected payment as its own bucket, then connected the React product to an Express and Prisma backend with authentication, runtime validation and date-safe financial logic.",
+        outcome:
+          "Users can build a budget in guided or complete mode, see live balances and projections, and act on in-product insights across an accessible responsive interface.",
+        proof: [
+          { value: "3", label: "viewport sizes audited with axe" },
+          { value: "AA", label: "WCAG 2.2 accessibility target" },
+          { value: "2", label: "budget creation modes" },
+        ],
+        tags: ["React 19", "Express 5", "Prisma 7", "PostgreSQL", "Playwright"],
+        liveUrl: "https://fsdev-nelson-frontend.vercel.app",
+        repoUrl: "https://github.com/gusanchefullstack/fsdev-nelson-frontend",
+      },
+      {
+        number: "03",
+        name: "FX Checker",
+        descriptor: "Tested currency intelligence",
+        thesis:
+          "A focused converter expanded into a resilient market research workflow.",
+        image: "/projects/fx-checker.png",
+        imageAlt: "FX Checker currency converter and rate history chart",
+        challenge:
+          "Go beyond a one-off conversion and help users compare, revisit, share and export exchange-rate decisions without making the interface feel like a trading terminal.",
+        approach:
+          "I built rate history, multi-currency comparison, favorites, shareable pair URLs, keyboard shortcuts, CSV export and an offline fallback on top of live central-bank data.",
+        outcome:
+          "The product balances information density with accessible interaction, backed by broad component and behavior coverage rather than demo-only happy paths.",
+        proof: [
+          { value: "121", label: "automated tests" },
+          { value: "100", label: "Lighthouse accessibility score" },
+          { value: "5 yrs", label: "rate history available" },
+        ],
+        tags: ["React 19", "TypeScript", "Vitest", "Testing Library", "Frankfurter API"],
+        liveUrl: "https://fsdev-foreign-exchange-checker.vercel.app",
+        repoUrl: "https://github.com/gusanchefullstack/fsdev-foreign-exchange-checker",
+      },
+    ],
+  },
+
+  process: {
+    subtitle: "How I work",
+    title: "Reduce uncertainty before increasing velocity.",
+    description:
+      "AI makes implementation faster. That raises the value of framing, architecture, review and verification—the parts of the work I keep firmly human-led.",
+    steps: [
+      {
+        number: "01",
+        title: "Frame the signal",
+        description:
+          "Clarify the user, business outcome, constraints and evidence that would make the work worth shipping.",
+        output: "Problem brief + success criteria",
+      },
+      {
+        number: "02",
+        title: "Specify the system",
+        description:
+          "Turn ambiguity into flows, data boundaries, architecture decisions and testable requirements before code.",
+        output: "Constitution + spec + plan",
+      },
+      {
+        number: "03",
+        title: "Orchestrate the build",
+        description:
+          "Use coding agents for leverage while I control decomposition, integrations, review and the decisions with lasting cost.",
+        output: "Small tasks + reviewed changes",
+      },
+      {
+        number: "04",
+        title: "Prove the outcome",
+        description:
+          "Verify behavior, accessibility, failure states and production constraints, then document what the evidence says.",
+        output: "Tests + audits + shipped product",
+      },
+    ],
+  },
+
+  experience: {
+    subtitle: "Experience",
+    title: "Engineering depth. Commercial context.",
+    description:
+      "I started in telecommunications, spent 17 years helping enterprises adopt complex software, and returned to hands-on engineering with a sharper understanding of customers, adoption and revenue.",
+    chapters: [
+      {
+        period: "2026 — now",
+        role: "Full-Stack Software Engineer",
+        organization: "Independent products · San Francisco",
+        summary:
+          "Building and deploying full-stack and AI products with modern TypeScript, Python, open models and production integrations.",
+        proof: ["20+ projects shipped", "AI speech systems", "Spec-driven delivery"],
+      },
+      {
+        period: "2017 — 2026",
+        role: "Sales leader",
+        organization: "Genesys · Colombia and Latin America",
+        summary:
+          "Led enterprise CCaaS growth across sales, partners, presales, marketing, customer success and engineering.",
+        proof: ["$19M ACV pipeline", "$4.2M bookings", "40+ new customers"],
+      },
+      {
+        period: "2008 — 2016",
+        role: "Enterprise account executive",
+        organization: "Microsoft · Colombia",
+        summary:
+          "Helped enterprise and public-sector customers adopt Office 365, Azure and unified communications.",
+        proof: ["Up to 185% of quota", "3× Gold Club", "Cloud revenue growth"],
+      },
+      {
+        period: "1999 — 2008",
+        role: "Telecom and network engineer",
+        organization: "Ericsson, Damovo, Getronics and Telmex",
+        summary:
+          "Designed voice and network systems, including a multitenant IP-PBX platform that reached 3,000 seats in one year.",
+        proof: ["Systems engineering", "Solution design", "3,000 deployed seats"],
+      },
+    ],
+    credentials: [
+      "B.Eng. Electronic & Telecommunications Engineering",
+      "MBA, Cum Laude",
+      "AWS Certified AI Practitioner",
+      "AWS Certified Cloud Practitioner",
+      "Google Cloud Digital Leader",
+    ],
+  },
+
+  resume: {
+    href: "/Gustavo-Sanchez-Resume.pdf",
+    label: "Résumé",
+    location: "San Francisco, CA",
+    workAuthorization: "U.S. work authorized · No sponsorship required",
+  },
 
   stack: {
     subtitle: "Tech Stack",
@@ -657,10 +882,10 @@ export const content: SiteContent = {
   },
 
   contact: {
-    subtitle: "Get in Touch",
-    title: "Let's Work Together",
+    subtitle: "Start a conversation",
+    title: "Have a hard product problem?",
     description:
-      "Have a project in mind or just want to say hello? Drop me a message and I will get back to you as soon as possible.",
+      "I’m looking for a full-stack AI engineering role where product judgment, customer context and rigorous delivery all matter. Tell me what you are trying to ship.",
     info: {
       email: "hello@gustavosanchez.dev",
       location: "San Francisco, CA",

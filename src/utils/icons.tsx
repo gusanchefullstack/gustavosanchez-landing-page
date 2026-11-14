@@ -27,6 +27,7 @@ import {
   FiArrowUpRight,
   FiCheck,
   FiCopy,
+  FiDownload,
   FiInfo,
   FiMenu,
   FiMoon,
@@ -93,6 +94,7 @@ export const CloseIcon = FiX;
 export const SearchIcon = FiSearch;
 export const CopyIcon = FiCopy;
 export const CopiedIcon = FiCheck;
+export const DownloadIcon = FiDownload;
 
 export const socialIconMap: Record<string, ComponentType<IconProps>> = {
   github: SiGithub,

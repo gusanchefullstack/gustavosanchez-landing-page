@@ -1,24 +1,10 @@
 import { useEffect, useState } from "react";
-import type { IntroTextSpan } from "../config/content.ts";
 import { content } from "../config/content.ts";
-import { useScrollReveal } from "../hooks/useScrollReveal.ts";
 import type { Theme } from "../hooks/useTheme.ts";
 import { CopiedIcon, CopyIcon } from "../utils/icons.tsx";
 import { HeroCanvas } from "./HeroCanvas.tsx";
 
 const WORD_INTERVAL_MS = 2400;
-
-function renderIntroSpans(parts: IntroTextSpan[]) {
-  return parts.map((part, i) =>
-    part.accent ? (
-      <strong key={i} className="about__accent">
-        {part.text}
-      </strong>
-    ) : (
-      <span key={i}>{part.text}</span>
-    ),
-  );
-}
 
 function useRotatingIndex(length: number) {
   const [index, setIndex] = useState(0);
@@ -68,14 +54,9 @@ function CopyEmailButton({ email }: { email: string }) {
 }
 
 export function Intro({ theme }: { theme: Theme }) {
-  const aboutRef = useScrollReveal<HTMLDivElement>();
   const {
-    name,
-    headline,
-    taglineParagraphs,
     ctaLabel,
     ctaHref,
-    photo,
     badge,
     heroLead,
     heroWords,
@@ -94,7 +75,7 @@ export function Intro({ theme }: { theme: Theme }) {
 
         <a className="hero__badge" href={badge.href}>
           {badge.label}
-          <span className="hero__badge-cta">Read more →</span>
+          <span className="hero__badge-cta">Let&apos;s talk →</span>
         </a>
         <h1 id="hero-title" className="hero__title">
           {heroLead}{" "}
@@ -115,44 +96,17 @@ export function Intro({ theme }: { theme: Theme }) {
         <span className="crosshair crosshair--br" aria-hidden="true" />
       </section>
 
-      <section className="stats" aria-label="At a glance">
+      <section className="stats" aria-label="Evidence at a glance">
         {content.stats.map((stat) => (
           <div className="stats__item" key={stat.label}>
             <span className="stats__value">
-              {stat.value.replace(
-                "{projects}",
-                String(content.projects.items.length),
-              )}
+              {stat.value}
             </span>
             <span className="stats__label">{stat.label}</span>
           </div>
         ))}
       </section>
 
-      <section className="about" aria-labelledby="about-title">
-        <div className="about__layout reveal" ref={aboutRef}>
-          <div className="about__photo-wrap">
-            <img
-              className="about__photo"
-              src={photo}
-              alt={`Photo of ${name}`}
-              width={330}
-              height={330}
-            />
-          </div>
-          <div className="about__content">
-            <span className="section__eyebrow">/about</span>
-            <h2 id="about-title" className="about__title">
-              {renderIntroSpans(headline)}
-            </h2>
-            {taglineParagraphs.map((para, pi) => (
-              <p className="about__text" key={pi}>
-                {renderIntroSpans(para)}
-              </p>
-            ))}
-          </div>
-        </div>
-      </section>
     </>
   );
 }
