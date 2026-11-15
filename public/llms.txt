@@ -25,6 +25,9 @@ This is Gustavo's official portfolio. He is an electronic and telecommunications
 - [LinkedIn](https://www.linkedin.com/in/gustavosanchezgalarza/): Professional profile.
 - [DEV Community](https://dev.to/gusanchedev): Published technical writing.
 - [Frontend Mentor](https://www.frontendmentor.io/profile/gusanchefullstack): Interface implementation work.
+- [X](https://x.com/gusanchedev): Short updates.
+- [Bluesky](https://bsky.app/profile/gusanchedev.bsky.social): Short updates.
+- [Master.dev](https://master.dev/u/gustavosanchezdev/): Learning profile.
 
 ## Machine-readable resources
 

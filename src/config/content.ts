@@ -132,6 +132,10 @@ export interface CaseStudy {
   outcome: string;
   proof: { value: string; label: string }[];
   tags: string[];
+  /** Built spec-driven (constitution → spec → plan → tasks) — renders an "SDD" tag */
+  sdd?: boolean;
+  /** Ships AI features — renders an "AI" tag */
+  ai?: boolean;
   liveUrl: string;
   repoUrl: string;
 }
@@ -228,6 +232,7 @@ export const content: SiteContent = {
     { label: "Proof", href: "#work" },
     { label: "Process", href: "#process" },
     { label: "Experience", href: "#experience" },
+    { label: "Social", href: "#social" },
     { label: "Contact", href: "#contact" },
   ],
 
@@ -322,6 +327,8 @@ export const content: SiteContent = {
           { value: "4", label: "AI and speech systems orchestrated" },
         ],
         tags: ["Next.js 16", "TypeScript", "Python", "FastAPI", "PostgreSQL", "Stripe"],
+        sdd: true,
+        ai: true,
         liveUrl: "https://englishchunks.guru",
         repoUrl: "https://github.com/gusanchefullstack/englishchunks.guru",
       },
@@ -345,6 +352,7 @@ export const content: SiteContent = {
           { value: "2", label: "budget creation modes" },
         ],
         tags: ["React 19", "Express 5", "Prisma 7", "PostgreSQL", "Playwright"],
+        sdd: true,
         liveUrl: "https://fsdev-nelson-frontend.vercel.app",
         repoUrl: "https://github.com/gusanchefullstack/fsdev-nelson-frontend",
       },
@@ -368,6 +376,7 @@ export const content: SiteContent = {
           { value: "5 yrs", label: "rate history available" },
         ],
         tags: ["React 19", "TypeScript", "Vitest", "Testing Library", "Frankfurter API"],
+        sdd: true,
         liveUrl: "https://fsdev-foreign-exchange-checker.vercel.app",
         repoUrl: "https://github.com/gusanchefullstack/fsdev-foreign-exchange-checker",
       },
@@ -824,10 +833,10 @@ export const content: SiteContent = {
   },
 
   social: {
-    subtitle: "Connect",
-    title: "Find Me Online",
+    subtitle: "Elsewhere",
+    title: "Follow the work in progress.",
     description:
-      "I share code, write about web development, and occasionally post design experiments.",
+      "Code, write-ups, challenge solutions and the occasional opinion on building with AI — pick the channel you already use.",
     links: [
       {
         platform: "LinkedIn",
@@ -837,25 +846,18 @@ export const content: SiteContent = {
         brandColor: "#0A66C2",
       },
       {
-        platform: "GitHub",
-        handle: "gusanchefullstack",
-        url: "https://github.com/gusanchefullstack",
-        icon: "github",
-        brandColor: "#24292f",
-      },
-      {
-        platform: "DEV",
-        handle: "@gusanchedev",
-        url: "https://dev.to/gusanchedev",
-        icon: "devto",
-        brandColor: "#0A0A0A",
-      },
-      {
-        platform: "X / Twitter",
+        platform: "X",
         handle: "@gusanchedev",
         url: "https://x.com/gusanchedev",
         icon: "x",
         brandColor: "#000000",
+      },
+      {
+        platform: "Master.dev",
+        handle: "gustavosanchezdev",
+        url: "https://master.dev/u/gustavosanchezdev/",
+        icon: "masterdev",
+        brandColor: "#C02D28",
       },
       {
         platform: "Bluesky",
@@ -865,6 +867,13 @@ export const content: SiteContent = {
         brandColor: "#0085FF",
       },
       {
+        platform: "GitHub",
+        handle: "gusanchefullstack",
+        url: "https://github.com/gusanchefullstack",
+        icon: "github",
+        brandColor: "#24292f",
+      },
+      {
         platform: "Frontend Mentor",
         handle: "gusanchefullstack",
         url: "https://www.frontendmentor.io/profile/gusanchefullstack",
@@ -872,11 +881,11 @@ export const content: SiteContent = {
         brandColor: "#3F54A3",
       },
       {
-        platform: "Master.dev",
-        handle: "gustavosanchezdev",
-        url: "https://master.dev/u/gustavosanchezdev/",
-        icon: "masterdev",
-        brandColor: "#C02D28",
+        platform: "DEV",
+        handle: "@gusanchedev",
+        url: "https://dev.to/gusanchedev",
+        icon: "devto",
+        brandColor: "#0A0A0A",
       },
     ],
   },

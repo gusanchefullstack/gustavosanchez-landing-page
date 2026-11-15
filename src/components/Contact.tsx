@@ -8,7 +8,7 @@ export function Contact() {
   const { subtitle, title, description, info } = content.contact;
 
   return (
-    <section id="contact" className="section" aria-labelledby="contact-title">
+    <section id="contact" className="section container contact" aria-labelledby="contact-title">
       <header className="section__head">
         <span className="section__eyebrow">{subtitle}</span>
         <h2 id="contact-title" className="section__title">
