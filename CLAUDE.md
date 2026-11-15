@@ -5,114 +5,114 @@ This file provides guidance to Claude Code (claude.ai/code) when working with co
 ## Commands
 
 ```bash
-npm run dev       # Start Vite dev server (http://localhost:5173)
-npm run build     # Type-check (tsc) then build for production
-npm run preview   # Preview the production build locally
+npm run dev       # Vite dev server (http://localhost:5173)
+npm run build     # tsc → vite build → SSR build of src/entry-server.tsx → scripts/prerender.mjs
+npm run preview   # Serve the production build (dist/) locally
 ```
+
+Production is **gustavosanchez.dev** on Vercel, built from `main` (`vercel.json` pins `npm run build` / `dist`). Every pushed branch gets a Vercel preview. Never push or merge to `main` without the owner's explicit go-ahead.
 
 ## Architecture
 
-React 19 + TypeScript + Vite SPA. All UI is declarative JSX; no imperative DOM manipulation.
+React 19 + TypeScript + Vite SPA, **prerendered at build time**. All UI is declarative JSX; no imperative DOM manipulation.
 
 ### Data flow
 
 ```
-src/config/content.ts       ← single source of truth for all text/data
-src/utils/icons.tsx         ← react-icons component maps + named icon exports
+src/config/content.ts         ← single source of truth for all text/data
+src/utils/icons.tsx           ← react-icons component maps + named icon exports
 src/hooks/useScrollReveal.ts  ← IntersectionObserver hook for .reveal fade-in
 src/hooks/useActiveSection.ts ← IntersectionObserver hook for active nav link
-src/hooks/useTheme.ts       ← light/dark theme state (OS default, remembered once toggled)
+src/hooks/useTheme.ts         ← light/dark theme state (OS default, remembered once toggled)
        ↓
-src/components/*.tsx        ← React components
+src/components/*.tsx          ← React components
        ↓
-src/App.tsx                 ← root component composing all sections
-src/main.tsx                ← createRoot().render(<App />)
+src/App.tsx                   ← Header, Intro, CaseStudies, Process, Experience, Social, Contact, ResumeDock, footer
+src/main.tsx                  ← createRoot().render(<App />)   (client)
+src/entry-server.tsx          ← renderToString(<App />)        (build-time prerender)
 ```
+
+### Prerender (LLM / crawler discoverability)
+
+`scripts/prerender.mjs` injects the server-rendered App into `dist/index.html`'s `<div id="app">`, so crawlers and agents that don't run JavaScript get the full page text. The client still uses `createRoot` (not `hydrateRoot`) and simply re-renders over it, so theme-dependent markup can't cause hydration mismatches.
+
+**Consequence:** nothing may touch `window`, `document`, `localStorage` or `navigator` during render — only inside effects or event handlers. Guard any render-time access with `typeof document === "undefined"` (see `initialTheme` in `useTheme.ts`), or `npm run build` fails.
+
+### Components
+
+| Component | Section |
+|---|---|
+| `Header` | Sticky top nav (`content.nav`), theme toggle, mobile menu |
+| `Intro` | `#intro` hero: small cropped avatar + name/location, badge, h1 with rotating word, summary, CTA + copy-email button; stats row |
+| `CaseStudies` | `#work` — three case-study cards (challenge / approach / outcome / proof, tag row with SDD + AI flags) |
+| `Process` | `#process` — four-stage workflow on an inverse panel |
+| `Experience` | `#experience` — role timeline |
+| `Social` | `#social` — the **only** set of social links on the page (LinkedIn card is featured, spans 2 columns) |
+| `Contact` | `#contact` — Formspree form + contact info |
+| `ResumeDock` | Fixed résumé pill (compact single pill ≤1600px) |
+
+`Blog`, `HeroCanvas`, `Projects` and `Stack` are **not rendered** (left over from earlier designs). Don't edit them expecting a visible change; delete or re-wire them deliberately.
 
 ### Component pattern
 
-Every component is a named React function export. Interactive state is managed with hooks — no `init*()` functions.
-
-- Scroll-reveal: attach `useScrollReveal` ref to the element that also has `className="... reveal"`
-- Active nav: `useActiveSection(sectionIds)` returns the current section id as a string
-- Theme: `useTheme()` lives in `App` and is passed down to `Header` (toggle) and `Intro` → `HeroCanvas` (redraws in the new colours). It writes `data-theme` on `<html>` in a layout effect; an inline script in `index.html` sets it before first paint so there is no flash
-- Layout: sticky top `Header` (no sidebar). Sections sit between two vertical hairline "rails" (`.main__rails`) and are separated by horizontal hairlines
-- Hero background: `HeroCanvas` draws the grid with travelling light beams and pointer-reactive intersections on a `<canvas>`. It pauses off-screen and draws a static grid under `prefers-reduced-motion`
+- Every component is a named React function export.
+- Scroll-reveal: attach `useScrollReveal` ref to the element that also has `className="... reveal"`.
+- Sections use `className="section container"` and `aria-labelledby` pointing at their `h2`.
+- Theme: `useTheme()` lives in `App` and is passed to `Header`. It writes `data-theme` on `<html>` in a layout effect; an inline script in `index.html` sets it before first paint so there is no flash.
+- Rotating hero word: the visible word is drawn by CSS (`.hero__word::before { content: attr(data-word) }`, `aria-hidden`), and an `sr-only` span holds the full sentence ("a, b, c or d."). This keeps the h1's text — what screen readers and no-JS crawlers read — a single clean sentence. Keep it that way. Rotation is skipped under `prefers-reduced-motion`.
 
 ### Icon system (`src/utils/icons.tsx`)
 
-Icons are exported as component maps for direct JSX use:
 ```tsx
 export const stackIconMap: Record<string, ComponentType<IconProps>> = { ... };
 export const socialIconMap: Record<string, ComponentType<IconProps>> = { ... };
+
+const Icon = socialIconMap[link.icon];
+{Icon ? <Icon size={18} color="currentColor" /> : link.icon}
 ```
 
-Usage in components:
-```tsx
-const Icon = stackIconMap[item.icon];
-{Icon ? <Icon size={36} color="currentColor" /> : <span>{item.icon}</span>}
-```
+UI chrome icons (`CopyIcon`, `CopiedIcon`, `ThemeLightIcon`, `MenuIcon`, …) are plain named exports. All icons are monochrome `currentColor` — never reintroduce brand colours (`brandColor` in `content.ts` is not rendered). react-icons doesn't set `aria-hidden`; pass it on decorative icons.
 
-Icons that are **not** keyed from `content.ts` are plain named exports instead of map
-entries — `LiveDemoIcon` / `SourceCodeIcon` (project card links), `CursorIcon`,
-`FrontendMastersIcon`, plus UI chrome (`ThemeLightIcon`, `MenuIcon`, `SearchIcon`, …). Import them directly:
-```tsx
-<LiveDemoIcon size={15} aria-hidden="true" />
-```
-react-icons does not set `aria-hidden`, so pass it explicitly on decorative icons.
+## Design: Ink & Mist
 
-**All stack and social icons are monochrome** — rendered with `color="currentColor"` so they follow the theme. Do not reintroduce brand colours (the `brandColor` fields in `content.ts` are no longer rendered). `CursorIcon` uses opacity-shaded `currentColor` faces; `FrontendMastersIcon` is a monochrome "FM" roundel because SimpleIcons has no entry.
-
-Icon sources used:
-- `react-icons/si` — SimpleIcons (most tech logos)
-- `react-icons/vsc` — VS Code icon set (`VscVscode`)
-- `react-icons/fa6` — Font Awesome 6 (`FaLinkedin`)
-- `react-icons/fi` — Feather (`FiArrowUpRight`)
-- Cursor AI — `CursorIcon` custom component (monochrome version of the official cube)
-
-## Key files
-
-| File | Purpose |
-|---|---|
-| `src/config/content.ts` | All site copy, projects, social links, stack groups — edit here to personalise |
-| `src/style.css` | All styles: `@theme` variables, BEM component classes, responsive breakpoints |
-| `src/utils/icons.tsx` | Icon maps (`stackIconMap`, `socialIconMap`) plus named icon exports |
-| `src/App.tsx` | Root component — owns the theme, composes Header, all sections, footer |
-| `src/hooks/useScrollReveal.ts` | IntersectionObserver ref hook for scroll-reveal |
-| `src/hooks/useActiveSection.ts` | IntersectionObserver hook returning active section id |
-| `index.html` | Theme bootstrap script, Google Fonts (`Geist`, `Geist Mono`) import, meta tags |
-| `vite.config.ts` | Vite config — plugins: `@vitejs/plugin-react`, `@tailwindcss/vite` |
-
-## Styling conventions
-
-- **Theme**: fonts live in the `@theme {}` block; colours are semantic tokens (`--color-bg`, `--color-fg`, `--color-muted`, `--color-line`, `--color-soft`, `--color-chip`, `--color-inv-bg/fg`, …) defined twice — under `:root[data-theme="dark"]` and `:root[data-theme="light"]`. Always add a new colour to **both** blocks. The palette is monochrome; the only colour is the hero glow and canvas beams.
-- **Naming**: BEM — `.header__link`, `.header__link--active`, `.stack__item`, `.project-card__title`.
-- **Hairline grids**: cells in the stack, projects and social grids draw their right/bottom lines with `box-shadow: 1px 0 0 var(--color-line), 0 1px 0 var(--color-line)` and the grid has `overflow: hidden`, so lines never double up against the rails.
-- **Hover**: cells get `--color-soft` background; project screenshots lift `translateY(-4px)`; buttons `translateY(-2px)`. Project cards also have a cursor spotlight (`::before` radial gradient positioned by `--mx/--my`, set in `trackPointer`).
-- **Header nav active state**: animated `scaleX` underline via `::after` pseudo-element transitioning from 0 → 1.
-- **Scroll reveal**: elements with class `reveal` fade in via `IntersectionObserver` adding `reveal--visible`.
-- **CSS custom properties in style prop**: use `style={{ "--some-var": value } as CSSProperties}` — the type assertion is required.
-- **Project card heights**: all cards are locked to one height — `grid-auto-rows: 1fr` on `.projects-grid`, `.project-card` as a flex column, `.project-card__links` pinned with `margin-top: auto`. The badge row (24px), title (2-line clamp, `2.6em`), description (3-line clamp, `4.65em`) and tag row (2 rows, `54px`) each clamp **and** reserve their space with `min-height`. Changing a clamp, a font size or a line-height means re-measuring the matching `min-height`, or the cards go ragged again. Verify by asserting every `.project-card` reports the same `offsetHeight`.
-- **Contrast**: `--color-muted` is the lightest text colour allowed — 7.9:1 on black (dark) and 6.4:1 on white (light). Do not use `--color-line` or `--color-chip` for text.
+- **Palette is exactly two colours:** Mist `#bdd4e7` and Ink `#212227`. Every other tone is derived with `color-mix(in srgb, …)`. Do not add another hex — grep `src/style.css` for `#` to check.
+- Dark theme = mist on ink; light theme = ink on mist. Tokens are defined under `:root, :root[data-theme="dark"]` and again under `:root[data-theme="light"]` — always add a new token to **both**: `--color-bg/fg/muted/line/line-strong/surface/surface-2`, `--color-inv-bg/fg/muted/line` (inverse panels: Process, featured social card, SDD/AI flags), `--photo-bg/--photo-blend` (duotone avatar).
+- **Contrast floor:** `--color-muted` is the lightest text allowed (≥4.8:1 on every surface it sits on, both themes). Never use `--color-line*` for text.
+- **Fonts** (`@theme` block + Google Fonts link in `index.html`): Bricolage Grotesque (`--font-display`), Manrope (`--font-body`), JetBrains Mono (`--font-mono`, labels/handles).
+- **Avatar:** `public/Me.jpg`, grayscale + `mix-blend-mode: multiply` over `--photo-bg`, scaled and cropped to the upper part of the photo in a 72px circle.
+- **Headline:** `.hero__title` reserves `min-height` for two lines (three at ≤600px) so the rotating word never shifts the layout. If you change its font size or line-height, re-check at 360px and 1440px.
+- **Naming:** BEM (`.case-study__tag--flag`, `.social__link`, `.hero__word`).
+- **CSS custom properties in style prop:** `style={{ "--some-var": value } as CSSProperties}`.
+- Breakpoints in use: 1600 (résumé dock), 1100/560 (social grid 4 → 2 → 1 columns), 1000, 960, 900, 860, 760, 700, 600, 520, 420. Verify there's no horizontal overflow at 390px after layout changes.
 
 ## Adding/changing content
 
-- **Text, projects, social links, stack items** → `src/config/content.ts` only, no component changes needed.
-- **New project** → every entry needs a required `kind: "frontend" | "fullstack"` (the build fails without it). Optional `deployment` takes one `DeployPlatform` or an array (`["vercel", "render"]`) — omit it entirely for undeployed projects. Optional `sdd: true` marks spec-driven builds. All three render as badges at the top of the card.
-- **Project tags** → cards render at most `MAX_VISIBLE_TAGS` (4) plus a `+N` chip; the **Details** dialog shows the full description and every tag. `orderTags` hoists tags matched by the active filters to the front, so a filtered card always visibly shows why it matched.
-- **Project filters** → chips are curated in `content.projects.filterGroups` (Frameworks / Methodologies / AI) — deliberately no HTML/CSS/JS basics. A `ProjectFilter` matches when a project has any of its `tags`, its description contains `text`, or (`sdd: true`) it is spec-driven. Chips that match no project are hidden automatically. Selected chips combine with AND; the search box matches title, description and tags.
-- **Hero / stats** → `intro.badge`, `intro.heroLead` + rotating `intro.heroWords`, `intro.heroSummary`, and the `stats` array (`{projects}` is replaced with the live project count). The older `headline` / `taglineParagraphs` fields render in the About block under the stats.
-- **New card link** → give it a unique `aria-label` (`` `Live Demo for ${project.title}` ``). The visible text repeats across every card, so without one the screen-reader link list is ambiguous; keep the visible text at the start of the label for WCAG 2.5.3.
-- **New stack icon** → add entry to `stackIconMap` in `src/utils/icons.tsx`, reference key in `content.ts`.
-- **New section** → create `src/components/NewSection.tsx` as a React component, import and compose in `src/App.tsx`.
+- **Text, case studies, social links, experience** → `src/config/content.ts` only.
+- **Case study flags** → `sdd: true` (spec-driven: constitution → spec → plan → tasks) and `ai: true` (ships AI features) render as filled chips at the start of the tag row.
+- **Social links** → `content.social.links`; the first entry is the featured card. Keep `index.html` JSON-LD `sameAs` and `<link rel="me">`, and `public/llms*.txt`, in sync with this list. Social anchors use `rel="me noopener noreferrer"`.
+- **Hero** → `intro.badge`, `intro.heroLead` + rotating `intro.heroWords`, `intro.heroSummary`, `stats`.
+- **New section** → `src/components/NewSection.tsx`, compose in `App.tsx`, add a `content.nav` entry and a line in `public/llms.txt`.
+
+## Discoverability files (keep in sync with content)
+
+| File | Purpose |
+|---|---|
+| `index.html` | Meta/OG tags, JSON-LD (`Person` with education, credentials, languages, `sameAs`; `ItemList` of case studies; `ProfilePage`), `rel="me"` + `rel="alternate"` links |
+| `public/llms.txt` | Short llms.txt summary for LLMs |
+| `public/llms-full.txt` | Full context: summary, experience, education, certifications, projects, writing, profiles |
+| `public/resume.md` | Text version of the résumé (worded exactly as the PDF) |
+| `public/sitemap.xml` / `robots.txt` | Bump `<lastmod>` when content changes |
+
+Facts in these files must match `content.ts` and the résumé — never invent credentials or metrics.
+
+## Résumé
+
+`resume/Gustavo-Sanchez-Resume.html` is the source of `public/Gustavo-Sanchez-Resume.pdf` (white paper, Ink & Mist accents, must fit one Letter page). Regenerate: run the dev server, open `/resume/Gustavo-Sanchez-Resume.html`, print to PDF (Letter, no margins, background graphics on) or use Playwright `page.pdf({ format: "Letter", printBackground: true })`. Update `public/resume.md` with the same wording.
 
 ## TypeScript notes
 
-`tsconfig.json` enforces `strict`, `noUnusedLocals`, `noUnusedParameters`, `verbatimModuleSyntax`, and `jsx: react-jsx`. Type-only imports must use `import type`. The `react-jsx` transform means JSX works without importing React at the top of every file.
+`tsconfig.json` enforces `strict`, `noUnusedLocals`, `noUnusedParameters`, `verbatimModuleSyntax`, `erasableSyntaxOnly` and `jsx: react-jsx`. Type-only imports must use `import type`. No need to import React for JSX.
 
 ## dangerouslySetInnerHTML
 
-Used in one place for `content.footer` (which may contain HTML entities or `<a>` tags):
-- `src/App.tsx` — page footer
-
-Content is developer-controlled so there is no XSS risk.
+Used in one place for `content.footer` (may contain HTML entities or `<a>` tags) in `src/App.tsx`. Content is developer-controlled, so there is no XSS risk.
