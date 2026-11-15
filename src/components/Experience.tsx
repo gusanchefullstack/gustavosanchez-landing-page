@@ -6,7 +6,7 @@ export function Experience() {
   const { subtitle, title, description, chapters, credentials } = content.experience;
 
   return (
-    <section id="experience" className="section experience" aria-labelledby="experience-title">
+    <section id="experience" className="section container experience" aria-labelledby="experience-title">
       <header className="section__head">
         <span className="section__eyebrow">{subtitle}</span>
         <h2 id="experience-title" className="section__title">{title}</h2>

@@ -6,6 +6,17 @@
     <link rel="shortcut icon" href="/favicon.svg" type="image/svg+xml" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <link rel="canonical" href="https://www.gustavosanchez.dev/" />
+    <link rel="alternate" type="text/plain" href="/llms.txt" title="LLM-readable site summary" />
+    <link rel="alternate" type="text/plain" href="/llms-full.txt" title="Full portfolio context for LLMs" />
+    <link rel="alternate" type="text/markdown" href="/resume.md" title="Résumé (Markdown)" />
+    <link rel="alternate" type="application/pdf" href="/Gustavo-Sanchez-Resume.pdf" title="Résumé (PDF)" />
+    <link rel="me" href="https://github.com/gusanchefullstack" />
+    <link rel="me" href="https://www.linkedin.com/in/gustavosanchezgalarza/" />
+    <link rel="me" href="https://dev.to/gusanchedev" />
+    <link rel="me" href="https://x.com/gusanchedev" />
+    <link rel="me" href="https://bsky.app/profile/gusanchedev.bsky.social" />
+    <link rel="me" href="https://www.frontendmentor.io/profile/gusanchefullstack" />
+    <link rel="me" href="https://master.dev/u/gustavosanchezdev/" />
     <meta
       name="description"
       content="Gustavo Sanchez is a full-stack AI engineer in San Francisco who combines production software delivery with 17 years of enterprise GTM leadership."
@@ -13,6 +24,8 @@
     <meta name="author" content="Gustavo Sanchez" />
     <meta name="robots" content="index, follow, max-image-preview:large, max-snippet:-1, max-video-preview:-1" />
     <meta name="color-scheme" content="dark light" />
+    <meta name="theme-color" content="#212227" media="(prefers-color-scheme: dark)" />
+    <meta name="theme-color" content="#bdd4e7" media="(prefers-color-scheme: light)" />
     <meta property="og:type" content="profile" />
     <meta property="og:site_name" content="Gustavo Sanchez" />
     <meta property="og:title" content="Gustavo Sanchez | Full-Stack AI Engineer" />
@@ -48,13 +61,54 @@
             "email": "mailto:hello@gustavosanchez.dev",
             "homeLocation": {
               "@type": "Place",
-              "name": "San Francisco, California, United States"
+              "name": "San Francisco, California, United States",
+              "address": {
+                "@type": "PostalAddress",
+                "addressLocality": "San Francisco",
+                "addressRegion": "CA",
+                "addressCountry": "US"
+              }
             },
+            "nationality": { "@type": "Country", "name": "Colombia" },
+            "knowsLanguage": [
+              { "@type": "Language", "name": "English", "alternateName": "en" },
+              { "@type": "Language", "name": "Spanish", "alternateName": "es" }
+            ],
+            "alumniOf": [
+              {
+                "@type": "CollegeOrUniversity",
+                "name": "Universidad del Cauca",
+                "description": "B.Eng., Electronic & Telecommunications Engineering"
+              },
+              {
+                "@type": "CollegeOrUniversity",
+                "name": "EADA Business School",
+                "description": "MBA, Cum Laude (with CENTRUM PUCP)"
+              },
+              {
+                "@type": "CollegeOrUniversity",
+                "name": "CENTRUM PUCP",
+                "description": "MBA, Cum Laude (with EADA Business School)"
+              }
+            ],
+            "hasCredential": [
+              { "@type": "EducationalOccupationalCredential", "name": "AWS Certified AI Practitioner", "credentialCategory": "certification", "recognizedBy": { "@type": "Organization", "name": "Amazon Web Services" } },
+              { "@type": "EducationalOccupationalCredential", "name": "AWS Certified Cloud Practitioner", "credentialCategory": "certification", "recognizedBy": { "@type": "Organization", "name": "Amazon Web Services" } },
+              { "@type": "EducationalOccupationalCredential", "name": "Google Cloud Digital Leader", "credentialCategory": "certification", "recognizedBy": { "@type": "Organization", "name": "Google Cloud" } },
+              { "@type": "EducationalOccupationalCredential", "name": "Microsoft Azure Fundamentals", "credentialCategory": "certification", "recognizedBy": { "@type": "Organization", "name": "Microsoft" } }
+            ],
+            "subjectOf": [
+              { "@type": "DigitalDocument", "name": "Gustavo Sanchez — Résumé (PDF)", "url": "https://www.gustavosanchez.dev/Gustavo-Sanchez-Resume.pdf", "encodingFormat": "application/pdf" },
+              { "@type": "DigitalDocument", "name": "Gustavo Sanchez — Résumé (Markdown)", "url": "https://www.gustavosanchez.dev/resume.md", "encodingFormat": "text/markdown" }
+            ],
             "knowsAbout": [
               "Full-stack web development",
               "Artificial intelligence",
               "Systems design",
               "Specification-driven development",
+              "Applied AI and speech models",
+              "AI coding-agent orchestration",
+              "Enterprise B2B SaaS go-to-market",
               "Accessible web applications",
               "React",
               "TypeScript",
@@ -86,6 +140,55 @@
             }
           },
           {
+            "@type": "ItemList",
+            "@id": "https://www.gustavosanchez.dev/#work",
+            "name": "Selected case studies",
+            "itemListElement": [
+              {
+                "@type": "ListItem",
+                "position": 1,
+                "item": {
+                  "@type": "SoftwareApplication",
+                  "name": "EnglishChunks.guru",
+                  "description": "AI speaking coach in production: a privacy-first daily English practice product with open-model pronunciation scoring and AI feedback. Built spec-driven; includes AI features.",
+                  "url": "https://englishchunks.guru",
+                  "codeRepository": "https://github.com/gusanchefullstack/englishchunks.guru",
+                  "applicationCategory": "EducationalApplication",
+                  "keywords": "Next.js 16, TypeScript, Python, FastAPI, PostgreSQL, Stripe, spec-driven development, AI",
+                  "author": { "@id": "https://www.gustavosanchez.dev/#person" }
+                }
+              },
+              {
+                "@type": "ListItem",
+                "position": 2,
+                "item": {
+                  "@type": "SoftwareApplication",
+                  "name": "Nelson",
+                  "description": "Full-stack personal budgeting product with payment buckets, forecast-versus-actual reporting and threshold alerts. Built spec-driven.",
+                  "url": "https://fsdev-nelson-frontend.vercel.app",
+                  "codeRepository": "https://github.com/gusanchefullstack/fsdev-nelson-frontend",
+                  "applicationCategory": "FinanceApplication",
+                  "keywords": "React 19, Express 5, Prisma 7, PostgreSQL, Playwright, spec-driven development",
+                  "author": { "@id": "https://www.gustavosanchez.dev/#person" }
+                }
+              },
+              {
+                "@type": "ListItem",
+                "position": 3,
+                "item": {
+                  "@type": "SoftwareApplication",
+                  "name": "FX Checker",
+                  "description": "Tested currency intelligence interface with live rates, five-year history, comparison, favorites, CSV export and offline fallback. Built spec-driven.",
+                  "url": "https://fsdev-foreign-exchange-checker.vercel.app",
+                  "codeRepository": "https://github.com/gusanchefullstack/fsdev-foreign-exchange-checker",
+                  "applicationCategory": "FinanceApplication",
+                  "keywords": "React 19, TypeScript, Vitest, Testing Library, Frankfurter API, spec-driven development",
+                  "author": { "@id": "https://www.gustavosanchez.dev/#person" }
+                }
+              }
+            ]
+          },
+          {
             "@type": "ProfilePage",
             "@id": "https://www.gustavosanchez.dev/#profile",
             "url": "https://www.gustavosanchez.dev/",
@@ -95,7 +198,8 @@
             },
             "mainEntity": {
               "@id": "https://www.gustavosanchez.dev/#person"
-            }
+            },
+            "dateModified": "2026-11-15"
           }
         ]
       }
@@ -115,11 +219,11 @@
       })();
     </script>
 
-    <!-- Nocturne Circuit: editorial display + technical UI typography -->
+    <!-- Ink & Mist: grotesque display, humanist body, mono labels -->
     <link rel="preconnect" href="https://fonts.googleapis.com" />
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
     <link
-      href="https://fonts.googleapis.com/css2?family=IBM+Plex+Mono:wght@400;500&family=IBM+Plex+Sans:wght@400;500;600&family=Instrument+Serif:ital@0;1&display=swap"
+      href="https://fonts.googleapis.com/css2?family=Bricolage+Grotesque:opsz,wght@12..96,400..800&family=JetBrains+Mono:wght@400;500&family=Manrope:wght@400;500;600;700&display=swap"
       rel="stylesheet"
     />
 

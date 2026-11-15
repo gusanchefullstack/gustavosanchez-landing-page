@@ -1,15 +1,20 @@
 import { useEffect, useState } from "react";
 import { content } from "../config/content.ts";
-import type { Theme } from "../hooks/useTheme.ts";
 import { CopiedIcon, CopyIcon } from "../utils/icons.tsx";
-import { HeroCanvas } from "./HeroCanvas.tsx";
 
-const WORD_INTERVAL_MS = 2400;
+const WORD_INTERVAL_MS = 2600;
+
+function heroWordsSentence(words: string[]): string {
+  const bare = words.map((w) => w.replace(/[.\s]+$/, ""));
+  if (bare.length < 2) return `${bare.join("")}.`;
+  return `${bare.slice(0, -1).join(", ")} or ${bare[bare.length - 1]}.`;
+}
 
 function useRotatingIndex(length: number) {
   const [index, setIndex] = useState(0);
   useEffect(() => {
     if (length < 2) return;
+    if (window.matchMedia("(prefers-reduced-motion: reduce)").matches) return;
     const id = window.setInterval(
       () => setIndex((prev) => (prev + 1) % length),
       WORD_INTERVAL_MS,
@@ -38,14 +43,9 @@ function CopyEmailButton({ email }: { email: string }) {
   }
 
   return (
-    <button type="button" className="button button--terminal" onClick={copy}>
-      <span className="button__prompt" aria-hidden="true">
-        $
-      </span>
+    <button type="button" className="button button--ghost" onClick={copy}>
       {email}
-      <span className="button__kbd" aria-hidden="true">
-        {copied ? <CopiedIcon size={13} /> : <CopyIcon size={13} />}
-      </span>
+      {copied ? <CopiedIcon size={15} aria-hidden="true" /> : <CopyIcon size={15} aria-hidden="true" />}
       <span className="sr-only" aria-live="polite">
         {copied ? "Email address copied" : "Copy email address"}
       </span>
@@ -53,60 +53,59 @@ function CopyEmailButton({ email }: { email: string }) {
   );
 }
 
-export function Intro({ theme }: { theme: Theme }) {
-  const {
-    ctaLabel,
-    ctaHref,
-    badge,
-    heroLead,
-    heroWords,
-    heroSummary,
-  } = content.intro;
+export function Intro() {
+  const { ctaLabel, ctaHref, badge, heroLead, heroWords, heroSummary, photo, name } =
+    content.intro;
   const wordIndex = useRotatingIndex(heroWords.length);
 
   return (
     <>
-      <section id="intro" className="hero frame" aria-labelledby="hero-title">
-        {/* Clipped layer, so the crosshairs on the hero's corners can overhang the rails */}
-        <div className="hero__bg" aria-hidden="true">
-          <HeroCanvas theme={theme} />
-          <div className="hero__glow" />
+      <section id="intro" className="hero container" aria-labelledby="hero-title">
+        <div className="hero__id">
+          <div className="hero__avatar">
+            <img src={photo} alt={`Portrait of ${name}`} width={96} height={96} />
+          </div>
+          <div className="hero__who">
+            <p className="hero__name">{name}</p>
+            <p className="hero__location">{content.resume.location}</p>
+          </div>
         </div>
 
         <a className="hero__badge" href={badge.href}>
+          <span className="hero__pulse" aria-hidden="true" />
           {badge.label}
-          <span className="hero__badge-cta">Let&apos;s talk →</span>
         </a>
         <h1 id="hero-title" className="hero__title">
-          {heroLead}{" "}
-          <span className="hero__word" key={wordIndex} aria-hidden="true">
-            {heroWords[wordIndex]}
-          </span>
-          <span className="sr-only">{heroWords.join(" ")}</span>
+          <span className="hero__lead">{heroLead}</span>{" "}
+          {/* Drawn by CSS from data-word so the page text holds only the sentence below */}
+          <span
+            className="hero__word"
+            key={wordIndex}
+            data-word={heroWords[wordIndex]}
+            aria-hidden="true"
+          />
+          {/* Full list for screen readers and no-JS crawlers: "a, b, c or d." */}
+          <span className="sr-only">{heroWordsSentence(heroWords)}</span>
         </h1>
-        <p className="hero__summary">{heroSummary}</p>
-        <div className="hero__actions">
-          <a className="button button--primary" href={ctaHref}>
-            {ctaLabel}
-          </a>
-          <CopyEmailButton email={content.contact.info.email} />
+        <div className="hero__foot">
+          <p className="hero__summary">{heroSummary}</p>
+          <div className="hero__actions">
+            <a className="button button--primary" href={ctaHref}>
+              {ctaLabel} <span aria-hidden="true">→</span>
+            </a>
+            <CopyEmailButton email={content.contact.info.email} />
+          </div>
         </div>
-
-        <span className="crosshair crosshair--bl" aria-hidden="true" />
-        <span className="crosshair crosshair--br" aria-hidden="true" />
       </section>
 
-      <section className="stats" aria-label="Evidence at a glance">
+      <section className="stats container" aria-label="Evidence at a glance">
         {content.stats.map((stat) => (
           <div className="stats__item" key={stat.label}>
-            <span className="stats__value">
-              {stat.value}
-            </span>
+            <span className="stats__value">{stat.value}</span>
             <span className="stats__label">{stat.label}</span>
           </div>
         ))}
       </section>
-
     </>
   );
 }

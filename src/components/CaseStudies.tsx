@@ -7,7 +7,7 @@ export function CaseStudies() {
   const { subtitle, title, description, items } = content.caseStudies;
 
   return (
-    <section id="work" className="section cases" aria-labelledby="work-title">
+    <section id="work" className="section container cases" aria-labelledby="work-title">
       <header className="section__head">
         <span className="section__eyebrow">{subtitle}</span>
         <h2 id="work-title" className="section__title">{title}</h2>
@@ -56,6 +56,16 @@ export function CaseStudies() {
               </div>
 
               <ul className="case-study__tags" aria-label="Technologies">
+                {study.sdd ? (
+                  <li className="case-study__tag--flag" title="Built with spec-driven development">
+                    SDD
+                  </li>
+                ) : null}
+                {study.ai ? (
+                  <li className="case-study__tag--flag" title="Includes AI features">
+                    AI
+                  </li>
+                ) : null}
                 {study.tags.map((tag) => <li key={tag}>{tag}</li>)}
               </ul>
 

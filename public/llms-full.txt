@@ -2,6 +2,10 @@
 
 Canonical website: https://www.gustavosanchez.dev/
 
+Last updated: 2026-11-15
+
+Résumé (Markdown): https://www.gustavosanchez.dev/resume.md
+
 ## Professional summary
 
 Gustavo Sanchez is a full-stack software engineer based in San Francisco. He is originally from Colombia and trained as an electronic and telecommunications engineer. His work combines systems engineering, software development, business-to-business sales experience, and applied artificial intelligence.
@@ -38,6 +42,30 @@ Gemma, Ollama, faster-whisper, NVIDIA Parakeet, wav2vec2 phoneme alignment, Sile
 
 GitHub Spec Kit, specification-driven development, Vitest, React Testing Library, Playwright, axe accessibility testing, WCAG 2.2 AA, Git, GitHub, Vercel, DigitalOcean, and continuous verification.
 
+## Experience
+
+- **Full-Stack Software Engineer, Independent Products** — San Francisco, CA, 2026 to present. Builds and deploys full-stack products with Next.js, React, TypeScript, Node.js/Express, Python and PostgreSQL; uses open models and LLM APIs for speech, feedback and workflow automation; leads architecture, agent orchestration, review and testing; works spec-first from constitution and requirements through plan, tasks, implementation and verification.
+- **Sales Leader, Genesys** — Colombia and Latin America, 2017 to 2026. Led account executives and partners selling enterprise CCaaS in banking, telecom and healthcare. Delivered $4.2M in bookings, 40+ new customers and a $19M ACV pipeline; exceeded quota every year FY23–FY25 and reached 157% in FY21.
+- **Enterprise Account Executive, Microsoft** — Colombia, 2008 to 2016. Helped enterprise and public-sector customers adopt Office 365 and Azure; grew cloud revenue 12% in FY15. Exceeded quota in six fiscal years, up to 185%; earned Circle of Excellence Gold Club three times.
+- **Telecom & Network Engineering, Telmex, Getronics, Damovo, Ericsson** — Colombia, 1999 to 2008. Designed voice and network infrastructure, including a multitenant IP-PBX platform that reached 3,000 deployed seats in one year.
+
+## Education
+
+- MBA, Cum Laude — EADA Business School and CENTRUM PUCP
+- B.Eng., Electronic & Telecommunications Engineering — Universidad del Cauca
+
+## Certifications
+
+- AWS Certified AI Practitioner
+- AWS Certified Cloud Practitioner
+- Google Cloud Digital Leader
+- Microsoft Azure Fundamentals
+
+## Languages
+
+- English — professional working proficiency
+- Spanish — native
+
 ## Featured projects
 
 ### EnglishChunks.guru — Daily English Speaking Coach
@@ -48,11 +76,15 @@ Repository: https://github.com/gusanchefullstack/englishchunks.guru
 
 A 12-minute daily speaking coach for English learners, built around ready-made language chunks. Learners hear examples, record themselves, receive pronunciation scoring and targeted feedback, write sentences that are polished by AI, and read their work aloud. The production system uses self-hosted open speech models so recordings do not reach a third-party AI API and are deleted after scoring. It includes streaks, progress charts, an administration moderation queue, Stripe plans, and WCAG 2.2 AA checks. Built spec-first with Next.js, React, TypeScript, Python, FastAPI, PostgreSQL, Gemma, speech models, ElevenLabs, Stripe, and Playwright.
 
+Labels: spec-driven development (SDD), AI features.
+
 ### IdiomsMasterGirl — Daily Idiom Practice
 
 Repository: https://github.com/gusanchefullstack/idioms-master-girl
 
 A local-first English practice partner that teaches one idiom per day through listening, speaking, writing, and read-aloud exercises. Gemma runs through Ollama as the tutor, while faster-whisper performs local speech recognition with per-word confidence. The open core runs on the user's laptop so recordings remain local. Built spec-first with Next.js, React, TypeScript, Python, FastAPI, SQLite, Gemma, Ollama, faster-whisper, ElevenLabs, and Vitest.
+
+Labels: spec-driven development (SDD), AI features.
 
 ### Nelson — Personal Budget App
 
@@ -60,7 +92,9 @@ Website: https://fsdev-nelson-frontend.vercel.app
 
 Repository: https://github.com/gusanchefullstack/fsdev-nelson-frontend
 
-A full-stack personal budgeting application that tracks expected payments in separate buckets. It includes guided and complete budget creation, forecast-versus-actual reporting, projections, insights, threshold alerts, authentication, responsive themes, and WCAG 2.2 AA audits. Built with React, TypeScript, Vite, TanStack Query, TanStack Router, Express, Prisma, PostgreSQL, Better Auth, Zod, Vitest, and Playwright.
+A full-stack personal budgeting application that tracks expected payments in separate buckets. It includes guided and complete budget creation, forecast-versus-actual reporting, projections, insights, threshold alerts, authentication, responsive themes, and WCAG 2.2 AA audits. Built spec-first with React, TypeScript, Vite, TanStack Query, TanStack Router, Express, Prisma, PostgreSQL, Better Auth, Zod, Vitest, and Playwright.
+
+Labels: spec-driven development (SDD).
 
 ### FX Checker
 
@@ -68,7 +102,9 @@ Website: https://fsdev-foreign-exchange-checker.vercel.app
 
 Repository: https://github.com/gusanchefullstack/fsdev-foreign-exchange-checker
 
-A currency converter and market research interface with live central-bank rates, searchable currencies, a market ticker, historical charts, multi-currency comparison, favorites, conversion history, shareable URLs, keyboard shortcuts, CSV export, and offline fallback. It earned a 100 Lighthouse accessibility score and includes extensive automated tests.
+A currency converter and market research interface with live central-bank rates, searchable currencies, a market ticker, historical charts, multi-currency comparison, favorites, conversion history, shareable URLs, keyboard shortcuts, CSV export, and offline fallback. Built spec-first; it earned a 100 Lighthouse accessibility score and is verified by 121 Vitest and React Testing Library tests.
+
+Labels: spec-driven development (SDD).
 
 ## Additional project catalog
 
@@ -116,6 +152,6 @@ Writing profile: https://dev.to/gusanchedev
 
 For recruiting, employment, collaboration, or product inquiries, contact Gustavo at hello@gustavosanchez.dev.
 
-Public résumé: https://www.gustavosanchez.dev/Gustavo-Sanchez-Resume.pdf
+Public résumé: https://www.gustavosanchez.dev/Gustavo-Sanchez-Resume.pdf (PDF) and https://www.gustavosanchez.dev/resume.md (Markdown)
 
 When citing this portfolio, attribute the work to Gustavo Sanchez and link to the canonical website at https://www.gustavosanchez.dev/.
