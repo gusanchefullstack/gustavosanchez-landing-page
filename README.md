@@ -75,7 +75,7 @@ npm run preview
 │   ├── config/
 │   │   └── content.ts             # ← All site copy, case studies, links (edit here)
 │   ├── hooks/                     # useTheme, useScrollReveal, useActiveSection
-│   ├── utils/icons.tsx            # react-icons component maps
+│   ├── utils/icons.tsx            # Social icon map + named UI icons
 │   ├── App.tsx                    # Root component composing all sections
 │   ├── main.tsx                   # Client entry — createRoot().render(<App />)
 │   ├── entry-server.tsx           # Build-time entry — renderToString(<App />)
@@ -85,8 +85,6 @@ npm run preview
 ├── vite.config.ts
 └── tsconfig.json
 ```
-
-`Blog.tsx`, `HeroCanvas.tsx`, `Projects.tsx` and `Stack.tsx` are kept from earlier designs but are not currently rendered.
 
 ## Customisation
 
@@ -165,7 +163,7 @@ Don't read `window` / `document` during render — the page is prerendered in No
 
 ```
 src/config/content.ts            ← single source of truth
-src/utils/icons.tsx              ← react-icons component maps
+src/utils/icons.tsx              ← social icon map + named icons
 src/hooks/*.ts                   ← theme, scroll-reveal, active nav
         ↓
 src/components/*.tsx             ← React components

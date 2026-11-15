@@ -20,7 +20,7 @@ React 19 + TypeScript + Vite SPA, **prerendered at build time**. All UI is decla
 
 ```
 src/config/content.ts         ← single source of truth for all text/data
-src/utils/icons.tsx           ← react-icons component maps + named icon exports
+src/utils/icons.tsx           ← socialIconMap + named icon exports
 src/hooks/useScrollReveal.ts  ← IntersectionObserver hook for .reveal fade-in
 src/hooks/useActiveSection.ts ← IntersectionObserver hook for active nav link
 src/hooks/useTheme.ts         ← light/dark theme state (OS default, remembered once toggled)
@@ -51,8 +51,6 @@ src/entry-server.tsx          ← renderToString(<App />)        (build-time pre
 | `Contact` | `#contact` — Formspree form + contact info |
 | `ResumeDock` | Fixed résumé pill (compact single pill ≤1600px) |
 
-`Blog`, `HeroCanvas`, `Projects` and `Stack` are **not rendered** (left over from earlier designs). Don't edit them expecting a visible change; delete or re-wire them deliberately.
-
 ### Component pattern
 
 - Every component is a named React function export.
@@ -64,14 +62,13 @@ src/entry-server.tsx          ← renderToString(<App />)        (build-time pre
 ### Icon system (`src/utils/icons.tsx`)
 
 ```tsx
-export const stackIconMap: Record<string, ComponentType<IconProps>> = { ... };
 export const socialIconMap: Record<string, ComponentType<IconProps>> = { ... };
 
 const Icon = socialIconMap[link.icon];
 {Icon ? <Icon size={18} color="currentColor" /> : link.icon}
 ```
 
-UI chrome icons (`CopyIcon`, `CopiedIcon`, `ThemeLightIcon`, `MenuIcon`, …) are plain named exports. All icons are monochrome `currentColor` — never reintroduce brand colours (`brandColor` in `content.ts` is not rendered). react-icons doesn't set `aria-hidden`; pass it on decorative icons.
+Case-study link icons (`LiveDemoIcon`, `SourceCodeIcon`) and UI chrome icons (`CopyIcon`, `CopiedIcon`, `ThemeLightIcon`, `MenuIcon`, `DownloadIcon`, …) are plain named exports. `MasterDevIcon` is a custom monochrome SVG. All icons are monochrome `currentColor` — never reintroduce brand colours (`brandColor` in `content.ts` is not rendered). react-icons doesn't set `aria-hidden`; pass it on decorative icons.
 
 ## Design: Ink & Mist
 
@@ -116,3 +113,5 @@ Facts in these files must match `content.ts` and the résumé — never invent c
 ## dangerouslySetInnerHTML
 
 Used in one place for `content.footer` (may contain HTML entities or `<a>` tags) in `src/App.tsx`. Content is developer-controlled, so there is no XSS risk.
+
+The `stack`, `projects` and `blog` blocks in `content.ts` are not rendered any more (their components were removed). They remain as the full project catalog that `public/llms-full.txt` summarises.
