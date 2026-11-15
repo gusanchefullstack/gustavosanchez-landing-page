@@ -22,7 +22,7 @@ export function Social() {
                 className="social__link"
                 href={link.url}
                 target="_blank"
-                rel="noopener noreferrer"
+                rel="me noopener noreferrer"
               >
                 <span className="social__icon" aria-hidden="true">
                   {Icon ? <Icon size={18} color="currentColor" /> : link.icon}

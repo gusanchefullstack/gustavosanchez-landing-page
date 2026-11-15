@@ -1,3 +1,5 @@
+# Search engines, AI assistants and agents are all welcome.
+# LLM-readable summaries: /llms.txt and /llms-full.txt · Résumé: /resume.md
 User-agent: *
 Allow: /
 

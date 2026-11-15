@@ -505,6 +505,10 @@ ol {
   animation: word-in 0.6s var(--ease);
 }
 
+.hero__word::before {
+  content: attr(data-word);
+}
+
 @keyframes word-in {
   from {
     opacity: 0;

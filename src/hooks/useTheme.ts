@@ -6,6 +6,8 @@ const STORAGE_KEY = "theme";
 
 /** The inline script in index.html sets data-theme before first paint; read it back. */
 function initialTheme(): Theme {
+  // Build-time prerender has no DOM; the client re-renders with the real theme
+  if (typeof document === "undefined") return "dark";
   const attr = document.documentElement.dataset.theme;
   if (attr === "light" || attr === "dark") return attr;
   return window.matchMedia("(prefers-color-scheme: light)").matches ? "light" : "dark";

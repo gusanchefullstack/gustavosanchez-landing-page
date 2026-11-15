@@ -4,6 +4,12 @@ import { CopiedIcon, CopyIcon } from "../utils/icons.tsx";
 
 const WORD_INTERVAL_MS = 2600;
 
+function heroWordsSentence(words: string[]): string {
+  const bare = words.map((w) => w.replace(/[.\s]+$/, ""));
+  if (bare.length < 2) return `${bare.join("")}.`;
+  return `${bare.slice(0, -1).join(", ")} or ${bare[bare.length - 1]}.`;
+}
+
 function useRotatingIndex(length: number) {
   const [index, setIndex] = useState(0);
   useEffect(() => {
@@ -71,10 +77,15 @@ export function Intro() {
         </a>
         <h1 id="hero-title" className="hero__title">
           <span className="hero__lead">{heroLead}</span>{" "}
-          <span className="hero__word" key={wordIndex} aria-hidden="true">
-            {heroWords[wordIndex]}
-          </span>
-          <span className="sr-only">{heroWords.join(" ")}</span>
+          {/* Drawn by CSS from data-word so the page text holds only the sentence below */}
+          <span
+            className="hero__word"
+            key={wordIndex}
+            data-word={heroWords[wordIndex]}
+            aria-hidden="true"
+          />
+          {/* Full list for screen readers and no-JS crawlers: "a, b, c or d." */}
+          <span className="sr-only">{heroWordsSentence(heroWords)}</span>
         </h1>
         <div className="hero__foot">
           <p className="hero__summary">{heroSummary}</p>
