@@ -5,31 +5,32 @@
 ![Vite](https://img.shields.io/badge/Vite-7-646CFF?logo=vite&logoColor=white)
 ![Tailwind CSS](https://img.shields.io/badge/Tailwind-4-06B6D4?logo=tailwindcss&logoColor=white)
 
-A personal developer portfolio and landing page built with React 19, TypeScript, Vite, and Tailwind CSS. A monochrome, hairline-grid design with light and dark themes, an animated canvas hero, smooth scroll-reveal animations, and a fully content-driven architecture.
+The portfolio of Gustavo Sanchez, full-stack AI engineer — live at **[gustavosanchez.dev](https://www.gustavosanchez.dev)**. Built with React 19, TypeScript, Vite and Tailwind CSS 4 in the two-colour **Ink & Mist** design (`#212227` / `#bdd4e7`), with light and dark themes, a content-driven architecture and a build-time prerender so search engines, LLMs and agents can read every word without running JavaScript.
 
 ## Live sections
 
 | Section | Description |
 |---|---|
-| **Intro** | Animated canvas hero (grid with travelling light beams, pointer-reactive intersections), rotating headline, copy-email button, stats row, and an About block with profile photo |
-| **Stack** | Tech skills grouped by category (Frontend, Backend, API, AI, Database, Dev Tools), each with a monochrome icon |
-| **Projects** | Card grid with badges, tags, links and a **Details** dialog (full description + complete tech list); searchable by name, description or technology and filterable by curated Framework / Methodology / AI chips |
-| **Blog** | Latest posts published on DEV |
-| **Social** | Profile links with monochrome icons for LinkedIn, GitHub, DEV, X, Bluesky, Frontend Mentor, Frontend Masters |
-| **Contact** | Contact form (powered by Formspree) with email, location and availability |
+| **Signal** (`#intro`) | Small duotone avatar, availability badge, headline with a rotating ending, summary, CTA + copy-email button, stats row |
+| **Proof** (`#work`) | Three case studies — challenge, approach, outcome, measured proof — with tech tags plus **SDD** (spec-driven) and **AI** flags |
+| **Process** (`#process`) | Four-stage workflow from framing the problem to proving the outcome |
+| **Experience** (`#experience`) | Software engineering, enterprise GTM leadership and telecom engineering timeline |
+| **Social** (`#social`) | LinkedIn, X, Master.dev, Bluesky, GitHub, Frontend Mentor and DEV, with monochrome icons |
+| **Contact** (`#contact`) | Contact form (Formspree) with email, location and availability |
+| **Résumé dock** | Always-available link to the one-page PDF résumé |
 
 ## Tech stack
 
 | Layer | Technology |
 |---|---|
-| Framework | React 19 |
+| Framework | React 19 (client render + build-time `renderToString` prerender) |
 | Language | TypeScript 5.9 (strict mode) |
 | Build tool | Vite 7 |
-| Styling | Tailwind CSS 4 + CSS custom properties |
+| Styling | Tailwind CSS 4 + CSS custom properties derived with `color-mix()` |
 | Icons | react-icons 5 (si / vsc / fa6 / fi sets) |
 | Form handling | Formspree (`@formspree/react`) |
-| Fonts | Geist + Geist Mono (Google Fonts) |
-| Deployment | Vercel (preview deployment for every pushed branch) |
+| Fonts | Bricolage Grotesque, Manrope, JetBrains Mono (Google Fonts) |
+| Deployment | Vercel — production from `main`, preview for every pushed branch |
 
 ## Getting started
 
@@ -40,7 +41,7 @@ npm install
 # Start dev server → http://localhost:5173
 npm run dev
 
-# Type-check and build for production
+# Type-check, build, and prerender the page into dist/index.html
 npm run build
 
 # Preview the production build locally
@@ -51,127 +52,127 @@ npm run preview
 
 ```
 ├── public/
-│   ├── Me.jpg                    # Profile photo
-│   └── projects/                 # Project screenshots (*.png / *.jpg, served as static assets)
+│   ├── Me.jpg                     # Profile photo (cropped to a duotone avatar in CSS)
+│   ├── Gustavo-Sanchez-Resume.pdf # One-page résumé
+│   ├── resume.md                  # Text version of the résumé for agents and LLMs
+│   ├── llms.txt / llms-full.txt   # LLM-readable site summaries
+│   ├── robots.txt / sitemap.xml
+│   └── projects/                  # Project screenshots
+├── resume/
+│   └── Gustavo-Sanchez-Resume.html  # Print-styled source of the PDF résumé
+├── scripts/
+│   └── prerender.mjs              # Injects the server-rendered app into dist/index.html
 ├── src/
 │   ├── components/
-│   │   ├── Blog.tsx              # DEV posts list
-│   │   ├── Contact.tsx           # Contact form + info
-│   │   ├── Header.tsx            # Sticky top nav, theme toggle, mobile menu
-│   │   ├── HeroCanvas.tsx        # Animated grid/beam canvas behind the hero
-│   │   ├── Intro.tsx             # Hero, stats row and About block
-│   │   ├── Projects.tsx          # Search, curated filters, card grid, Details dialog
-│   │   ├── Social.tsx            # Social profile links
-│   │   └── Stack.tsx             # Tech stack grouped by category
+│   │   ├── Header.tsx             # Sticky top nav, theme toggle, mobile menu
+│   │   ├── Intro.tsx              # Hero and stats row
+│   │   ├── CaseStudies.tsx        # Case-study cards with SDD / AI flags
+│   │   ├── Process.tsx            # How I work
+│   │   ├── Experience.tsx         # Role timeline
+│   │   ├── Social.tsx             # Social profile links
+│   │   ├── Contact.tsx            # Contact form + info
+│   │   └── ResumeDock.tsx         # Fixed résumé link
 │   ├── config/
-│   │   └── content.ts            # ← All site copy, projects, filters, links (edit here)
-│   ├── hooks/
-│   │   ├── useActiveSection.ts        # IntersectionObserver hook for active nav link
-│   │   ├── useScrollReveal.ts         # IntersectionObserver hook for scroll-reveal
-│   │   └── useTheme.ts                # Light/dark theme state
-│   ├── utils/
-│   │   └── icons.tsx             # react-icons component maps
-│   ├── App.tsx                   # Root component composing all sections
-│   ├── main.tsx                  # Entry point — createRoot().render(<App />)
-│   └── style.css                 # All styles: @theme variables, BEM classes, breakpoints
-├── index.html                    # Entry HTML, theme bootstrap script, Google Fonts import
+│   │   └── content.ts             # ← All site copy, case studies, links (edit here)
+│   ├── hooks/                     # useTheme, useScrollReveal, useActiveSection
+│   ├── utils/icons.tsx            # react-icons component maps
+│   ├── App.tsx                    # Root component composing all sections
+│   ├── main.tsx                   # Client entry — createRoot().render(<App />)
+│   ├── entry-server.tsx           # Build-time entry — renderToString(<App />)
+│   └── style.css                  # Tokens, BEM component classes, breakpoints
+├── index.html                     # Meta tags, JSON-LD, theme bootstrap script, fonts
+├── vercel.json                    # Pins the build command so the prerender always runs
 ├── vite.config.ts
 └── tsconfig.json
 ```
 
+`Blog.tsx`, `HeroCanvas.tsx`, `Projects.tsx` and `Stack.tsx` are kept from earlier designs but are not currently rendered.
+
 ## Customisation
 
 ### Change content
-All text, projects, social links, stack items, and metadata live in **one file**:
+All text, case studies, social links and metadata live in **one file**:
 
 ```
 src/config/content.ts
 ```
 
-Edit values there — no component changes needed for most copy updates. The TypeScript interfaces (`SiteContent`, `IntroContent`, `IntroTextSpan`, `Project`, `SocialLink`, `StackGroup`, etc.) will catch structural mistakes at compile time.
+Edit values there — no component changes needed. The TypeScript interfaces catch structural mistakes at compile time.
 
-**Hero and About copy:**
-
-- **`intro.badge`**, **`intro.heroLead`**, **`intro.heroWords`** (the rotating endings) and **`intro.heroSummary`** drive the hero.
-- **`stats`** — the "at a glance" row; `{projects}` in a value is replaced with the live project count.
-- **`headline`** and **`taglineParagraphs`** — arrays of `IntroTextSpan` rendered in the About block; spans with `accent: true` are emphasised.
-
-**Project filters** are curated in `content.projects.filterGroups` (Frameworks / Methodologies / AI). A filter matches a project that has any of its `tags`, whose description contains its `text`, or — with `sdd: true` — that was built spec-driven. Chips that match no project are hidden automatically.
+- **Hero** — `intro.badge`, `intro.heroLead`, `intro.heroWords` (the rotating endings), `intro.heroSummary`, and the `stats` row.
+- **Case studies** — `caseStudies.items`. Add `sdd: true` for spec-driven builds and `ai: true` for projects with AI features; both render as filled chips at the start of the tag row.
+- **Social links** — `social.links`; the first entry is shown as the featured card. When you change them, also update `sameAs` / `rel="me"` in `index.html` and the profile lists in `public/llms*.txt`.
 
 ### Change the visual theme
-Fonts live in the `@theme {}` block at the top of `src/style.css`. Colours are semantic tokens defined once per theme:
+The palette is defined by two colours at the top of `src/style.css`; every other tone is mixed from them:
 
 ```css
+:root {
+  --mist: #bdd4e7;
+  --ink: #212227;
+}
+
+:root,
 :root[data-theme="dark"] {
-  --color-bg: #000000;
-  --color-fg: #ededed;
-  --color-muted: #a1a1a1;
-  --color-line: #262626;
+  --color-bg: var(--ink);
+  --color-fg: var(--mist);
+  --color-muted: color-mix(in srgb, var(--mist) 74%, var(--ink));
   /* ... */
 }
 
 :root[data-theme="light"] {
-  --color-bg: #ffffff;
-  --color-fg: #171717;
-  --color-muted: #5f5f5f;
-  --color-line: #e5e5e5;
+  --color-bg: var(--mist);
+  --color-fg: var(--ink);
+  --color-muted: color-mix(in srgb, var(--ink) 78%, var(--mist));
   /* ... */
 }
 ```
 
-Add any new colour to **both** blocks. The theme follows the visitor's OS setting until they use the toggle, after which the choice is remembered in `localStorage`.
+Change `--mist` / `--ink` to re-skin the whole site, and add any new token to **both** theme blocks. Re-check text contrast afterwards: `--color-muted` is tuned to stay above 4.8:1 on every surface. The theme follows the visitor's OS setting until they use the toggle, after which the choice is remembered in `localStorage`.
 
-### Add a stack icon
-1. Import the icon in `src/utils/icons.tsx`
-2. Add it to the `stackIconMap` record with a string key
-3. Reference that key in `content.ts` under the relevant stack group
-
-```tsx
-// src/utils/icons.tsx
-import { SiDocker } from "react-icons/si";
-export const stackIconMap = {
-  // ...
-  docker: SiDocker,
-};
-
-// src/config/content.ts
-{ name: "Docker", icon: "docker", brandColor: "#2496ED" }
-```
-
-Icons render in monochrome (`color="currentColor"`) so they follow the theme; `brandColor` is kept in the data but not displayed.
+### Update the résumé
+Edit `resume/Gustavo-Sanchez-Resume.html`, open it through the dev server and print to PDF (Letter, no margins, background graphics on) into `public/Gustavo-Sanchez-Resume.pdf`. Mirror the wording in `public/resume.md`.
 
 ### Add a new section
 1. Create `src/components/NewSection.tsx` as a React component
-2. Import and compose it in `src/App.tsx`
+2. Import and compose it in `src/App.tsx`, and add a `content.nav` entry
 
 ```tsx
 // src/components/NewSection.tsx
 import { content } from "../config/content.ts";
 
 export function NewSection() {
-  return <section id="new-section" className="section">...</section>;
+  return <section id="new-section" className="section container">...</section>;
 }
-
-// src/App.tsx
-import { NewSection } from "./components/NewSection.tsx";
-// Add <NewSection /> inside the <main> element
 ```
+
+Don't read `window` / `document` during render — the page is prerendered in Node at build time. Use effects or event handlers instead.
+
+## Discoverability for search engines, LLMs and agents
+
+| Layer | What it provides |
+|---|---|
+| Build-time prerender | Full page text in the HTML response, no JavaScript required |
+| JSON-LD (`index.html`) | `Person` (role, location, education, certifications, languages, `sameAs`), case studies as `SoftwareApplication`s, `ProfilePage` |
+| `rel="me"` links | Identity links to each social profile |
+| `/llms.txt`, `/llms-full.txt` | Plain-text summaries following the [llms.txt](https://llmstxt.org) convention |
+| `/resume.md` | Machine-friendly résumé alongside the PDF |
+| `sitemap.xml`, `robots.txt` | All crawlers allowed; sitemap lists the page, résumés and llms files |
 
 ## Architecture
 
 ### Data flow
 
 ```
-src/config/content.ts              ← single source of truth
+src/config/content.ts            ← single source of truth
 src/utils/icons.tsx              ← react-icons component maps
-src/hooks/useScrollReveal.ts     ← scroll-reveal IntersectionObserver
-src/hooks/useActiveSection.ts    ← active nav IntersectionObserver
-src/hooks/useTheme.ts            ← light/dark theme state
+src/hooks/*.ts                   ← theme, scroll-reveal, active nav
         ↓
 src/components/*.tsx             ← React components
         ↓
-src/App.tsx                   ← root component
-src/main.tsx                  ← createRoot().render(<StrictMode><App /></StrictMode>)
+src/App.tsx                      ← root component
+src/main.tsx                     ← client: createRoot().render(<StrictMode><App /></StrictMode>)
+src/entry-server.tsx             ← build: renderToString(<App />) → scripts/prerender.mjs
 ```
 
 ### Component pattern
@@ -183,7 +184,7 @@ Every component is a named React function export. State and side effects use hoo
 export function MySection() {
   const ref = useScrollReveal<HTMLDivElement>();
   return (
-    <section>
+    <section className="section container">
       <div className="reveal" ref={ref}>
         {/* content */}
       </div>
@@ -197,11 +198,11 @@ export function MySection() {
 Icons are `ComponentType` maps — rendered directly in JSX with a string-key fallback:
 
 ```tsx
-const Icon = stackIconMap[item.icon];
-{Icon ? <Icon size={36} color="currentColor" /> : <span>{item.icon}</span>}
+const Icon = socialIconMap[link.icon];
+{Icon ? <Icon size={18} color="currentColor" /> : link.icon}
 ```
 
-Icons use `color="currentColor"` so CSS controls their colour and every icon stays black-and-white in both themes. `CursorIcon` is a monochrome version of the official Cursor cube, and `FrontendMastersIcon` is a custom "FM" roundel (SimpleIcons has no entry).
+Icons use `color="currentColor"` so every icon follows the theme in both colours.
 
 ### Interactivity
 
@@ -209,15 +210,11 @@ Icons use `color="currentColor"` so CSS controls their colour and every icon sta
 |---|---|
 | Active nav link | `useActiveSection` hook — `IntersectionObserver` returns current section id |
 | Scroll-reveal | `useScrollReveal` hook — adds `.reveal--visible` when element enters viewport |
-| Nav underline animation | CSS `::after` pseudo-element, `transform: scaleX()` transition |
-| Mobile menu | `useState(isOpen)` in `Header.tsx` drives `.header__nav--open` |
+| Mobile menu | `useState(isOpen)` in `Header.tsx` |
 | Light/dark theme | `useTheme` hook + inline script in `index.html` that sets `data-theme` before first paint (no flash) |
-| Hero animation | `HeroCanvas` — `<canvas>` + `requestAnimationFrame`; pauses off-screen, static under `prefers-reduced-motion` |
-| Rotating headline | `setInterval` index in `Intro.tsx`; screen readers get the full list via an `sr-only` span |
-| Contact form | `@formspree/react` — `useForm` hook handles submission, validation errors, and success state |
-| Projects search & filters | `useState` + `useMemo` in `Projects.tsx` — search matches title, description and tags; curated chips combine with AND logic; matched tags are hoisted to the front of each card |
-| Project details | Native `<dialog>` with `showModal()` — Escape, focus trapping and backdrop come for free |
-| Card spotlight | `onPointerMove` sets `--mx`/`--my` on the card; a `::before` radial gradient follows them |
+| Rotating headline | `setInterval` index in `Intro.tsx`; the visible word is drawn with CSS `content: attr(data-word)`, and an `sr-only` span holds the full sentence for screen readers and crawlers. Paused under `prefers-reduced-motion` |
+| Copy email | `navigator.clipboard.writeText` with a `mailto:` fallback and a polite live-region confirmation |
+| Contact form | `@formspree/react` — `useForm` handles submission, validation errors and success state |
 
 ### Contact form (Formspree)
 
@@ -234,23 +231,24 @@ To use your own form endpoint, replace the form ID string in `src/components/Con
 
 ## Styling conventions
 
-- **BEM naming** — `.header__link`, `.header__link--active`, `.stack__item`, `.project-card__title`
-- **Monochrome palette** — the only colour on the page is the hero glow and canvas beams
-- **Hairline grid** — sections sit between two vertical rails; grid cells draw their lines with `box-shadow` so borders never double up
-- **Hover** — cells tint to `--color-soft`, project screenshots lift `translateY(-4px)`, buttons `translateY(-2px)`
-- **Uniform project cards** — `grid-auto-rows: 1fr` plus clamped, min-height-reserved title / description / tag rows
-- **Responsive breakpoints** — `900px` (nav → menu button, single-column stats/about/contact), `600px` (further mobile)
+- **BEM naming** — `.hero__word`, `.case-study__tag--flag`, `.social__link`
+- **Two-colour palette** — only `#bdd4e7` and `#212227` appear in the stylesheet; everything else is `color-mix()`
+- **Inverse panels** — Process, the featured social card and the SDD/AI chips use the `--color-inv-*` tokens
+- **Duotone avatar** — grayscale photo multiplied over `--photo-bg`
+- **Stable headline** — the hero title reserves its height so the rotating word never shifts the layout
+- **Responsive** — no horizontal scroll from 360px up; social grid goes 4 → 2 → 1 columns at 1100px and 560px
 
 ## What I learned
 
 This project is both a personal portfolio and a learning log. Notes captured along the way:
 
 ### Architecture
-- **Content-driven UI.** A single `src/config/content.ts` typed with `SiteContent` keeps copy, projects, stack, and social links out of component files. Components stay about rendering; edits never require touching JSX.
-- **Client-side filtering with `useMemo`.** The Projects filter derives the unique tag list and the filtered items via memoized selectors over `content.projects.items` — avoids recomputation on every render and keeps the component readable.
+- **Content-driven UI.** A single `src/config/content.ts` typed with `SiteContent` keeps copy, case studies and social links out of component files. Components stay about rendering; edits never require touching JSX.
+- **Prerendering a client app.** A second Vite build (`--ssr src/entry-server.tsx`) renders the app to a string in Node, and a small script injects it into `dist/index.html`. The client still uses `createRoot`, so there are no hydration mismatches — the trade-off is that render code can't touch browser APIs.
+- **One palette, many tones.** Two hex values plus `color-mix(in srgb, …)` produce every surface, line and muted text colour in both themes, so the whole site can be re-skinned by changing two variables.
 - **Hooks over imperative DOM.** `IntersectionObserver` logic lives in `useScrollReveal` / `useActiveSection`. Composable, testable, no manual cleanup boilerplate in components.
-- **Theme without a flash.** React mounts too late to pick the theme, so a tiny inline script in `index.html` sets `data-theme` before first paint; `useTheme` then takes over. It writes the attribute in a `useLayoutEffect` so child effects (the hero canvas reads CSS colour tokens) always see the new theme.
-- **Canvas animation etiquette.** The hero canvas scales for `devicePixelRatio`, stops drawing when an `IntersectionObserver` says it's off-screen, and falls back to a static grid under `prefers-reduced-motion`.
+- **Theme without a flash.** React mounts too late to pick the theme, so a tiny inline script in `index.html` sets `data-theme` before first paint; `useTheme` then takes over. It writes the attribute in a `useLayoutEffect` so child effects always see the new theme.
+- **Accessible rotating text.** Drawing the changing word with CSS `content: attr()` keeps it out of the accessible name and the crawlable text, which both get one complete sentence instead.
 
 ### Tooling & stack
 - **React 19 + `jsx: react-jsx`** — no per-file `import React`; the runtime handles it.
@@ -266,9 +264,10 @@ This project is both a personal portfolio and a learning log. Notes captured alo
 - [react-icons](https://react-icons.github.io/react-icons/) — SimpleIcons, VS Code, Font Awesome sets.
 - [Formspree React](https://formspree.io/react/) — `useForm` / `ValidationError`.
 - [MDN: IntersectionObserver](https://developer.mozilla.org/en-US/docs/Web/API/Intersection_Observer_API) — root, threshold, entry lifecycle.
-- [WAI-ARIA `aria-pressed`](https://www.w3.org/TR/wai-aria-1.2/#aria-pressed) — the correct attribute for toggle buttons (used by the filter chips).
-- [MDN: `<dialog>`](https://developer.mozilla.org/en-US/docs/Web/HTML/Element/dialog) — `showModal()`, `::backdrop`, the `close` event.
-- [Geist font](https://vercel.com/font) — open-source typeface used for headings, body and mono.
+- [MDN: `color-mix()`](https://developer.mozilla.org/en-US/docs/Web/CSS/color_value/color-mix) — deriving the palette from two colours.
+- [React `renderToString`](https://react.dev/reference/react-dom/server/renderToString) — build-time prerender.
+- [llms.txt](https://llmstxt.org) — the LLM-readable site summary convention.
+- [Schema.org `Person`](https://schema.org/Person) — structured profile data.
 
 ### Errors solved
 - **Vite port collision.** `5173` was in use; Vite auto-falls back to `5174`. Always read the actual URL from the dev server log instead of assuming.
@@ -283,8 +282,9 @@ This project is both a personal portfolio and a learning log. Notes captured alo
 [![DEV](https://img.shields.io/badge/DEV-0A0A0A?logo=devdotto&logoColor=white)](https://dev.to/gusanchedev)
 [![X](https://img.shields.io/badge/X-000000?logo=x&logoColor=white)](https://x.com/gusanchedev)
 [![Bluesky](https://img.shields.io/badge/Bluesky-0085FF?logo=bluesky&logoColor=white)](https://bsky.app/profile/gusanchedev.bsky.social)
+[![Master.dev](https://img.shields.io/badge/Master.dev-212227?logoColor=white)](https://master.dev/u/gustavosanchezdev/)
 [![Frontend Mentor](https://img.shields.io/badge/Frontend%20Mentor-3F54A3?logo=frontendmentor&logoColor=white)](https://www.frontendmentor.io/profile/gusanchefullstack)
 
 ## Credits
 
-Visual direction inspired by the monochrome, grid-based style of [vercel.com](https://vercel.com). Typeface: [Geist](https://vercel.com/font) (SIL Open Font License). The previous version of the site was based on [Hyperspace](https://html5up.net/hyperspace) by [HTML5 UP](https://html5up.net).
+Typefaces: [Bricolage Grotesque](https://fonts.google.com/specimen/Bricolage+Grotesque), [Manrope](https://fonts.google.com/specimen/Manrope) and [JetBrains Mono](https://fonts.google.com/specimen/JetBrains+Mono) (SIL Open Font License). Earlier versions of the site used a Vercel-inspired monochrome grid design and, before that, [Hyperspace](https://html5up.net/hyperspace) by [HTML5 UP](https://html5up.net).
