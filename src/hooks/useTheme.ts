@@ -30,7 +30,7 @@ export function useTheme() {
   const [theme, setTheme] = useState<Theme>(initialTheme);
 
   // Layout effect so the attribute (and the CSS tokens it switches) is in place
-  // before any child's passive effect reads them — HeroCanvas does
+  // before any child's passive effect reads them
   useLayoutEffect(() => {
     document.documentElement.dataset.theme = theme;
   }, [theme]);
