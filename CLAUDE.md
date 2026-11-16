@@ -104,7 +104,7 @@ Facts in these files must match `content.ts` and the résumé — never invent c
 
 ## Résumé
 
-`resume/Gustavo-Sanchez-Resume.html` is the source of `public/Gustavo-Sanchez-Resume.pdf` (plain single-column ATS layout on white paper, two Letter pages, Skills starts page 2). Only finished projects go on the résumé — in-progress ones (`inProgress: true` in `content.ts`) stay site-only. Regenerate: run the dev server, open `/resume/Gustavo-Sanchez-Resume.html`, print to PDF (Letter, no margins, background graphics on) or use Playwright `page.pdf({ format: "Letter", printBackground: true })`. Update `public/resume.md` with the same wording.
+`resume/Gustavo-Sanchez-Resume.html` is the source of `public/Gustavo-Sanchez-Resume.pdf` (plain single-column ATS layout on white paper, two Letter pages, Skills starts page 2). Only finished projects go on the résumé — in-progress ones (`inProgress: true` in `content.ts`) stay site-only. Regenerate: run the dev server, open `/resume/Gustavo-Sanchez-Resume.html`, print to PDF (Letter, margins "Default" so the page's `@page` margins apply, headers/footers off) or use Playwright `page.pdf({ format: "Letter", printBackground: true, preferCSSPageSize: true })`. Check it is exactly two pages. Update `public/resume.md` with the same wording.
 
 ## TypeScript notes
 

@@ -3,7 +3,8 @@
   Source for public/Gustavo-Sanchez-Resume.pdf.
   Plain single-column, ATS-friendly layout on white paper (Letter, two pages).
   Regenerate: run `npm run dev`, open /resume/Gustavo-Sanchez-Resume.html and print to PDF
-  (Letter, margins none, background graphics on) — or render it with Playwright page.pdf().
+  (Letter, margins Default so @page applies, headers/footers off) — or Playwright
+  page.pdf({ format: "Letter", printBackground: true, preferCSSPageSize: true }).
   Keep public/resume.md worded exactly the same.
 -->
 <html lang="en">
