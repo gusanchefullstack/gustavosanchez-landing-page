@@ -85,7 +85,7 @@ Case-study link icons (`LiveDemoIcon`, `SourceCodeIcon`) and UI chrome icons (`C
 ## Adding/changing content
 
 - **Text, case studies, social links, experience** → `src/config/content.ts` only.
-- **Case study flags** → `sdd: true` (spec-driven: constitution → spec → plan → tasks) and `ai: true` (ships AI features) render as filled chips at the start of the tag row.
+- **Case study flags** → `sdd: true` (spec-driven: constitution → spec → plan → tasks) and `ai: true` (ships AI features) render as filled chips at the start of the tag row. `inProgress: true` adds an outlined "In progress" pill after the descriptor.
 - **Social links** → `content.social.links`; the first entry is the featured card. Keep `index.html` JSON-LD `sameAs` and `<link rel="me">`, and `public/llms*.txt`, in sync with this list. Social anchors use `rel="me noopener noreferrer"`.
 - **Hero** → `intro.badge`, `intro.heroLead` + rotating `intro.heroWords`, `intro.heroSummary`, `stats`.
 - **New section** → `src/components/NewSection.tsx`, compose in `App.tsx`, add a `content.nav` entry and a line in `public/llms.txt`.
@@ -104,7 +104,7 @@ Facts in these files must match `content.ts` and the résumé — never invent c
 
 ## Résumé
 
-`resume/Gustavo-Sanchez-Resume.html` is the source of `public/Gustavo-Sanchez-Resume.pdf` (white paper, Ink & Mist accents, must fit one Letter page). Regenerate: run the dev server, open `/resume/Gustavo-Sanchez-Resume.html`, print to PDF (Letter, no margins, background graphics on) or use Playwright `page.pdf({ format: "Letter", printBackground: true })`. Update `public/resume.md` with the same wording.
+`resume/Gustavo-Sanchez-Resume.html` is the source of `public/Gustavo-Sanchez-Resume.pdf` (plain single-column ATS layout on white paper, two Letter pages, Skills starts page 2). Only finished projects go on the résumé — in-progress ones (`inProgress: true` in `content.ts`) stay site-only. Regenerate: run the dev server, open `/resume/Gustavo-Sanchez-Resume.html`, print to PDF (Letter, margins "Default" so the page's `@page` margins apply, headers/footers off) or use Playwright `page.pdf({ format: "Letter", printBackground: true, preferCSSPageSize: true })`. Check it is exactly two pages. Update `public/resume.md` with the same wording.
 
 ## TypeScript notes
 
