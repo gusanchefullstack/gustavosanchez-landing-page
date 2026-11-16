@@ -27,7 +27,10 @@ export function CaseStudies() {
               />
             </div>
             <div className="case-study__content">
-              <p className="case-study__descriptor">{study.descriptor}</p>
+              <p className="case-study__descriptor">
+                {study.descriptor}
+                {study.inProgress ? <span className="case-study__status">In progress</span> : null}
+              </p>
               <h3 className="case-study__name">{study.name}</h3>
               <p className="case-study__thesis">{study.thesis}</p>
 

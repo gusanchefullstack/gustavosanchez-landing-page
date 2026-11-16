@@ -17,7 +17,7 @@ This is Gustavo's official portfolio. He is an electronic and telecommunications
 
 - [EnglishChunks.guru](https://englishchunks.guru): A privacy-conscious daily English speaking coach with open-model pronunciation scoring, AI feedback, progress tracking, subscriptions, and an administration workflow. Spec-driven; AI features.
 - [IdiomsMasterGirl](https://github.com/gusanchefullstack/idioms-master-girl): A local-first English idiom coach using Gemma and faster-whisper. Spec-driven; AI features.
-- [Nelson Personal Budget App](https://fsdev-nelson-frontend.vercel.app): A full-stack budgeting product with forecasting, reporting, authentication, and accessible responsive interfaces. Spec-driven.
+- [Nelson Personal Budget App](https://fsdev-nelson-frontend.vercel.app): A full-stack budgeting product with forecasting, reporting, authentication, and accessible responsive interfaces. Spec-driven; in progress.
 - [FX Checker](https://fsdev-foreign-exchange-checker.vercel.app): A tested currency intelligence interface with live rates, history, comparison, export, and offline fallback (121 automated tests, 100 Lighthouse accessibility). Spec-driven.
 
 ## Profiles

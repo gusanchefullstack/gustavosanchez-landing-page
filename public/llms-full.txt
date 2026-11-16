@@ -51,6 +51,7 @@ GitHub Spec Kit, specification-driven development, Vitest, React Testing Library
 
 ## Education
 
+- Stanford Continuing Studies — Building Generative and Agentic AI Products (BUS190), Fall 2026
 - MBA, Cum Laude — EADA Business School and CENTRUM PUCP
 - B.Eng., Electronic & Telecommunications Engineering — Universidad del Cauca
 
@@ -93,6 +94,8 @@ Website: https://fsdev-nelson-frontend.vercel.app
 Repository: https://github.com/gusanchefullstack/fsdev-nelson-frontend
 
 A full-stack personal budgeting application that tracks expected payments in separate buckets. It includes guided and complete budget creation, forecast-versus-actual reporting, projections, insights, threshold alerts, authentication, responsive themes, and WCAG 2.2 AA audits. Built spec-first with React, TypeScript, Vite, TanStack Query, TanStack Router, Express, Prisma, PostgreSQL, Better Auth, Zod, Vitest, and Playwright.
+
+Status: in progress.
 
 Labels: spec-driven development (SDD).
 

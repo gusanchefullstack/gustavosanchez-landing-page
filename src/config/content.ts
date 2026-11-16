@@ -136,6 +136,8 @@ export interface CaseStudy {
   sdd?: boolean;
   /** Ships AI features — renders an "AI" tag */
   ai?: boolean;
+  /** Still being built — renders an "In progress" badge next to the descriptor */
+  inProgress?: boolean;
   liveUrl: string;
   repoUrl: string;
 }
@@ -353,6 +355,7 @@ export const content: SiteContent = {
         ],
         tags: ["React 19", "Express 5", "Prisma 7", "PostgreSQL", "Playwright"],
         sdd: true,
+        inProgress: true,
         liveUrl: "https://fsdev-nelson-frontend.vercel.app",
         repoUrl: "https://github.com/gusanchefullstack/fsdev-nelson-frontend",
       },

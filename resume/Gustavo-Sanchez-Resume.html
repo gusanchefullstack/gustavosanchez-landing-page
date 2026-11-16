@@ -1,31 +1,25 @@
 <!doctype html>
 <!--
   Source for public/Gustavo-Sanchez-Resume.pdf.
-  Palette: Mist #bdd4e7 + Ink #212227 (same as the site).
+  Plain single-column, ATS-friendly layout on white paper (Letter, two pages).
   Regenerate: run `npm run dev`, open /resume/Gustavo-Sanchez-Resume.html and print to PDF
   (Letter, margins none, background graphics on) — or render it with Playwright page.pdf().
+  Keep public/resume.md worded exactly the same.
 -->
 <html lang="en">
   <head>
     <meta charset="UTF-8" />
     <title>Gustavo Sanchez — Résumé</title>
-    <link rel="preconnect" href="https://fonts.googleapis.com" />
-    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
-    <link
-      href="https://fonts.googleapis.com/css2?family=Bricolage+Grotesque:opsz,wght@12..96,700..800&family=Manrope:wght@400;500;600;700&display=swap"
-      rel="stylesheet"
-    />
     <style>
       :root {
-        --mist: #bdd4e7;
         --ink: #212227;
-        --mist-soft: color-mix(in srgb, var(--mist) 45%, white);
-        --muted: color-mix(in srgb, var(--ink) 74%, white);
+        --muted: color-mix(in srgb, var(--ink) 68%, white);
+        --rule: color-mix(in srgb, var(--ink) 18%, white);
       }
 
       @page {
         size: Letter;
-        margin: 0;
+        margin: 0.55in 0.6in;
       }
 
       * {
@@ -40,13 +34,19 @@
       }
 
       body {
-        width: 8.5in;
-        min-height: 11in;
+        max-width: 8.5in;
+        padding: 0;
         background: white;
         color: var(--ink);
-        font-family: "Manrope", "Segoe UI", Helvetica, Arial, sans-serif;
-        font-size: 8pt;
+        font-family: "Liberation Sans", Helvetica, Arial, sans-serif;
+        font-size: 10pt;
         line-height: 1.32;
+      }
+
+      @media screen {
+        body {
+          padding: 0.55in 0.6in;
+        }
       }
 
       p,
@@ -57,316 +57,231 @@
         margin: 0;
       }
 
-      ul {
-        padding-left: 1.05em;
+      a {
+        color: inherit;
+        text-decoration: none;
       }
 
-      li {
-        margin-top: 1pt;
-      }
-
-      li::marker {
-        color: var(--ink);
-      }
-
-      /* ---------- Header band ---------- */
-      .top {
-        padding: 0.34in 0.5in 0.2in;
-        background: var(--ink);
-        color: var(--mist);
+      /* ---------- Header ---------- */
+      header {
+        padding-bottom: 10pt;
+        border-bottom: 2.5pt solid var(--ink);
       }
 
       h1 {
-        font-family: "Bricolage Grotesque", "Helvetica Neue", Arial, sans-serif;
         font-size: 24pt;
-        font-weight: 800;
-        word-spacing: 0.05em;
-        line-height: 1;
-        color: var(--mist);
+        font-weight: 700;
+        line-height: 1.1;
+        letter-spacing: -0.01em;
       }
 
       .role {
-        margin-top: 5pt;
-        font-size: 10.5pt;
+        margin-top: 6pt;
+        font-size: 11.5pt;
         font-weight: 700;
-        color: white;
       }
 
       .contact {
-        margin-top: 7pt;
-        font-size: 7.8pt;
-        color: color-mix(in srgb, var(--mist) 85%, white);
+        margin-top: 4pt;
+        font-size: 9pt;
+        color: var(--muted);
       }
 
-      .contact strong {
-        color: var(--ink);
-        background: var(--mist);
-        padding: 0.5pt 4pt;
-        border-radius: 3pt;
-        font-weight: 700;
+      .contact + .contact {
+        margin-top: 2pt;
       }
 
-      /* ---------- Layout ---------- */
-      .grid {
-        display: grid;
-        grid-template-columns: 1fr 2.1in;
-        align-items: start;
-        gap: 0.22in;
-        padding: 0.18in 0.5in 0.12in;
-      }
-
+      /* ---------- Sections ---------- */
       h2 {
-        display: flex;
-        align-items: center;
-        gap: 6pt;
-        margin: 8pt 0 4pt;
-        font-size: 8pt;
-        font-weight: 800;
-        letter-spacing: 0.03em;
+        margin: 11pt 0 5pt;
+        padding-bottom: 3pt;
+        border-bottom: 1px solid var(--rule);
+        font-size: 9.6pt;
+        font-weight: 700;
+        letter-spacing: 0.14em;
         text-transform: uppercase;
       }
 
-      h2::before {
-        content: "";
-        width: 14pt;
-        height: 3pt;
-        border-radius: 2pt;
-        background: var(--ink);
+      section {
+        break-inside: auto;
       }
 
-      h2::after {
-        content: "";
-        flex: 1;
-        height: 1px;
-        background: var(--mist);
-      }
-
-      main > h2:first-child {
-        margin-top: 0;
-      }
-
-      .stats {
-        display: grid;
-        grid-template-columns: repeat(3, 1fr);
-        gap: 6pt;
+      .item {
         margin-top: 6pt;
+        break-inside: avoid;
       }
 
-      .stat {
-        padding: 5pt 8pt;
-        border-radius: 6pt;
-        background: var(--mist);
-      }
-
-      .stat:first-child {
-        background: var(--ink);
-        color: var(--mist);
-      }
-
-      .stat b {
-        display: block;
-        font-family: "Bricolage Grotesque", "Helvetica Neue", Arial, sans-serif;
-        font-size: 14pt;
-        font-weight: 800;
-        letter-spacing: -0.02em;
-        line-height: 1.1;
-      }
-
-      .stat span {
-        font-size: 7pt;
+      .item-head {
+        display: flex;
+        justify-content: space-between;
+        align-items: baseline;
+        gap: 12pt;
       }
 
       h3 {
-        margin-top: 5pt;
-        font-size: 8.6pt;
-        font-weight: 800;
+        font-size: 10pt;
+        font-weight: 700;
       }
 
-      h3 .sub {
-        font-weight: 500;
+      .item-head .aside {
+        flex-shrink: 0;
+        font-size: 9.2pt;
         color: var(--muted);
       }
 
-      .meta {
-        display: flex;
-        justify-content: space-between;
-        font-size: 7.4pt;
-        color: var(--muted);
+      .item-head .aside.links {
+        color: var(--ink);
       }
 
-      /* ---------- Sidebar ---------- */
-      aside {
-        display: flex;
-        flex-direction: column;
-        gap: 5pt;
+      ul {
+        margin-top: 2pt;
+        padding-left: 1.5em;
       }
 
-      .panel {
-        padding: 6pt 9pt 7pt;
-        border-radius: 8pt;
-        background: var(--mist-soft);
-        border-left: 3pt solid var(--ink);
+      li {
+        margin-top: 2pt;
       }
 
-      .panel h2 {
-        margin: 0 0 3pt;
+      .skills p + p {
+        margin-top: 3pt;
       }
 
-      .panel h2::before,
-      .panel h2::after {
-        display: none;
+      .page-break {
+        break-before: page;
       }
 
-      .panel ul {
-        font-size: 7.7pt;
-      }
-
-      .panel .edu b {
-        display: block;
-      }
-
-      .panel .edu span {
-        font-size: 7.4pt;
-        color: var(--muted);
+      .page-break h2 {
+        margin-top: 0;
       }
     </style>
   </head>
   <body>
-    <header class="top">
+    <header>
       <h1>Gustavo Sanchez</h1>
-      <p class="role">Full-Stack Software Engineer · AI Products · GTM Engineering</p>
+      <p class="role">Full-Stack Software Engineer · AI Products</p>
+      <p class="contact">San Francisco, CA · U.S. work authorized, no sponsorship required</p>
       <p class="contact">
-        San Francisco, CA · <strong>U.S. work authorized — no sponsorship required</strong> ·
-        hello@gustavosanchez.dev · gustavosanchez.dev · github.com/gusanchefullstack ·
-        linkedin.com/in/gustavosanchezgalarza
+        <a href="mailto:hello@gustavosanchez.dev">hello@gustavosanchez.dev</a> ·
+        <a href="https://www.gustavosanchez.dev/">gustavosanchez.dev</a> ·
+        <a href="https://github.com/gusanchefullstack">github.com/gusanchefullstack</a> ·
+        <a href="https://www.linkedin.com/in/gustavosanchezgalarza/">linkedin.com/in/gustavosanchezgalarza</a>
       </p>
     </header>
 
-    <div class="grid">
-      <main>
-        <h2>Profile</h2>
-        <p>
-          Full-stack software engineer who builds and ships AI products with Next.js, React,
-          TypeScript, Node.js and Python. Combines hands-on systems engineering with 17 years of
-          enterprise software sales leadership at Microsoft and Genesys. Brings product judgment,
-          customer context and disciplined verification to AI-assisted delivery.
-        </p>
-        <div class="stats">
-          <div class="stat"><b>20+</b><span>projects shipped in 2026</span></div>
-          <div class="stat"><b>$19M</b><span>ACV pipeline led at Genesys</span></div>
-          <div class="stat"><b>17 yrs</b><span>enterprise software GTM</span></div>
+    <section>
+      <h2>Profile</h2>
+      <p>
+        Full-stack engineer who designs, builds and ships AI products with Next.js, React,
+        TypeScript, Node.js and Python. 20+ software projects shipped in 2026, including a
+        subscription AI speaking coach in production. Before software: telecom network engineer,
+        then 17 years leading enterprise software sales at Microsoft and Genesys ($19M ACV
+        pipeline at Genesys). I bring customer context, product judgment and disciplined testing
+        to AI-assisted delivery.
+      </p>
+    </section>
+
+    <section>
+      <h2>Selected projects</h2>
+      <div class="item">
+        <div class="item-head">
+          <h3>EnglishChunks.guru — AI speaking coach (in production)</h3>
+          <span class="aside links"><a href="https://englishchunks.guru">englishchunks.guru</a></span>
         </div>
+        <ul>
+          <li>Built and launched a Next.js 16 subscription product with daily A1–C2 lessons, pronunciation scoring, writing feedback, streaks and progress charts (TypeScript, Python, PostgreSQL).</li>
+          <li>Designed a privacy-first speech pipeline on DigitalOcean (Silero VAD, NVIDIA Parakeet, wav2vec2, Gemma): 0 recordings sent to third-party AI APIs, and audio is deleted after scoring.</li>
+          <li>Automated content quality checks with open models, plus human review through an admin moderation queue.</li>
+        </ul>
+      </div>
+      <div class="item">
+        <div class="item-head">
+          <h3>FX Checker — currency converter and rate research</h3>
+          <span class="aside links">
+            <a href="https://fsdev-foreign-exchange-checker.vercel.app">live demo</a> ·
+            <a href="https://github.com/gusanchefullstack/fsdev-foreign-exchange-checker">code</a>
+          </span>
+        </div>
+        <ul>
+          <li>Live conversion, 5-year rate history, multi-currency comparison, shareable URLs, CSV export and offline fallback (React 19, TypeScript, Frankfurter API).</li>
+          <li>121 automated tests with Vitest and Testing Library; 100 Lighthouse accessibility score.</li>
+        </ul>
+      </div>
+      <div class="item">
+        <div class="item-head">
+          <h3>Local-First AI English Tutor</h3>
+          <span class="aside links"><a href="https://github.com/gusanchefullstack/idioms-master-girl">code</a></span>
+        </div>
+        <ul>
+          <li>Runs Gemma and faster-whisper on the user's device, so voice data never leaves it; detects missed words and gives specific feedback.</li>
+        </ul>
+      </div>
+    </section>
 
-        <h2>Selected software projects</h2>
-        <h3>EnglishChunks.guru <span class="sub">— AI speaking coach in production</span></h3>
+    <section>
+      <h2>Experience</h2>
+      <div class="item">
+        <div class="item-head">
+          <h3>Full-Stack Software Engineer, Independent Products</h3>
+          <span class="aside">San Francisco, CA · 2026 – Present</span>
+        </div>
         <ul>
-          <li>Shipped a full-stack Next.js subscription product with daily A1–C2 lessons, pronunciation scoring, writing feedback, streaks and progress charts.</li>
-          <li>Designed a privacy-first DigitalOcean speech pipeline using Silero VAD, NVIDIA Parakeet and wav2vec2; recordings never reach a third-party AI API and are deleted after scoring.</li>
-          <li>Automated content quality with open models while preserving human review through an admin moderation queue.</li>
+          <li>Ship full-stack products end to end with Next.js, React, TypeScript, Node.js/Express, Python and PostgreSQL.</li>
+          <li>Integrate open models and LLM APIs for speech, feedback and workflow automation; own architecture, agent orchestration, code review and testing.</li>
+          <li>Work spec-first with GitHub Spec Kit: requirements → plan → tasks → implementation → verification.</li>
         </ul>
-        <h3>Nelson <span class="sub">— full-stack personal budget product</span></h3>
+      </div>
+      <div class="item">
+        <div class="item-head">
+          <h3>Sales Leader, Genesys</h3>
+          <span class="aside">Colombia &amp; Latin America · 2017 – 2026</span>
+        </div>
         <ul>
-          <li>Modeled expected payments as individual buckets with live balances, forecast-versus-actual reporting, projections and threshold alerts.</li>
-          <li>Built the Express 5, Prisma 7 and PostgreSQL backend with authentication and runtime validation; audited WCAG 2.2 AA behavior at three viewport sizes.</li>
-        </ul>
-        <h3>FX Checker <span class="sub">— tested currency intelligence interface</span></h3>
-        <ul>
-          <li>Built live conversion, five-year rate history, multi-currency compare, favorites, shareable URLs, CSV export and offline fallback.</li>
-          <li>Verified behavior with 121 Vitest and React Testing Library tests; earned a 100 Lighthouse accessibility score.</li>
-        </ul>
-        <h3>IdiomsMasterGirl <span class="sub">— local-first AI tutor</span></h3>
-        <ul>
-          <li>Runs Gemma and faster-whisper locally so voice data remains on the user’s laptop; identifies missed words and provides specific feedback.</li>
-        </ul>
-
-        <h2>Experience</h2>
-        <h3>Full-Stack Software Engineer <span class="sub">· Independent Products</span></h3>
-        <p class="meta"><span>San Francisco, CA</span><span>2026 — Present</span></p>
-        <ul>
-          <li>Build and deploy full-stack products with Next.js, React, TypeScript, Node.js/Express, Python and PostgreSQL.</li>
-          <li>Use open models and LLM APIs for speech, feedback and workflow automation; lead architecture, agent orchestration, review and testing.</li>
-          <li>Work spec-first, moving from constitution and requirements through plan, tasks, implementation and verification.</li>
-        </ul>
-        <h3>Sales Leader <span class="sub">· Genesys</span></h3>
-        <p class="meta"><span>Colombia and Latin America</span><span>2017 — 2026</span></p>
-        <ul>
-          <li>Led account executives and partners selling enterprise CCaaS in banking, telecom and healthcare, collaborating across Presales, Engineering, Marketing and Customer Success.</li>
           <li>Delivered $4.2M in bookings, 40+ new customers and a $19M ACV pipeline; exceeded quota every year FY23–FY25 and reached 157% in FY21.</li>
+          <li>Led account executives and partners selling enterprise CCaaS to banking, telecom and healthcare, working with Presales, Engineering, Marketing and Customer Success.</li>
         </ul>
-        <h3>Enterprise Account Executive <span class="sub">· Microsoft</span></h3>
-        <p class="meta"><span>Colombia</span><span>2008 — 2016</span></p>
+      </div>
+      <div class="item">
+        <div class="item-head">
+          <h3>Enterprise Account Executive, Microsoft</h3>
+          <span class="aside">Colombia · 2008 – 2016</span>
+        </div>
         <ul>
-          <li>Helped enterprise and public-sector customers adopt Office 365 and Azure; grew cloud revenue 12% in FY15.</li>
-          <li>Exceeded quota in six fiscal years, up to 185%; earned Circle of Excellence Gold Club three times.</li>
+          <li>Exceeded quota in 6 fiscal years (up to 185%); 3× Circle of Excellence Gold Club.</li>
+          <li>Grew cloud revenue 12% in FY15 by helping enterprise and public-sector customers adopt Office 365 and Azure.</li>
         </ul>
-        <h3>Telecom &amp; Network Engineering <span class="sub">· Telmex, Getronics, Damovo, Ericsson</span></h3>
-        <p class="meta"><span>Colombia</span><span>1999 — 2008</span></p>
+      </div>
+      <div class="item">
+        <div class="item-head">
+          <h3>Telecom &amp; Network Engineer — Telmex, Getronics, Damovo, Ericsson</h3>
+          <span class="aside">Colombia · 1999 – 2008</span>
+        </div>
         <ul>
-          <li>Designed voice and network infrastructure, including a multitenant IP-PBX platform that reached 3,000 deployed seats in one year.</li>
+          <li>Designed a multitenant IP-PBX platform that reached 3,000 deployed seats in its first year.</li>
         </ul>
-      </main>
+      </div>
+    </section>
 
-      <aside>
-        <section class="panel">
-          <h2>Core engineering</h2>
-          <ul>
-            <li>Next.js 16, React 19, TypeScript, JavaScript, Vite</li>
-            <li>Node.js, Express 5, Python, FastAPI, REST APIs</li>
-            <li>PostgreSQL, Prisma, Drizzle, SQLite, MongoDB</li>
-            <li>Authentication, Zod, Stripe, Resend</li>
-          </ul>
-        </section>
-        <section class="panel">
-          <h2>Applied AI</h2>
-          <ul>
-            <li>LLM APIs, agents, tool calling, structured output and evals</li>
-            <li>Gemma and gpt-oss via Ollama</li>
-            <li>faster-whisper, NVIDIA Parakeet, wav2vec2, Silero VAD</li>
-            <li>Claude Code, Cursor, Figma MCP</li>
-          </ul>
-        </section>
-        <section class="panel">
-          <h2>Quality &amp; delivery</h2>
-          <ul>
-            <li>GitHub Spec Kit</li>
-            <li>Vitest, Testing Library, Playwright</li>
-            <li>WCAG 2.2 AA and axe audits</li>
-            <li>Vercel, Render, DigitalOcean, GitHub</li>
-          </ul>
-        </section>
-        <section class="panel">
-          <h2>Go-to-market</h2>
-          <ul>
-            <li>Enterprise discovery and solution design</li>
-            <li>B2B SaaS sales and forecasting</li>
-            <li>Partner and channel leadership</li>
-            <li>Cross-functional product context</li>
-          </ul>
-        </section>
-        <section class="panel">
-          <h2>Education</h2>
-          <ul>
-            <li class="edu"><b>MBA, Cum Laude</b><span>EADA Business School and CENTRUM PUCP</span></li>
-            <li class="edu"><b>B.Eng., Electronic &amp; Telecommunications Engineering</b><span>Universidad del Cauca</span></li>
-          </ul>
-        </section>
-        <section class="panel">
-          <h2>Certifications</h2>
-          <ul>
-            <li>AWS Certified AI Practitioner</li>
-            <li>AWS Certified Cloud Practitioner</li>
-            <li>Google Cloud Digital Leader</li>
-            <li>Microsoft Azure Fundamentals</li>
-          </ul>
-        </section>
-        <section class="panel">
-          <h2>Languages</h2>
-          <ul>
-            <li>English — professional working proficiency</li>
-            <li>Spanish — native</li>
-          </ul>
-        </section>
-      </aside>
-    </div>
+    <section class="skills page-break">
+      <h2>Skills</h2>
+      <p><b>Frontend:</b> Next.js 16, React 19, TypeScript, JavaScript, Vite</p>
+      <p><b>Backend &amp; data:</b> Node.js, Express 5, Python, REST APIs, PostgreSQL, Prisma, Drizzle, SQLite, MongoDB, Zod, auth, Resend</p>
+      <p><b>Applied AI:</b> LLM APIs, agents, tool calling, structured output, evals; Gemma and gpt-oss via Ollama; faster-whisper, NVIDIA Parakeet, wav2vec2, Silero VAD; Claude Code, Figma MCP</p>
+      <p><b>Quality &amp; delivery:</b> Vitest, Testing Library, Playwright, WCAG 2.2 AA / axe, GitHub Spec Kit, Vercel, Render, DigitalOcean, GitHub</p>
+    </section>
+
+    <section>
+      <h2>Education &amp; certifications</h2>
+      <ul>
+        <li>Stanford Continuing Studies — Building Generative and Agentic AI Products (BUS190), Fall 2026</li>
+        <li>MBA, Cum Laude — EADA Business School and CENTRUM PUCP</li>
+        <li>B.Eng., Electronic &amp; Telecommunications Engineering — Universidad del Cauca</li>
+        <li>AWS Certified AI Practitioner · AWS Certified Cloud Practitioner · Google Cloud Digital Leader · Microsoft Azure Fundamentals</li>
+      </ul>
+    </section>
+
+    <section>
+      <h2>Languages</h2>
+      <p>English (professional working proficiency) · Spanish (native)</p>
+    </section>
   </body>
 </html>
