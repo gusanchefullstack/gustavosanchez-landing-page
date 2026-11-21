@@ -69,7 +69,7 @@ Colombia · 1999 – 2008
 ## Education & certifications
 
 - Stanford Continuing Studies — Building Generative and Agentic AI Products (BUS190), Fall 2026
-- MBA, Cum Laude — EADA and CENTRUM PUCP · B.Eng., Telecom Engineering — Universidad del Cauca
+- MBA, Cum Laude — EADA and CENTRUM PUCP · B.Eng., Electronic & Telecommunications Engineering — Universidad del Cauca
 - [AWS Certified AI Practitioner](https://www.credly.com/badges/d2ab32e8-eb2e-4993-a51c-03eb8194b60d/public_url) · [AWS Cloud Practitioner](https://www.credly.com/badges/a1bd5121-934e-4c51-86f2-e1b2ae272d0c/public_url) · [Google Cloud Digital Leader](https://www.credly.com/badges/8c368784-8810-48ff-bcd4-a62745958942/public_url) · [Azure Fundamentals](https://www.credly.com/badges/a8285c18-9b20-4dcc-81e2-9762458b20ab/public_url)
 - Claude Academy (Anthropic): [Claude Code 101](https://academy.claude.com/verify/b9ae64aba19a0c5616a9f39fbe94b9d7) · [Intro to MCP](https://academy.claude.com/verify/0c9fc95bec0fb236987231b16ca4c37c) · [Intro to Subagents](https://academy.claude.com/verify/747a1d67e015eafc0f60fd46c7ef291f) · [Intro to Agent Skills](https://academy.claude.com/verify/14f96902a1ef00f639c807fc756ec30f)
 - masters.dev (formerly Frontend Masters): JavaScript Learning Path
