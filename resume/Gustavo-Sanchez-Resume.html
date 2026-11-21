@@ -1,9 +1,9 @@
 <!doctype html>
 <!--
-  Source for public/Gustavo-Sanchez-Resume.pdf.
-  Plain single-column, ATS-friendly layout on white paper (Letter, two pages).
-  Regenerate: run `npm run dev`, open /resume/Gustavo-Sanchez-Resume.html and print to PDF
-  (Letter, margins Default so @page applies, headers/footers off) — or Playwright
+  Mirrors the wording of public/Gustavo-Sanchez-Resume.pdf (one Letter page).
+  The published PDF is supplied by the owner; this page is an editable fallback.
+  To regenerate from it: run `npm run dev`, open /resume/Gustavo-Sanchez-Resume.html and
+  print to PDF (Letter, margins Default so @page applies, headers/footers off) — or Playwright
   page.pdf({ format: "Letter", printBackground: true, preferCSSPageSize: true }).
   Keep public/resume.md worded exactly the same.
 -->
@@ -20,7 +20,7 @@
 
       @page {
         size: Letter;
-        margin: 0.55in 0.6in;
+        margin: 0.5in 0.55in;
       }
 
       * {
@@ -40,13 +40,13 @@
         background: white;
         color: var(--ink);
         font-family: "Liberation Sans", Helvetica, Arial, sans-serif;
-        font-size: 10pt;
-        line-height: 1.32;
+        font-size: 9.6pt;
+        line-height: 1.28;
       }
 
       @media screen {
         body {
-          padding: 0.55in 0.6in;
+          padding: 0.5in 0.55in;
         }
       }
 
@@ -65,7 +65,7 @@
 
       /* ---------- Header ---------- */
       header {
-        padding-bottom: 10pt;
+        padding-bottom: 8pt;
         border-bottom: 2.5pt solid var(--ink);
       }
 
@@ -94,7 +94,7 @@
 
       /* ---------- Sections ---------- */
       h2 {
-        margin: 11pt 0 5pt;
+        margin: 9pt 0 4pt;
         padding-bottom: 3pt;
         border-bottom: 1px solid var(--rule);
         font-size: 9.6pt;
@@ -147,12 +147,8 @@
         margin-top: 3pt;
       }
 
-      .page-break {
-        break-before: page;
-      }
-
-      .page-break h2 {
-        margin-top: 0;
+      .certs li {
+        margin-top: 1pt;
       }
     </style>
   </head>
@@ -160,60 +156,58 @@
     <header>
       <h1>Gustavo Sanchez</h1>
       <p class="role">Full-Stack Software Engineer · AI Products</p>
-      <p class="contact">San Francisco, CA · U.S. work authorized, no sponsorship required</p>
       <p class="contact">
+        San Francisco, CA · U.S. work authorized ·
         <a href="mailto:hello@gustavosanchez.dev">hello@gustavosanchez.dev</a> ·
         <a href="https://www.gustavosanchez.dev/">gustavosanchez.dev</a> ·
         <a href="https://github.com/gusanchefullstack">github.com/gusanchefullstack</a> ·
-        <a href="https://www.linkedin.com/in/gustavosanchezgalarza/">linkedin.com/in/gustavosanchezgalarza</a>
+        <a href="https://www.linkedin.com/in/gustavosanchezgalarza">linkedin.com/in/gustavosanchezgalarza</a>
       </p>
     </header>
 
     <section>
-      <h2>Profile</h2>
+      <h2>Summary</h2>
       <p>
-        Full-stack engineer who designs, builds and ships AI products with Next.js, React,
-        TypeScript, Node.js and Python. 20+ software projects shipped in 2026, including a
-        subscription AI speaking coach in production. Before software: telecom network engineer,
-        then 17 years leading enterprise software sales at Microsoft and Genesys ($19M ACV
-        pipeline at Genesys). I bring customer context, product judgment and disciplined testing
-        to AI-assisted delivery.
+        Full-stack software engineer who builds and ships AI products with Next.js, React,
+        TypeScript, Node.js and Python: 20+ projects shipped in 2026, including EnglishChunks.guru,
+        a subscription AI speaking coach in production. I build with LLM APIs, agents, tool calling,
+        MCP and open-weight models. Before software: telecom network engineer, then 17 years leading
+        enterprise software sales at Microsoft and Genesys. I bring customer context, product
+        judgment and disciplined testing.
       </p>
+    </section>
+
+    <section class="skills">
+      <h2>Skills</h2>
+      <p><b>Languages &amp; frontend:</b> TypeScript, JavaScript, Python; Next.js 16, React 19, accessibility (WCAG 2.2 AA)</p>
+      <p><b>Backend &amp; data:</b> Node.js, Express 5, REST APIs, PostgreSQL, MongoDB, Prisma, Drizzle, Zod, JWT auth, Stripe</p>
+      <p><b>Applied AI:</b> LLM APIs, structured output, agents with tool calling, evals, MCP; Gemma and gpt-oss (Ollama)</p>
+      <p><b>Tools &amp; quality:</b> Claude Code (subagents, Agent Skills), Cursor, GitHub Spec Kit; Vitest, Testing Library, Playwright; Vercel, Render, DigitalOcean</p>
     </section>
 
     <section>
       <h2>Selected projects</h2>
       <div class="item">
         <div class="item-head">
-          <h3>EnglishChunks.guru — AI speaking coach (in production)</h3>
-          <span class="aside links"><a href="https://englishchunks.guru">englishchunks.guru</a></span>
+          <h3>EnglishChunks.guru — AI speaking coach in production</h3>
+          <span class="aside links"><a href="https://englishchunks.guru/">englishchunks.guru</a> · 2026</span>
         </div>
         <ul>
-          <li>Built and launched a Next.js 16 subscription product with daily A1–C2 lessons, pronunciation scoring, writing feedback, streaks and progress charts (TypeScript, Python, PostgreSQL).</li>
-          <li>Designed a privacy-first speech pipeline on DigitalOcean (Silero VAD, NVIDIA Parakeet, wav2vec2, Gemma): 0 recordings sent to third-party AI APIs, and audio is deleted after scoring.</li>
-          <li>Automated content quality checks with open models, plus human review through an admin moderation queue.</li>
+          <li>Built and launched a Next.js 16 subscription product (TypeScript, Python, PostgreSQL, Stripe) with daily A1–C2 lessons, pronunciation scoring, LLM writing feedback and progress tracking.</li>
+          <li>Designed a privacy-first speech pipeline (Silero VAD, NVIDIA Parakeet, wav2vec2, Gemma): 0 recordings sent to third-party AI APIs.</li>
+          <li>Automated AI content audits with open models, plus human review in an admin moderation queue.</li>
         </ul>
       </div>
       <div class="item">
         <div class="item-head">
           <h3>FX Checker — currency converter and rate research</h3>
           <span class="aside links">
-            <a href="https://fsdev-foreign-exchange-checker.vercel.app">live demo</a> ·
-            <a href="https://github.com/gusanchefullstack/fsdev-foreign-exchange-checker">code</a>
+            <a href="https://fsdev-foreign-exchange-checker.vercel.app/">live demo</a> ·
+            <a href="https://github.com/gusanchefullstack/fsdev-foreign-exchange-checker">code</a> · 2026
           </span>
         </div>
         <ul>
-          <li>Live conversion, 5-year rate history, multi-currency comparison, shareable URLs, CSV export and offline fallback (React 19, TypeScript, Frankfurter API).</li>
-          <li>121 automated tests with Vitest and Testing Library; 100 Lighthouse accessibility score.</li>
-        </ul>
-      </div>
-      <div class="item">
-        <div class="item-head">
-          <h3>Local-First AI English Tutor</h3>
-          <span class="aside links"><a href="https://github.com/gusanchefullstack/idioms-master-girl">code</a></span>
-        </div>
-        <ul>
-          <li>Runs Gemma and faster-whisper on the user's device, so voice data never leaves it; detects missed words and gives specific feedback.</li>
+          <li>React 19 + TypeScript app with 5-year rate history, CSV export and offline fallback; 121 automated tests (Vitest, Testing Library) and a 100 Lighthouse accessibility score.</li>
         </ul>
       </div>
     </section>
@@ -222,33 +216,31 @@
       <h2>Experience</h2>
       <div class="item">
         <div class="item-head">
-          <h3>Full-Stack Software Engineer, Independent Products</h3>
-          <span class="aside">San Francisco, CA · 2026 – Present</span>
+          <h3>Software Engineer, Independent Projects — Self-employed</h3>
+          <span class="aside">San Francisco, CA · May 2026 – Present</span>
         </div>
         <ul>
-          <li>Ship full-stack products end to end with Next.js, React, TypeScript, Node.js/Express, Python and PostgreSQL.</li>
-          <li>Integrate open models and LLM APIs for speech, feedback and workflow automation; own architecture, agent orchestration, code review and testing.</li>
-          <li>Work spec-first with GitHub Spec Kit: requirements → plan → tasks → implementation → verification.</li>
+          <li>Ship full-stack and AI products end to end; extend Claude Code with subagents, Agent Skills and MCP.</li>
+          <li>Work spec-first with GitHub Spec Kit, and review and test all AI-generated code before it ships.</li>
         </ul>
       </div>
       <div class="item">
         <div class="item-head">
-          <h3>Sales Leader, Genesys</h3>
+          <h3>Sales Manager / Sales Director / Account Director — Genesys</h3>
           <span class="aside">Colombia &amp; Latin America · 2017 – 2026</span>
         </div>
         <ul>
-          <li>Delivered $4.2M in bookings, 40+ new customers and a $19M ACV pipeline; exceeded quota every year FY23–FY25 and reached 157% in FY21.</li>
-          <li>Led account executives and partners selling enterprise CCaaS to banking, telecom and healthcare, working with Presales, Engineering, Marketing and Customer Success.</li>
+          <li>FY26: led 5 account executives and 12+ partners to $4.2M in bookings, 40+ new customers and a $19M ACV pipeline.</li>
+          <li>Exceeded quota every full fiscal year FY23–FY25 and reached 157% in FY21.</li>
         </ul>
       </div>
       <div class="item">
         <div class="item-head">
-          <h3>Enterprise Account Executive, Microsoft</h3>
+          <h3>Enterprise Account Executive / Solution Sales Professional — Microsoft</h3>
           <span class="aside">Colombia · 2008 – 2016</span>
         </div>
         <ul>
-          <li>Exceeded quota in 6 fiscal years (up to 185%); 3× Circle of Excellence Gold Club.</li>
-          <li>Grew cloud revenue 12% in FY15 by helping enterprise and public-sector customers adopt Office 365 and Azure.</li>
+          <li>Exceeded quota in 6 fiscal years (up to 185%); 3× Circle of Excellence Gold Club; grew cloud revenue 12% in FY15.</li>
         </ul>
       </div>
       <div class="item">
@@ -257,32 +249,32 @@
           <span class="aside">Colombia · 1999 – 2008</span>
         </div>
         <ul>
-          <li>Designed a multitenant IP-PBX platform that reached 3,000 deployed seats in its first year.</li>
+          <li>Designed a multitenant hosted IP-PBX platform that reached 3,000 deployed seats in its first year.</li>
         </ul>
       </div>
     </section>
 
-    <section class="skills page-break">
-      <h2>Skills</h2>
-      <p><b>Frontend:</b> Next.js 16, React 19, TypeScript, JavaScript, Vite</p>
-      <p><b>Backend &amp; data:</b> Node.js, Express 5, Python, REST APIs, PostgreSQL, Prisma, Drizzle, SQLite, MongoDB, Zod, auth, Resend</p>
-      <p><b>Applied AI:</b> LLM APIs, agents, tool calling, structured output, evals; Gemma and gpt-oss via Ollama; faster-whisper, NVIDIA Parakeet, wav2vec2, Silero VAD; Claude Code, Figma MCP</p>
-      <p><b>Quality &amp; delivery:</b> Vitest, Testing Library, Playwright, WCAG 2.2 AA / axe, GitHub Spec Kit, Vercel, Render, DigitalOcean, GitHub</p>
-    </section>
-
     <section>
       <h2>Education &amp; certifications</h2>
-      <ul>
+      <ul class="certs">
         <li>Stanford Continuing Studies — Building Generative and Agentic AI Products (BUS190), Fall 2026</li>
-        <li>MBA, Cum Laude — EADA Business School and CENTRUM PUCP</li>
-        <li>B.Eng., Electronic &amp; Telecommunications Engineering — Universidad del Cauca</li>
-        <li>AWS Certified AI Practitioner · AWS Certified Cloud Practitioner · Google Cloud Digital Leader · Microsoft Azure Fundamentals</li>
+        <li>MBA, Cum Laude — EADA and CENTRUM PUCP · B.Eng., Telecom Engineering — Universidad del Cauca</li>
+        <li>
+          <a href="https://www.credly.com/badges/d2ab32e8-eb2e-4993-a51c-03eb8194b60d/public_url">AWS Certified AI Practitioner</a> ·
+          <a href="https://www.credly.com/badges/a1bd5121-934e-4c51-86f2-e1b2ae272d0c/public_url">AWS Cloud Practitioner</a> ·
+          <a href="https://www.credly.com/badges/8c368784-8810-48ff-bcd4-a62745958942/public_url">Google Cloud Digital Leader</a> ·
+          <a href="https://www.credly.com/badges/a8285c18-9b20-4dcc-81e2-9762458b20ab/public_url">Azure Fundamentals</a>
+        </li>
+        <li>
+          Claude Academy (Anthropic):
+          <a href="https://academy.claude.com/verify/b9ae64aba19a0c5616a9f39fbe94b9d7">Claude Code 101</a> ·
+          <a href="https://academy.claude.com/verify/0c9fc95bec0fb236987231b16ca4c37c">Intro to MCP</a> ·
+          <a href="https://academy.claude.com/verify/747a1d67e015eafc0f60fd46c7ef291f">Intro to Subagents</a> ·
+          <a href="https://academy.claude.com/verify/14f96902a1ef00f639c807fc756ec30f">Intro to Agent Skills</a>
+        </li>
+        <li>masters.dev (formerly Frontend Masters): JavaScript Learning Path</li>
+        <li><b>Languages:</b> English (professional working proficiency) · Spanish (native)</li>
       </ul>
-    </section>
-
-    <section>
-      <h2>Languages</h2>
-      <p>English (professional working proficiency) · Spanish (native)</p>
     </section>
   </body>
 </html>

@@ -2,7 +2,7 @@
 
 Canonical website: https://www.gustavosanchez.dev/
 
-Last updated: 2026-11-15
+Last updated: 2026-11-21
 
 Résumé (Markdown): https://www.gustavosanchez.dev/resume.md
 
@@ -32,21 +32,21 @@ JavaScript, TypeScript, React 19, Next.js, Vite, Tailwind CSS, CSS Modules, Reac
 
 ### Backend and data
 
-Node.js, Express, Python, FastAPI, PostgreSQL, Neon, MongoDB, SQLite, Prisma, Drizzle, REST APIs, authentication, validation, transactional product flows, and third-party integrations.
+Node.js, Express, Python, FastAPI, PostgreSQL, Neon, MongoDB, SQLite, Prisma, Drizzle, REST APIs, JWT authentication, Zod validation, Stripe payments, transactional product flows, and third-party integrations.
 
 ### Applied AI and speech
 
-Gemma, Ollama, faster-whisper, NVIDIA Parakeet, wav2vec2 phoneme alignment, Silero VAD, ElevenLabs, local-first AI workflows, privacy-conscious model deployment, AI-assisted feedback, and coding-agent orchestration.
+LLM APIs, structured output, agents with tool calling, evals, Model Context Protocol (MCP), Gemma and gpt-oss via Ollama, faster-whisper, NVIDIA Parakeet, wav2vec2 phoneme alignment, Silero VAD, ElevenLabs, local-first AI workflows, privacy-conscious model deployment, AI-assisted feedback, and coding-agent orchestration.
 
 ### Quality and delivery
 
-GitHub Spec Kit, specification-driven development, Vitest, React Testing Library, Playwright, axe accessibility testing, WCAG 2.2 AA, Git, GitHub, Vercel, DigitalOcean, and continuous verification.
+Claude Code (subagents, Agent Skills), Cursor, GitHub Spec Kit, specification-driven development, Vitest, React Testing Library, Playwright, axe accessibility testing, WCAG 2.2 AA, Git, GitHub, Vercel, DigitalOcean, and continuous verification.
 
 ## Experience
 
-- **Full-Stack Software Engineer, Independent Products** — San Francisco, CA, 2026 to present. Builds and deploys full-stack products with Next.js, React, TypeScript, Node.js/Express, Python and PostgreSQL; uses open models and LLM APIs for speech, feedback and workflow automation; leads architecture, agent orchestration, review and testing; works spec-first from constitution and requirements through plan, tasks, implementation and verification.
-- **Sales Leader, Genesys** — Colombia and Latin America, 2017 to 2026. Led account executives and partners selling enterprise CCaaS in banking, telecom and healthcare. Delivered $4.2M in bookings, 40+ new customers and a $19M ACV pipeline; exceeded quota every year FY23–FY25 and reached 157% in FY21.
-- **Enterprise Account Executive, Microsoft** — Colombia, 2008 to 2016. Helped enterprise and public-sector customers adopt Office 365 and Azure; grew cloud revenue 12% in FY15. Exceeded quota in six fiscal years, up to 185%; earned Circle of Excellence Gold Club three times.
+- **Software Engineer, Independent Projects (self-employed)** — San Francisco, CA, May 2026 to present. Ships full-stack and AI products end to end with Next.js, React, TypeScript, Node.js/Express, Python and PostgreSQL; builds with LLM APIs, agents, tool calling, MCP and open-weight models; extends Claude Code with subagents, Agent Skills and MCP; works spec-first with GitHub Spec Kit and reviews and tests all AI-generated code before it ships.
+- **Sales Manager / Sales Director / Account Director, Genesys** — Colombia and Latin America, 2017 to 2026. Led account executives and partners selling enterprise CCaaS in banking, telecom and healthcare. In FY26 led 5 account executives and 12+ partners to $4.2M in bookings, 40+ new customers and a $19M ACV pipeline; exceeded quota every full fiscal year FY23–FY25 and reached 157% in FY21.
+- **Enterprise Account Executive / Solution Sales Professional, Microsoft** — Colombia, 2008 to 2016. Helped enterprise and public-sector customers adopt Office 365 and Azure; grew cloud revenue 12% in FY15. Exceeded quota in six fiscal years, up to 185%; earned Circle of Excellence Gold Club three times.
 - **Telecom & Network Engineering, Telmex, Getronics, Damovo, Ericsson** — Colombia, 1999 to 2008. Designed voice and network infrastructure, including a multitenant IP-PBX platform that reached 3,000 deployed seats in one year.
 
 ## Education
@@ -61,6 +61,11 @@ GitHub Spec Kit, specification-driven development, Vitest, React Testing Library
 - AWS Certified Cloud Practitioner
 - Google Cloud Digital Leader
 - Microsoft Azure Fundamentals
+
+## Courses
+
+- Claude Academy (Anthropic): Claude Code 101, Intro to MCP, Intro to Subagents, Intro to Agent Skills
+- masters.dev (formerly Frontend Masters): JavaScript Learning Path
 
 ## Languages
 
