@@ -129,7 +129,7 @@ The palette is defined by two colours at the top of `src/style.css`; every other
 Change `--mist` / `--ink` to re-skin the whole site, and add any new token to **both** theme blocks. Re-check text contrast afterwards: `--color-muted` is tuned to stay above 4.8:1 on every surface. The theme follows the visitor's OS setting until they use the toggle, after which the choice is remembered in `localStorage`.
 
 ### Update the résumé
-Edit `resume/Gustavo-Sanchez-Resume.html`, open it through the dev server and print to PDF (Letter, no margins, background graphics on) into `public/Gustavo-Sanchez-Resume.pdf`. Mirror the wording in `public/resume.md`.
+Copy the new one-page PDF over `public/Gustavo-Sanchez-Resume.pdf`, then mirror its wording in `public/resume.md` and `resume/Gustavo-Sanchez-Resume.html`. The HTML can also be printed to PDF through the dev server (Letter, margins "Default", headers/footers off) as a fallback. Bump the résumé `<lastmod>` dates in `public/sitemap.xml`.
 
 ### Add a new section
 1. Create `src/components/NewSection.tsx` as a React component
