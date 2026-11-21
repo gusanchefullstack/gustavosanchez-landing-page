@@ -2,7 +2,7 @@
 
 Full-Stack Software Engineer · AI Products
 
-San Francisco, CA · U.S. work authorized
+San Francisco, CA · U.S. work authorized, no sponsorship required
 
 hello@gustavosanchez.dev · [gustavosanchez.dev](https://www.gustavosanchez.dev/) · [github.com/gusanchefullstack](https://github.com/gusanchefullstack) · [linkedin.com/in/gustavosanchezgalarza](https://www.linkedin.com/in/gustavosanchezgalarza)
 
